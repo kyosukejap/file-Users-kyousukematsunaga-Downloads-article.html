@@ -1,0 +1,2799 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InnBuddy — OTA × OPERATION × BRANDING</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F7F7F7;--navy:#1A1A1A;--accent:#FFF450;--accent2:#BAB454;--line:#E9E9E9;--gray:#7A8599;--card:#fff}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--navy);line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.serif{font-family:'Cormorant Garamond',serif}
+.container{max-width:1320px;margin:0 auto;padding:0 40px}
+header{height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(247,247,247,0.96);backdrop-filter:blur(6px);z-index:20}
+.logo{font-weight:800;letter-spacing:0.14em;font-size:22px;display:flex;align-items:center;gap:10px}
+.logo-pill{font-size:10px;letter-spacing:0.14em;background:var(--accent);color:#1A1A1A;padding:4px 10px;border-radius:20px;font-weight:700;border:1px solid #1A1A1A}
+.nav{display:flex;gap:24px;font-size:11px;letter-spacing:0.12em;font-weight:700}
+.hero-grid{display:grid;grid-template-columns:440px 1fr;gap:35px;align-items:stretch;margin-top:16px}
+.left-3{display:grid;grid-template-rows:repeat(3,1fr);gap:10px;height:auto}
+.left-3 .wide{position:relative;overflow:hidden;background:#ddd;cursor:pointer}
+.left-3 .wide img{filter:brightness(0.92)}
+.left-9{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;height:auto}
+.left-9 .cell{aspect-ratio:1/1;overflow:hidden;background:#E9E9E9}
+.overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.45));display:flex;flex-direction:column;justify-content:flex-end;padding:16px 18px;color:#fff}
+.cat-label{font-size:8.5px;letter-spacing:0.16em;background:var(--accent);color:#1A1A1A;display:inline-block;padding:4px 8px;border-radius:20px;margin-bottom:8px;font-weight:800;width:fit-content}
+.cat-title{font-size:16px;line-height:1.32;font-weight:700}
+.cat-sub{font-size:11px;opacity:0.9;margin-top:4px}
+.play{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:34px;height:34px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.15)}
+.play:after{content:"";width:0;height:0;border-left:10px solid #1A1A1A;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:2px}
+.section-label{font-size:9.5px;letter-spacing:0.22em;color:#1A1A1A;border:1px solid #1A1A1A;display:inline-block;padding:4px 10px;border-radius:20px;margin-bottom:12px;background:var(--accent);font-weight:700}
+.featured{margin-top:36px;border-top:1px solid var(--line);padding-top:26px}
+.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 18px;margin-top:14px}
+.f-card{display:grid;grid-template-columns:108px 1fr;gap:14px;align-items:start;padding:14px;background:var(--card);border:1px solid var(--line)}
+.f-card .thumb{width:108px;height:108px;overflow:hidden;background:#E9E9E9}
+.f-card .meta{font-size:9.5px;letter-spacing:0.06em;color:var(--gray);margin-bottom:4px}
+.f-card h3{font-size:12.2px;line-height:1.5;font-weight:700;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.f-card p{font-size:11px;color:var(--gray);line-height:1.55;margin-top:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.divider{height:1px;background:var(--line);margin:22px 0}
+.news-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.n-card .thumb{height:178px;overflow:hidden;background:#E9E9E9;margin-bottom:10px}
+.n-card .date{font-size:11px;font-weight:700}
+.n-card h4{font-size:12px;line-height:1.55;font-weight:500;margin-top:4px;min-height:37px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.view-more{height:250px;display:flex;align-items:center;justify-content:center}
+.view-more{height:250px;display:flex;align-items:center;justify-content:center}
+.view-more a{width:155px;height:155px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;box-shadow:none;padding:0;overflow:visible;transition:transform .2s}
+.view-more a:hover{transform:translateY(-2px)}
+.view-more a svg{width:335px;height:228px;display:block}
+.category-block{margin-bottom:32px}
+.cat-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.cat-head h3{font-size:17px;letter-spacing:0.06em;font-weight:800}
+.cat-head h3 span{font-size:10.5px;font-weight:400;letter-spacing:0.1em;color:var(--gray);margin-left:10px}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:14px}
+  .left-3{height:auto;grid-template-rows:none;display:flex;flex-direction:column}
+  .left-3 .wide{height:200px}
+  .left-9{height:auto}
+  .featured-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:repeat(2,1fr)}
+  .container{padding:0 16px}
+  .nav{display:none}
+}
+
+.f-card{transition:transform .15s,box-shadow .15s;cursor:pointer}
+.f-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+.n-card{transition:transform .15s;cursor:pointer}
+.n-card:hover{transform:translateY(-2px)}
+.f-card .thumb,.n-card .thumb{overflow:hidden}
+.f-card .thumb img,.n-card .thumb img{transition:transform .3s}
+.f-card:hover .thumb img,.n-card:hover .thumb img{transform:scale(1.05)}
+.left-9 .cell{cursor:pointer}
+
+/* ===== ARTICLE VIEW (single-file journal) ===== */
+body.in-article #lpView{display:none}
+#articleView{display:none}
+body.in-article #articleView{display:block}
+#articleView .container{max-width:1080px}
+#progress{position:fixed;top:0;left:0;height:3px;background:#FFF450;width:0;z-index:60}
+#articleView .back{font-size:11px;letter-spacing:0.12em;font-weight:700;border:1px solid #1A1A1A;padding:7px 14px;border-radius:20px;background:#fff;transition:background .15s}
+#articleView .back:hover{background:#FFF450}
+#articleView .lang{display:flex;border:1px solid #1A1A1A;border-radius:20px;overflow:hidden}
+#articleView .lang button{font-family:inherit;font-size:10.5px;letter-spacing:0.1em;font-weight:700;padding:7px 13px;border:none;background:transparent;cursor:pointer;color:#1A1A1A}
+#articleView .lang button.on{background:#FFF450}
+.article{max-width:780px;margin:0 auto;padding:34px 0 70px}
+.kicker{display:flex;gap:10px;align-items:center;font-size:10px;letter-spacing:0.2em;font-weight:700;color:#BAB454}
+.chip{background:#FFF450;color:#1A1A1A;border:1px solid #1A1A1A;padding:4px 12px;border-radius:20px;font-size:10px;letter-spacing:0.12em;font-weight:800}
+#articleView h1{font-size:29px;line-height:1.5;font-weight:800;margin-top:14px;letter-spacing:0.01em}
+#articleView h1.en{font-family:'Cormorant Garamond',serif;font-size:36px;line-height:1.3;font-weight:700;letter-spacing:0}
+.excerpt{margin-top:14px;font-size:14.5px;color:#4a4a4a;line-height:1.95}
+.hero-img{margin-top:28px;aspect-ratio:16/9;overflow:hidden;background:#E9E9E9}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.meta-row{display:flex;gap:20px;margin-top:18px;font-size:11.5px;color:#7A8599;letter-spacing:0.04em;flex-wrap:wrap}
+.body{margin-top:36px;font-size:15.5px;line-height:2.08;color:#222}
+.body.en{line-height:1.85}
+.body h2{font-size:19px;font-weight:800;margin:42px 0 16px;padding-left:13px;border-left:6px solid #FFF450;line-height:1.5}
+.body h3{font-size:15.5px;font-weight:700;margin:26px 0 10px}
+.body p{margin:0 0 16px}
+.body ul,.body ol{margin:0 0 18px;padding-left:22px}
+.body li{margin-bottom:8px}
+.body strong{background:linear-gradient(transparent 62%,rgba(255,244,80,0.55) 62%);padding:0 1px}
+.body .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:24px 0}
+.body .stat{background:#fff;border:1px solid #E9E9E9;padding:16px 14px;text-align:center}
+.body .stat b{display:block;font-family:'Cormorant Garamond',serif;font-size:29px;font-weight:800;line-height:1.1;color:#1A1A1A}
+.body .stat span{font-size:10.5px;color:#7A8599;letter-spacing:0.05em;display:block;margin-top:7px;line-height:1.5}
+.body .note{background:#fff;border:1px solid #1A1A1A;border-left:6px solid #FFF450;padding:18px 22px;margin:28px 0;font-size:14.5px;line-height:2.0}
+.body .note .tag{display:inline-block;background:#FFF450;border:1px solid #1A1A1A;padding:2px 12px;border-radius:14px;font-size:10.5px;letter-spacing:0.14em;font-weight:800;margin-bottom:12px}
+.rel{margin-top:60px;border-top:1px solid #E9E9E9;padding-top:28px}
+.rel-label{font-size:11px;letter-spacing:0.2em;font-weight:800;margin-bottom:16px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rel-grid a{background:#fff;border:1px solid #E9E9E9;display:block;transition:transform .15s}
+.rel-grid a:hover{transform:translateY(-2px)}
+.rel-grid img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.rel-t{padding:12px 14px 14px}
+.rel-d{font-size:10px;color:#7A8599;letter-spacing:0.04em}
+.rel-t h4{font-size:12px;line-height:1.6;font-weight:700;margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prep{margin-top:40px;background:#fff;border:1px dashed #BAB454;padding:56px 30px;text-align:center}
+.prep .big{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:12px}
+.prep p{font-size:13.5px;color:#7A8599;line-height:1.9}
+.aj-footer{background:#1A1A1A;color:#E9E9E9;text-align:center;padding:24px 16px;letter-spacing:0.08em}
+.aj-footer .f1{font-size:13px;font-weight:800;letter-spacing:0.14em}
+.aj-footer .f2{font-size:11px;opacity:0.7;margin-top:6px}
+.aj-footer .f3{margin-top:14px;display:inline-block;background:#FFF450;color:#1A1A1A;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700}
+.aj-footer .f4{font-size:10px;opacity:0.45;margin-top:12px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+@media(max-width:700px){
+  .article{padding:26px 16px 50px}
+  #articleView h1{font-size:23px}
+  #articleView h1.en{font-size:29px}
+  .rel-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="lpView">
+<header class="container">
+  <div class="logo serif">InnBuddy <span class="logo-pill">OTA × OPERATION × BRANDING</span></div>
+</header>
+<main class="container">
+<section style="margin-top:18px">
+  <div class="hero-grid">
+    <div class="left-3">
+      <div class="wide"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop"><div class="overlay"><div class="cat-label">CATEGORY 01 — OTA集客</div><div class="cat-title serif">Booking / Agodaで<br>選ばれる宿になる</div><div class="cat-sub">107記事</div></div><div class="play"></div></div>
+      <div class="wide"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format&fit=crop"><div class="overlay"><div class="cat-label">CATEGORY 02 — ホテル運営</div><div class="cat-title serif">Making<br>a profitable stay</div><div class="cat-sub">89記事</div></div><div class="play"></div></div>
+      <div class="wide"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80&auto=format&fit=crop"><div class="overlay"><div class="cat-label">CATEGORY 03 — ブランディング</div><div class="cat-title serif">世界観で選ばれる<br>ホテルへ</div><div class="cat-sub">64記事</div></div><div class="play"></div></div>
+    </div>
+    <div class="left-9">
+      <a class="cell" href="#brooklyn-cross-border-opening"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+      <a class="cell" href="#us-market-cross-border-branding"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+      <a class="cell" href="#sourcing-sustainability"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+      <a class="cell" href="#story-branding-exhibition"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+      <a class="cell" href="#cheese-sourcing-story"><img src="https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+      <a class="cell" href="#summer-ota-peak-season"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+      <a class="cell" href="#transparent-tomato-presentation"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+      <a class="cell" href="#zero-waste-communication"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+      <a class="cell" href="#natural-winery-food-experience"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80&auto=format&fit=crop" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+<section class="featured">
+  <div class="section-label">FEATURED — 注目の9記事</div>
+  <div style="font-size:11px;letter-spacing:0.14em;color:#BAB454;font-weight:700;margin-bottom:10">SET 01 — 最新トレンド</div>
+  <div class="featured-grid">
+    <a class="f-card" href="#summer-ota-peak-season"><div class="thumb"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.06.18 ・ OTA集客</div><h3>【夏の繁忙期】OTA検索で上位を取る3つの施策</h3><p>夏の需要期に検索上位を取るための3ステップ施策を解説。</p></div></a>
+    <a class="f-card" href="#spatial-design-local-high-price"><div class="thumb"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.06.12 ・ ホテル運営</div><h3>【空間デザイン】地方都市で高単価を実現した新しい滞在のかたち</h3><p>地方都市で高単価を実現したブティックホテルの空間。</p></div></a>
+    <a class="f-card" href="#regional-identity-brand-nhatrang"><div class="thumb"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.06.10 ・ ブランディング</div><h3>【事例】地域性をブランドに翻訳した宿の作り方</h3><p>Nha Trangの新拠点に見る地域性の翻訳方法。</p></div></a>
+  </div>
+  <div class="divider"></div>
+  <div style="font-size:11px;letter-spacing:0.14em;color:#BAB454;font-weight:700;margin-bottom:10">SET 02 — 運営のリアル</div>
+  <div class="featured-grid">
+    <a class="f-card" href="#direct-booking-42"><div class="thumb"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.05.28 ・ OTA集客</div><h3>直予約比率を42%まで上げた3つの仕掛け</h3><p>自社サイト誘導・特典設計・チャット対応で手数料削減。</p></div></a>
+    <a class="f-card" href="#recruitment-showcase-pr"><div class="thumb"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.05.22 ・ 人材採用</div><h3>採用に困らない宿がやっている「見せ方」採用広報</h3><p>求人票の前にやるべき現場の魅力を伝える設計。</p></div></a>
+    <a class="f-card" href="#revpar-18x-dynamic-pricing"><div class="thumb"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.05.19 ・ 収益改善</div><h3>RevPARが1.8倍に。値付けを「感覚」から「設計」へ</h3><p>曜日・イベント・在庫を加味したダイナミックプライシング。</p></div></a>
+  </div>
+  <div class="divider"></div>
+  <div style="font-size:11px;letter-spacing:0.14em;color:#BAB454;font-weight:700;margin-bottom:10">SET 03 — ブランドの作り方</div>
+  <div class="featured-grid">
+    <a class="f-card" href="#hotel-photos-90"><div class="thumb"><img src="https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.05.10 ・ ブランディング</div><h3>「写真が9割」— 予約が入るホテル写真の共通点</h3><p>光・生活感・余白の3原則で予約率が変わる。</p></div></a>
+    <a class="f-card" href="#instagram-saveable-account"><div class="thumb"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.05.04 ・ SNS運用</div><h3>Instagramで「保存される」宿のアカウント設計</h3><p>フォロワー数より保存数。旅マエに選ばれる投稿。</p></div></a>
+    <a class="f-card" href="#small-experiences-5-touchpoints"><div class="thumb"><img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=300&q=80&auto=format&fit=crop"></div><div><div class="meta">2026.04.28 ・ 体験設計</div><h3>チェックアウト後に語られる「小さな体験」の作り方</h3><p>コスト0で口コミを生む5つのタッチポイント。</p></div></a>
+  </div>
+</section>
+<section style="border-top:1px solid var(--line);margin-top:36px;padding-top:26px">
+  <div class="section-label">CATEGORY ARCHIVE — カテゴリ別 7+1</div>
+  <div class="category-block">
+    <div class="cat-head"><h3 class="serif">OTA集客 <span>107 ARTICLES — MOST POPULAR</span></h3></div>
+    <div class="news-grid">
+      <a class="n-card" href="#brooklyn-cross-border-opening"><div class="thumb"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80&auto=format&fit=crop"></div><div class="date">2026.3.20</div><h4>【越境開業】ニューヨーク・ブルックリンに学ぶ、海外で選ばれる宿の作り方</h4></a>
+      <a class="n-card" href="#us-market-cross-border-branding"><div class="thumb"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80&auto=format&fit=crop"></div><div class="date">2026.2.22</div><h4>アメリカ市場に挑戦 — 越境ブランディングの舞台裏</h4></a>
+      <a class="n-card" href="#story-branding-exhibition"><div class="thumb"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.12.11</div><h4>“物語で選ばれる宿” — 展示が示すブランディングの力</h4></a>
+      <a class="n-card" href="#veg-menu-options"><div class="thumb"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.9.2</div><h4>【ベジ対応メニュー】多様な食嗜好に応える宿の選択肢設計</h4></a>
+      <a class="n-card" href="#review-replies-trust"><div class="thumb"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.8.31</div><h4>感謝のメッセージが届きました — レビュー返信で信頼を積む</h4></a>
+      <a class="n-card" href="#zero-waste-communication"><div class="thumb"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.7.2</div><h4>本当にゼロウェイストは可能か？ サステナブル運営の伝え方</h4></a>
+      <a class="n-card" href="#natural-winery-food-experience"><div class="thumb"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.7.2</div><h4>【ナチュラルワイナリー】生産者を語る宿の食体験</h4></a>
+      <div class="view-more"><a href="#"><svg viewBox="0 0 130 110" xmlns="http://www.w3.org/2000/svg" style="width:335px;height:228px;display:block">  <!-- Background transparent -->  <!-- Pencil texture filter -->  <defs>   <pattern id="pencil" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">    <rect width="4" height="4" fill="#F5E8C7" opacity="0.0"/>    <line x1="0" y1="1" x2="4" y2="1" stroke="#D8C9A3" stroke-width="0.3" opacity="0.18"/>    <line x1="0" y1="3" x2="4" y2="3" stroke="#C9B895" stroke-width="0.2" opacity="0.12"/>   </pattern>   <filter id="pencilShade">    <feTurbulence baseFrequency="0.85" numOctaves="2" result="t"/>    <feDisplacementMap in="SourceGraphic" in2="t" scale="0.5" xChannelSelector="R" yChannelSelector="G"/>   </filter>  </defs>   <!-- BACK ROCKS - behind water, partially hidden -->  <g fill="#EFE5C8" stroke="#1A1A1A" stroke-width="1.25" stroke-linejoin="round" opacity="1">   <!-- top row - will be partially covered by water -->   <ellipse cx="65" cy="28" rx="10.5" ry="8.2" fill="#F0E4C0" stroke="#1A1A1A"/>   <ellipse cx="84.5" cy="31.5" rx="9.2" ry="7.5" transform="rotate(12 84.5 31.5)" fill="#EDE0BA"/>   <ellipse cx="100" cy="41" rx="8.8" ry="7.3" transform="rotate(30 100 41)" fill="#F2E6C5"/>   <ellipse cx="110.5" cy="56" rx="9.2" ry="8" transform="rotate(55 110.5 56)" fill="#EDE0BA"/>   <ellipse cx="44.5" cy="31.5" rx="9.2" ry="7.5" transform="rotate(-12 44.5 31.5)" fill="#EDE0BA"/>   <ellipse cx="29" cy="41" rx="8.8" ry="7.3" transform="rotate(-30 29 41)" fill="#F2E6C5"/>   <ellipse cx="18.5" cy="56" rx="9.2" ry="8" transform="rotate(-55 18.5 56)" fill="#EDE0BA"/>  </g>  <!-- subtle pencil hatching inside back rocks -->  <g fill="none" stroke="#C9B895" stroke-width="0.25" opacity="0.18">   <path d="M58 28 Q65 29 72 28"/><path d="M78 32 Q85 33 91 32"/><path d="M38 32 Q44 33 50 32"/>  </g>   <!-- WATER - oval, on top of back rocks so they are hidden behind edge -->  <ellipse cx="65" cy="64" rx="40" ry="29" fill="#FFF8D6" stroke="#1A1A1A" stroke-width="1.5" opacity="1"/>  <ellipse cx="65" cy="64" rx="39" ry="28" fill="none" stroke="#1A1A1A" stroke-width="0.4" opacity="0.08"/>  <!-- inner water highlight - pencil light -->  <ellipse cx="65" cy="62" rx="28" ry="16" fill="none" stroke="#E8D9A0" stroke-width="0.3" opacity="0.15"/>   <!-- FRONT ROCKS - in front of water, fully visible with pencil touch -->  <g stroke="#1A1A1A" stroke-width="1.35" stroke-linejoin="round">   <ellipse cx="109" cy="73.5" rx="9.8" ry="8.5" transform="rotate(80 109 73.5)" fill="#EFE5C8"/>   <ellipse cx="99" cy="88.5" rx="10.5" ry="9" transform="rotate(105 99 88.5)" fill="#F0E4C0"/>   <ellipse cx="83" cy="99.5" rx="11.2" ry="9.5" transform="rotate(128 83 99.5)" fill="#EDE0BA"/>   <ellipse cx="65" cy="104" rx="12.5" ry="9.8" fill="#F2E6C5"/>   <ellipse cx="46.5" cy="99.5" rx="11.2" ry="9.5" transform="rotate(-128 46.5 99.5)" fill="#F0E4C0"/>   <ellipse cx="30" cy="88.5" rx="10.5" ry="9" transform="rotate(-105 30 88.5)" fill="#EFE5C8"/>   <ellipse cx="20" cy="73.5" rx="9.8" ry="8.5" transform="rotate(-80 20 73.5)" fill="#EDE0BA"/>   <ellipse cx="50" cy="103" rx="6.5" ry="5.5" fill="#F5E8C7" opacity="0.9"/>  </g>  <!-- pencil texture hatching on front rocks -->  <g fill="none" stroke="#B8A98A" stroke-width="0.28" opacity="0.14">   <path d="M62 104 Q65 105 68 104"/><path d="M80 99 Q84 100 88 99"/><path d="M42 99 Q46 100 50 99"/>   <path d="M97 88 Q101 89 104 88"/><path d="M25 88 Q29 89 33 88"/><path d="M107 73 Q110 74 113 73"/>  </g>  <!-- subtle shading on rocks - pencil pressure variation -->  <g fill="#D8C9A3" opacity="0.08">   <ellipse cx="68" cy="105" rx="7" ry="4.5"/>   <ellipse cx="86" cy="100" rx="5" ry="3.2"/>   <ellipse cx="43" cy="100" rx="5" ry="3.2"/>  </g>   <!-- Steam - black line only, thin, above -->  <g fill="none" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" opacity="0.88">   <path d="M51 30 C53.5 24, 49.5 18, 52 12"/>   <path d="M65 29 C67.5 23, 62 17, 65.5 11"/>   <path d="M79 30 C81.5 24, 77.5 18, 80 12"/>  </g>   <!-- View More - two lines inside water -->  <g text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="800">   <text x="65" y="61" font-size="9.5" letter-spacing="2.0" fill="#1A1A1A">View</text>   <text x="65" y="73" font-size="9.5" letter-spacing="2.0" fill="#1A1A1A">More</text>  </g> </svg></a></div>
+    </div>
+  </div>
+  <div class="category-block">
+    <div class="cat-head"><h3 class="serif">ホテル運営 <span>89 ARTICLES</span></h3></div>
+    <div class="news-grid">
+      <a class="n-card" href="#cave-room-design-monetization"><div class="thumb"><img src="https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.6.26</div><h4>【洞窟を感じる客室】記憶に残る空間デザインと収益化</h4></a>
+      <a class="n-card" href="#transparent-tomato-presentation"><div class="thumb"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.6.24</div><h4>【季節限定】透明トマトで魅せる、一皿の演出力</h4></a>
+      <a class="n-card" href="#cheese-sourcing-story"><div class="thumb"><img src="https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.5.29</div><h4>チーズが世界を笑顔にする — 仕入れを物語に変える</h4></a>
+      <a class="n-card" href="#sourcing-sustainability"><div class="thumb"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.5.17</div><h4>自然の恵みを守る — 仕入れとサステナビリティを語る</h4></a>
+      <a class="n-card" href="#cleaning-checklist-experience"><div class="thumb"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.5.12</div><h4>清掃を「コスト」から「体験」に変えるチェックリスト</h4></a>
+      <a class="n-card" href="#staff-shortage-shifts"><div class="thumb"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.4.30</div><h4>人手不足でも回るシフトの作り方</h4></a>
+      <a class="n-card" href="#ai-chat-night-ops"><div class="thumb"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.4.18</div><h4>AIチャットで深夜対応を自動化</h4></a>
+      <div class="view-more"><a href="#"><svg viewBox="0 0 130 110" xmlns="http://www.w3.org/2000/svg" style="width:335px;height:228px;display:block">  <!-- Background transparent -->  <!-- Pencil texture filter -->  <defs>   <pattern id="pencil" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">    <rect width="4" height="4" fill="#F5E8C7" opacity="0.0"/>    <line x1="0" y1="1" x2="4" y2="1" stroke="#D8C9A3" stroke-width="0.3" opacity="0.18"/>    <line x1="0" y1="3" x2="4" y2="3" stroke="#C9B895" stroke-width="0.2" opacity="0.12"/>   </pattern>   <filter id="pencilShade">    <feTurbulence baseFrequency="0.85" numOctaves="2" result="t"/>    <feDisplacementMap in="SourceGraphic" in2="t" scale="0.5" xChannelSelector="R" yChannelSelector="G"/>   </filter>  </defs>   <!-- BACK ROCKS - behind water, partially hidden -->  <g fill="#EFE5C8" stroke="#1A1A1A" stroke-width="1.25" stroke-linejoin="round" opacity="1">   <!-- top row - will be partially covered by water -->   <ellipse cx="65" cy="28" rx="10.5" ry="8.2" fill="#F0E4C0" stroke="#1A1A1A"/>   <ellipse cx="84.5" cy="31.5" rx="9.2" ry="7.5" transform="rotate(12 84.5 31.5)" fill="#EDE0BA"/>   <ellipse cx="100" cy="41" rx="8.8" ry="7.3" transform="rotate(30 100 41)" fill="#F2E6C5"/>   <ellipse cx="110.5" cy="56" rx="9.2" ry="8" transform="rotate(55 110.5 56)" fill="#EDE0BA"/>   <ellipse cx="44.5" cy="31.5" rx="9.2" ry="7.5" transform="rotate(-12 44.5 31.5)" fill="#EDE0BA"/>   <ellipse cx="29" cy="41" rx="8.8" ry="7.3" transform="rotate(-30 29 41)" fill="#F2E6C5"/>   <ellipse cx="18.5" cy="56" rx="9.2" ry="8" transform="rotate(-55 18.5 56)" fill="#EDE0BA"/>  </g>  <!-- subtle pencil hatching inside back rocks -->  <g fill="none" stroke="#C9B895" stroke-width="0.25" opacity="0.18">   <path d="M58 28 Q65 29 72 28"/><path d="M78 32 Q85 33 91 32"/><path d="M38 32 Q44 33 50 32"/>  </g>   <!-- WATER - oval, on top of back rocks so they are hidden behind edge -->  <ellipse cx="65" cy="64" rx="40" ry="29" fill="#FFF8D6" stroke="#1A1A1A" stroke-width="1.5" opacity="1"/>  <ellipse cx="65" cy="64" rx="39" ry="28" fill="none" stroke="#1A1A1A" stroke-width="0.4" opacity="0.08"/>  <!-- inner water highlight - pencil light -->  <ellipse cx="65" cy="62" rx="28" ry="16" fill="none" stroke="#E8D9A0" stroke-width="0.3" opacity="0.15"/>   <!-- FRONT ROCKS - in front of water, fully visible with pencil touch -->  <g stroke="#1A1A1A" stroke-width="1.35" stroke-linejoin="round">   <ellipse cx="109" cy="73.5" rx="9.8" ry="8.5" transform="rotate(80 109 73.5)" fill="#EFE5C8"/>   <ellipse cx="99" cy="88.5" rx="10.5" ry="9" transform="rotate(105 99 88.5)" fill="#F0E4C0"/>   <ellipse cx="83" cy="99.5" rx="11.2" ry="9.5" transform="rotate(128 83 99.5)" fill="#EDE0BA"/>   <ellipse cx="65" cy="104" rx="12.5" ry="9.8" fill="#F2E6C5"/>   <ellipse cx="46.5" cy="99.5" rx="11.2" ry="9.5" transform="rotate(-128 46.5 99.5)" fill="#F0E4C0"/>   <ellipse cx="30" cy="88.5" rx="10.5" ry="9" transform="rotate(-105 30 88.5)" fill="#EFE5C8"/>   <ellipse cx="20" cy="73.5" rx="9.8" ry="8.5" transform="rotate(-80 20 73.5)" fill="#EDE0BA"/>   <ellipse cx="50" cy="103" rx="6.5" ry="5.5" fill="#F5E8C7" opacity="0.9"/>  </g>  <!-- pencil texture hatching on front rocks -->  <g fill="none" stroke="#B8A98A" stroke-width="0.28" opacity="0.14">   <path d="M62 104 Q65 105 68 104"/><path d="M80 99 Q84 100 88 99"/><path d="M42 99 Q46 100 50 99"/>   <path d="M97 88 Q101 89 104 88"/><path d="M25 88 Q29 89 33 88"/><path d="M107 73 Q110 74 113 73"/>  </g>  <!-- subtle shading on rocks - pencil pressure variation -->  <g fill="#D8C9A3" opacity="0.08">   <ellipse cx="68" cy="105" rx="7" ry="4.5"/>   <ellipse cx="86" cy="100" rx="5" ry="3.2"/>   <ellipse cx="43" cy="100" rx="5" ry="3.2"/>  </g>   <!-- Steam - black line only, thin, above -->  <g fill="none" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" opacity="0.88">   <path d="M51 30 C53.5 24, 49.5 18, 52 12"/>   <path d="M65 29 C67.5 23, 62 17, 65.5 11"/>   <path d="M79 30 C81.5 24, 77.5 18, 80 12"/>  </g>   <!-- View More - two lines inside water -->  <g text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="800">   <text x="65" y="61" font-size="9.5" letter-spacing="2.0" fill="#1A1A1A">View</text>   <text x="65" y="73" font-size="9.5" letter-spacing="2.0" fill="#1A1A1A">More</text>  </g> </svg></a></div>
+    </div>
+  </div>
+  <div class="category-block">
+    <div class="cat-head"><h3 class="serif">ALL <span>その他のカテゴリ — ブランディング / 集客 / DX</span></h3></div>
+    <div class="news-grid">
+      <a class="n-card" href="#brand-refresh-without-logo"><div class="thumb"><img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.4.10</div><h4>ロゴを変えずにブランドを刷新する</h4></a>
+      <a class="n-card" href="#sns-want-to-visit"><div class="thumb"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.3.30</div><h4>SNSで「行ってみたい」を作る</h4></a>
+      <a class="n-card" href="#regional-hotel-media"><div class="thumb"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.3.18</div><h4>地方ホテルがメディアに取り上げられる術</h4></a>
+      <a class="n-card" href="#scent-music-five-senses"><div class="thumb"><img src="https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.3.05</div><h4>香りと音楽 — 五感で覚えられる宿</h4></a>
+      <a class="n-card" href="#ota-commission-visibility"><div class="thumb"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.2.20</div><h4>OTA手数料を可視化する</h4></a>
+      <a class="n-card" href="#foreign-staff-retention-teaching"><div class="thumb"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.2.08</div><h4>外国人スタッフが定着する宿の「教え方」</h4></a>
+      <a class="n-card" href="#breakfast-buffet-media"><div class="thumb"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&q=80&auto=format&fit=crop"></div><div class="date">2025.1.29</div><h4>朝食をメディア化するビュッフェ設計</h4></a>
+      <div class="view-more"><a href="#"><svg viewBox="0 0 130 110" xmlns="http://www.w3.org/2000/svg" style="width:335px;height:228px;display:block">  <!-- Background transparent -->  <!-- Pencil texture filter -->  <defs>   <pattern id="pencil" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">    <rect width="4" height="4" fill="#F5E8C7" opacity="0.0"/>    <line x1="0" y1="1" x2="4" y2="1" stroke="#D8C9A3" stroke-width="0.3" opacity="0.18"/>    <line x1="0" y1="3" x2="4" y2="3" stroke="#C9B895" stroke-width="0.2" opacity="0.12"/>   </pattern>   <filter id="pencilShade">    <feTurbulence baseFrequency="0.85" numOctaves="2" result="t"/>    <feDisplacementMap in="SourceGraphic" in2="t" scale="0.5" xChannelSelector="R" yChannelSelector="G"/>   </filter>  </defs>   <!-- BACK ROCKS - behind water, partially hidden -->  <g fill="#EFE5C8" stroke="#1A1A1A" stroke-width="1.25" stroke-linejoin="round" opacity="1">   <!-- top row - will be partially covered by water -->   <ellipse cx="65" cy="28" rx="10.5" ry="8.2" fill="#F0E4C0" stroke="#1A1A1A"/>   <ellipse cx="84.5" cy="31.5" rx="9.2" ry="7.5" transform="rotate(12 84.5 31.5)" fill="#EDE0BA"/>   <ellipse cx="100" cy="41" rx="8.8" ry="7.3" transform="rotate(30 100 41)" fill="#F2E6C5"/>   <ellipse cx="110.5" cy="56" rx="9.2" ry="8" transform="rotate(55 110.5 56)" fill="#EDE0BA"/>   <ellipse cx="44.5" cy="31.5" rx="9.2" ry="7.5" transform="rotate(-12 44.5 31.5)" fill="#EDE0BA"/>   <ellipse cx="29" cy="41" rx="8.8" ry="7.3" transform="rotate(-30 29 41)" fill="#F2E6C5"/>   <ellipse cx="18.5" cy="56" rx="9.2" ry="8" transform="rotate(-55 18.5 56)" fill="#EDE0BA"/>  </g>  <!-- subtle pencil hatching inside back rocks -->  <g fill="none" stroke="#C9B895" stroke-width="0.25" opacity="0.18">   <path d="M58 28 Q65 29 72 28"/><path d="M78 32 Q85 33 91 32"/><path d="M38 32 Q44 33 50 32"/>  </g>   <!-- WATER - oval, on top of back rocks so they are hidden behind edge -->  <ellipse cx="65" cy="64" rx="40" ry="29" fill="#FFF8D6" stroke="#1A1A1A" stroke-width="1.5" opacity="1"/>  <ellipse cx="65" cy="64" rx="39" ry="28" fill="none" stroke="#1A1A1A" stroke-width="0.4" opacity="0.08"/>  <!-- inner water highlight - pencil light -->  <ellipse cx="65" cy="62" rx="28" ry="16" fill="none" stroke="#E8D9A0" stroke-width="0.3" opacity="0.15"/>   <!-- FRONT ROCKS - in front of water, fully visible with pencil touch -->  <g stroke="#1A1A1A" stroke-width="1.35" stroke-linejoin="round">   <ellipse cx="109" cy="73.5" rx="9.8" ry="8.5" transform="rotate(80 109 73.5)" fill="#EFE5C8"/>   <ellipse cx="99" cy="88.5" rx="10.5" ry="9" transform="rotate(105 99 88.5)" fill="#F0E4C0"/>   <ellipse cx="83" cy="99.5" rx="11.2" ry="9.5" transform="rotate(128 83 99.5)" fill="#EDE0BA"/>   <ellipse cx="65" cy="104" rx="12.5" ry="9.8" fill="#F2E6C5"/>   <ellipse cx="46.5" cy="99.5" rx="11.2" ry="9.5" transform="rotate(-128 46.5 99.5)" fill="#F0E4C0"/>   <ellipse cx="30" cy="88.5" rx="10.5" ry="9" transform="rotate(-105 30 88.5)" fill="#EFE5C8"/>   <ellipse cx="20" cy="73.5" rx="9.8" ry="8.5" transform="rotate(-80 20 73.5)" fill="#EDE0BA"/>   <ellipse cx="50" cy="103" rx="6.5" ry="5.5" fill="#F5E8C7" opacity="0.9"/>  </g>  <!-- pencil texture hatching on front rocks -->  <g fill="none" stroke="#B8A98A" stroke-width="0.28" opacity="0.14">   <path d="M62 104 Q65 105 68 104"/><path d="M80 99 Q84 100 88 99"/><path d="M42 99 Q46 100 50 99"/>   <path d="M97 88 Q101 89 104 88"/><path d="M25 88 Q29 89 33 88"/><path d="M107 73 Q110 74 113 73"/>  </g>  <!-- subtle shading on rocks - pencil pressure variation -->  <g fill="#D8C9A3" opacity="0.08">   <ellipse cx="68" cy="105" rx="7" ry="4.5"/>   <ellipse cx="86" cy="100" rx="5" ry="3.2"/>   <ellipse cx="43" cy="100" rx="5" ry="3.2"/>  </g>   <!-- Steam - black line only, thin, above -->  <g fill="none" stroke="#1A1A1A" stroke-width="1.25" stroke-linecap="round" opacity="0.88">   <path d="M51 30 C53.5 24, 49.5 18, 52 12"/>   <path d="M65 29 C67.5 23, 62 17, 65.5 11"/>   <path d="M79 30 C81.5 24, 77.5 18, 80 12"/>  </g>   <!-- View More - two lines inside water -->  <g text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="800">   <text x="65" y="61" font-size="9.5" letter-spacing="2.0" fill="#1A1A1A">View</text>   <text x="65" y="73" font-size="9.5" letter-spacing="2.0" fill="#1A1A1A">More</text>  </g> </svg></a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer style="background:#1A1A1A;color:#E9E9E9;text-align:center;padding:24px 16px;margin-top:40;letter-spacing:0.08em">
+  <div style="font-size:13px;font-weight:800;letter-spacing:0.14em">InnBuddy</div>
+  <div style="font-size:11px;opacity:0.7;margin-top:6">OTA × OPERATION × BRANDING — ホテル運営の知恵を、もっと身近に。</div>
+  <div style="margin-top:14px;display:inline-block;background:#FFF450;color:#1A1A1A;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700">© 2026 InnBuddy</div>
+</div><!-- /lpView -->
+
+<div id="articleView">
+  <div id="progress"></div>
+  <header class="container">
+    <a class="logo serif" href="#">InnBuddy <span class="logo-pill">JOURNAL</span></a>
+    <div style="display:flex;align-items:center;gap:16px">
+      <a class="back" id="backBtn" href="#">← JOURNAL</a>
+      <div class="lang">
+        <button id="langJa" onclick="setLang('ja')">日本語</button>
+        <button id="langEn" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <div class="article" id="article"></div>
+  </main>
+  <div class="aj-footer">
+    <div class="f1">InnBuddy</div>
+    <div class="f2">OTA × OPERATION × BRANDING — ホテル運営の知恵を、もっと身近に。</div>
+    <div class="f3">© 2026 InnBuddy</div>
+    <div class="f4" id="disclaimer"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   InnBuddy JOURNAL — Articles Data
+   ------------------------------------------------------------
+   ・この配列にオブジェクトを追加すると、新記事が記事ページに表示されます
+   ・body を null にすると「準備中」プレースホルダーが表示されます
+   ・microCMS移行時は、この配列の代わりにAPIレスポンスを
+     window.ARTICLES に読み込ませるだけで、ページはそのまま動きます
+   ============================================================ */
+window.ARTICLES = [
+
+/* ------------------- FEATURED SET 01 ------------------- */
+{
+  slug:'summer-ota-peak-season',
+  date:'2026-06-18',
+  cat:'OTA集客', catEn:'OTA Acquisition',
+  image:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'【夏の繁忙期】OTA検索で上位を取る3つの施策',en:'Summer Peak: 3 Plays to Win OTA Search Rankings'},
+  excerpt:{ja:'夏の需要期に検索上位を取るための写真・価格・レビュー施策を3ステップで解説。',en:'A 3-step playbook to capture top search positions during the summer demand peak.'},
+  body:{
+  ja:`<p>夏は一年で最大の需要ウィンドウであり、ホテルにとって年間売上を左右する8週間前後の期間です。しかし、OTA検索のランキングは「シーズン始まる前」に決まります。本記事では、夏の繁忙期に検索上位を確保するための3つの施策——①写真とタイトルで「クリック」を取りにいく、②価格設計で「需要」を取りにいく、③レビューで「転換と継続」を取りにいく——を、数字込みで解説します（下記の数値はすべて、典型的パターンにおける参考値・一例です）。</p>
+<h2>1. 繁忙期は「前の60日」で決まる</h2>
+<p>予約のファネルを見てみましょう。OTA検索リストに表示されてから予約に至るまでのクリック率（CTR）は、典型的に3〜8%です。そしてそのクリックの大半は、検索結果の上から3件に集中します。つまり、上位1ページに入れないことは「存在しない」のと同義です。</p>
+<p>より重要なのは、繁忙期の宿泊は「想像より早く」予約されるということです。国内需要は2〜4週間前、インバウンドは4〜8週間前から動き出します。夏の間口を確保する戦いは、5月〜6月にすでに始まっている。7月にようやくリスト改善に着手した時点で、勝負はすでに決まっています。</p>
+<h2>2. 施策1：写真とタイトルで「クリック」を取る</h2>
+<p>サムネイル（最初の1枚）は「看板」です。繁忙期の写真ルールは3つ：</p>
+<ul>
+<li><strong>光</strong> — 朝日・自然光を優先する。室内の天井照明のみの写真はやめる。</li>
+<li><strong>生活感</strong> — ベッド足元のタオル、テーブルの上のカップ。「ゲストが入室する直前」の空気を出す。</li>
+<li><strong>余白</strong> — 画の30%を空け、「家具」ではなく「眺め」を売る。</li>
+</ul>
+<p>OTAのA/Bテストでは、最初の1枚の変更がCTRを動かす最も確実なレバーであり、20〜40%のCTR向上はよくあるレンジです。投入コストがほぼゼロであり、費用対効果が最大の施策です。</p>
+<p>タイトルの型は<strong>【季節】＋【対象】＋【差別化】</strong>で、60文字以内に収めます。「夏／親子で／外気プール無料」のような具体性が、「心地よさと品格の客室」のような抽象表現を、クリック率で上回ります。</p>
+<h2>3. 施策2：価格で「需要」を取る設計</h2>
+<p>繁忙期の価格設定は「一律+30%」ではありません。3段階の設計です：</p>
+<ol>
+<li><strong>早割階層</strong> — 夏本番手前に売上の60〜70%を確保する層。標準価格の10〜15%下。</li>
+<li><strong>標準階層</strong> — シーズン中の需要帯の価格。</li>
+<li><strong>直前階層</strong> — 残り間口の最終レバー。週に1.1〜1.2倍で上げていき、市場天井に届いたら止める。</li>
+</ol>
+<p>肝心なのは<strong>天井を一度に打たず、小さくずつ上げていく（ラチェット方式）</strong>こと。価格が上がり止まった週が、ちょうど需要が尽きた週です。近隣競合の天井価格より15〜30%下をキープしていれば、あなたは「コスパ最良の選択肢」として勝率が上がります。</p>
+<div class="stats"><div class="stat"><b>+18%</b><span>（例）ADR 前年比</span></div><div class="stat"><b>88%</b><span>（例）繁忙期稼働率</span></div><div class="stat"><b>8週間</b><span>（例）価格が上がり続けた期間</span></div></div>
+<h2>4. 施策3：レビューで「転換」を取る</h2>
+<p>予約ボタンを押す瞬間、ゲストはレビュースコアを並べて見ます。4.5はラインであり、4.7以上が「価格を引き上げるに値するプレミアムシグナル」です。繁忙期はレビュー運用を清掃と同じ頻度で回します：</p>
+<ul>
+<li><strong>72時間以内に100%返信。</strong>返信自体が次のゲストが読む「コンテンツ」になります。</li>
+<li><strong>客室内にレビュー依頼QR。</strong>満足度のゴールデンタイムはチェックイン後1〜2時間です。</li>
+<li><strong>返信にゲスト名・具体的なエピソードを入れる。</strong>リピーター獲得に最も効く一言です。</li>
+</ul>
+<div class="note"><span class="tag">InnBuddy Note</span>繁忙期は需要を「作る」期間ではなく、これまで積み上げた日々の成果を「収穫する」期間です。写真・価格設計・レビュー運用の3施策を5月末までに仕上げておけば、夏は自然と来ます。</div>
+<h2>行動リスト（期限付き）</h2>
+<ul>
+<li><strong>5月末まで</strong> — 最初の1枚とタイトルを差し替え</li>
+<li><strong>6月中旬まで</strong> — 3段階の価格計画と、週次の上昇ペースを確定</li>
+<li><strong>6月末まで</strong> — 客室QRと返信テンプレを用意</li>
+<li><strong>繁忙期は毎週</strong> — 競合との価格差・CTR・転換率を確認</li>
+<li><strong>シーズン後</strong> — 振り返り。「効いた／効かなかった」を冬繁忙のプレイブックに変える</li>
+</ul>`,
+  en:`<p>Summer is the year's biggest demand window — for a hotel, roughly eight weeks that decide H2 revenue. Yet OTA search rankings are decided <em>before</em> the season starts. Here are the three plays that win the peak: ① win the click with photos and titles, ② win demand with price design, ③ win conversion and repeat with reviews. All figures below are illustrative values from a typical pattern.</p>
+<h2>1. The peak is won 60 days in advance</h2>
+<p>Look at the funnel. From an OTA search list, click-through rates run 3–8%, and the overwhelming share of clicks concentrates on the top three results. Outside page one, you effectively don't exist.</p>
+<p>More importantly, peak-season stays are booked earlier than most operators assume: 2–4 weeks out for domestic demand, 4–8 weeks for inbound. The fight for summer inventory is in May–June. If you are still fixing your listing in July, the season has already been decided.</p>
+<h2>2. Play 1: Photos &amp; title — winning the click</h2>
+<p>Your first image is your storefront. The peak-season photo rules:</p>
+<ul>
+<li><strong>Light</strong> — morning and natural light; never flat ceiling light.</li>
+<li><strong>Lived-in feel</strong> — the "just before a guest walks in" moment.</li>
+<li><strong>Negative space</strong> — keep ~30% of the frame empty; sell the view, not the furniture.</li>
+</ul>
+<p>In OTA A/B tests, the first photo is the single lever that most reliably moves CTR, with lifts of 20–40% a common range. It costs almost nothing — the highest-ROI change available.</p>
+<p>Use the title formula <strong>[Season] + [Audience] + [Differentiator]</strong> within 60 characters. "Summer / family-friendly / free outdoor pool" beats "Comfortable and refined rooms" at the click rate.</p>
+<h2>3. Play 2: Price — a design that captures demand</h2>
+<p>"Peak pricing" is not a blanket +30%. It is a three-tier design:</p>
+<ol>
+<li><strong>Early-bird tier</strong> — 10–15% under standard, booked out by early summer (60–70% of inventory).</li>
+<li><strong>Standard tier</strong> — the mid-season band.</li>
+<li><strong>Last-minute tier</strong> — the final fill lever. Raise 1.1–1.2× per week; stop at the market ceiling.</li>
+</ol>
+<p>The discipline: <strong>never jump to the ceiling — ratchet up in small steps</strong>. The week your price stops moving is the week demand is exhausted. Staying 15–30% under your closest competitor's ceiling makes you the "best value" pick and lifts your win rate.</p>
+<div class="stats"><div class="stat"><b>+18%</b><span>(ex.) ADR vs. prior year</span></div><div class="stat"><b>88%</b><span>(ex.) peak occupancy</span></div><div class="stat"><b>8 wks</b><span>(ex.) consecutive weekly price increases</span></div></div>
+<h2>4. Play 3: Reviews — winning conversion</h2>
+<p>At the moment of booking, guests compare scores side by side. 4.5 is table stakes; 4.7+ is the "premium signal" that justifies a higher rate. In the peak, run review ops with housekeeping frequency:</p>
+<ul>
+<li><strong>Reply to 100% within 72 hours.</strong> Your reply is content the next guest reads.</li>
+<li><strong>In-room QR to review</strong> — the golden moment is 1–2 hours after check-in.</li>
+<li><strong>Name the guest and specifics in replies</strong> — the strongest repeat-stay driver.</li>
+</ul>
+<div class="note"><span class="tag">InnBuddy Note</span>The peak season is when you harvest, not create. Finish the photo, price-design and review plays by end of May — and summer comes to you.</div>
+<h2>Action list (with deadlines)</h2>
+<ul>
+<li><strong>By May 31</strong> — first photo and title refreshed</li>
+<li><strong>By Jun 15</strong> — three-tier plan and weekly ratchet set</li>
+<li><strong>By Jun 30</strong> — in-room QR and reply templates ready</li>
+<li><strong>Weekly in peak</strong> — monitor competitor price gap, CTR, conversion</li>
+<li><strong>Post-season</strong> — review what worked; it becomes your winter playbook</li>
+</ul>`
+  }
+},
+{
+  slug:'spatial-design-local-high-price',
+  date:'2026-06-12',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'【空間デザイン】地方都市で高単価を実現した新しい滞在のかたち',en:'Spatial Design: A New Stay Format That Commands Premium Rates in Regional Cities'},
+  excerpt:{ja:'地方都市のブティックホテルが、空間デザインとオペレーションで高単価を実現する方法。',en:'How a regional boutique hotel used spatial design and operations to command premium ADRs.'},
+  body:{
+  ja:`<p>地方都市で「高単価」は、最も難しく、最も効く収益課題です。本記事は、地方のブティックホテルが「市場を超える価格」を正当化するために持つべき3つのデザイン原則を解説します。（下記の数値はすべて参考値・一例です。）</p>
+<h2>1. まず診断：地方都市の価格軸は何か</h2>
+<p>地方都市では、半径3kmのホテル数が少ない——しかし<strong>ゲストの価格比較軸は「地元市場」ではなく「全国標準」</strong>です。OTAで検索するゲストは、地方の宿と東京のプロパティを比較し、全国をまたぐ「心理的アンカー」で価格を判断します。</p>
+<p>つまり地方での「高単価」は「他の地方の選択肢より高い」を意味し、「体験の差」で正当化されなければなりません。部屋数が少ないほど、これはやりやすい——ブティックホテルの強みです。</p>
+<h2>2. デザイン1：ひとつのシグネチャー空間</h2>
+<p>「写真に撮りたくなる理由」になる<strong>ひとつの象徴空間</strong>をつくる。暖炉のあるラウンジ、ライブラリーコーナー、地域素材のバー、温泉風バス——ひとつで十分です。シグネチャー空間の役割は3つ：</p>
+<ul>
+<li><strong>差別化</strong> — 価格比較から抜け出す理由</li>
+<li><strong>コンテンツ資産</strong> — 写真・SNS・レビューの素材</li>
+<li><strong>価格アンカー</strong> — 「この空間のために少し払ってもいい」という判断材料</li>
+</ul>
+<p>注意：シグネチャー＝大げさなものではありません。「ブランドとの一貫性」と「そこに居る品質」が重要です。綺麗だけど誰も使わない空間はコストです。</p>
+<h2>3. デザイン2：客室の「品質標準」— 高単価は備品で守る</h2>
+<p>高単価を守るのは「装飾」ではなく「基本備品」です：</p>
+<ul>
+<li><strong>マットレスと寝具</strong> — ゲストレビューで最も言及される単品</li>
+<li><strong>3段階の照明</strong> — 昼は明るく、夕方は柔らかく、睡眠時は暗く</li>
+<li><strong>遮音・断熱</strong> — レビューの文言になる「静けさ」</li>
+<li><strong>浴室の温度と水圧</strong> — 滞在の最初5分を決める</li>
+</ul>
+<p>この「品質標準」の基準は「地域の平均」ではなく「全国のブティック平均」です。改装は一度きりですが、価格は何年も守り続けます。</p>
+<h2>4. デザイン3：「もう1泊」を正当化するプログラム</h2>
+<p>地方で最も効く価格ツールは<strong>2泊（以上）プラン</strong>です：</p>
+<ul>
+<li>体験（ディナー／朝のアクティビティ）を添えた2泊 — 「もう1泊」がプログラムで正当化される</li>
+<li>清掃の作業回数が減る（2泊に1ターン）</li>
+<li>1滞在あたりの売上が上がる（滞在あたりRevPAR）</li>
+</ul>
+<div class="stats"><div class="stat"><b>1.1→1.6万円</b><span>（例）ADR</span></div><div class="stat"><b>35%</b><span>（例）2泊以上の比率</span></div><div class="stat"><b>+42%</b><span>（例）RevPAR</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>地方の「高単価」は「東京より高い」ではなく「他の地方の選択肢より高い」です。比較の軸は「価格」ではなく「体験の差」。シグネチャー空間・品質標準・プログラムの3デザインは、その差をつくる手段です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：シグネチャー空間の候補選定、客室備品の「全国標準」ベンチマーク</li>
+<li>2〜4週目：シグネチャー空間の設計（ブランド一貫性チェック）</li>
+<li>5〜8週目：客室備品の改装（マットレス→照明→遮音の順）</li>
+<li>9週目：2泊プランの価格設計</li>
+<li>10週目：価格改定＋新空間のコンテンツ制作（写真・動画）</li>
+</ul>`,
+  en:`<p>In a regional city, "premium pricing" is the hardest — and most effective — revenue challenge. Three design principles that let a regional boutique justify "above-market" rates. (All figures below are illustrative.)</p>
+<h2>1. Diagnosis: what is the price axis in a regional city?</h2>
+<p>Few hotels sit within 3km — but <strong>the guest's comparison axis is not the local market; it is the "national standard."</strong> OTA shoppers weigh regional properties against Tokyo ones, using a country-wide psychological anchor.</p>
+<p>"High unit price" in a region therefore means "more than the other regional alternatives," and it must be justified by a difference of experience. The fewer the rooms, the easier this becomes — a boutique's natural advantage.</p>
+<h2>2. Design 1: one signature space</h2>
+<p>Create <strong>one "symbol" space worth photographing and visiting</strong> — a fireplace lounge, a library corner, a regional-materials bar, an onsen-style bath. One is enough. Its roles are three:</p>
+<ul>
+<li><strong>Differentiation</strong> — a reason to step out of price comparison</li>
+<li><strong>Content asset</strong> — raw material for photos, social and reviews</li>
+<li><strong>Price anchor</strong> — "worth paying a little more for this space"</li>
+</ul>
+<p>Caution: signature is not grandeur. Consistency with the brand and the quality of being <em>in</em> it are what matter. A pretty, unused space is a cost.</p>
+<h2>3. Design 2: the room "quality standard" — equipment defends the rate</h2>
+<p>Premium rates are defended by <strong>basics, not décor</strong>:</p>
+<ul>
+<li><strong>Mattress and bedding</strong> — the single item guests mention most in reviews</li>
+<li><strong>Three-level lighting</strong> — bright for day, soft for evening, dark for sleep</li>
+<li><strong>Sound and insulation</strong> — the "quiet" that becomes a review phrase</li>
+<li><strong>Bathroom temperature and water pressure</strong> — the first five minutes of the stay</li>
+</ul>
+<p>The standard is the <em>national</em> boutique average, not the regional one. Renovate once; defend the rate for years.</p>
+<h2>4. Design 3: a program that justifies "one more night"</h2>
+<ul>
+<li>Two nights with an included experience (dinner, a morning activity) — the extra night is justified by the program</li>
+<li>Fewer housekeeping turns (one per two nights)</li>
+<li>Higher revenue per stay</li>
+</ul>
+<div class="stats"><div class="stat"><b>¥11k→16k</b><span>(ex.) ADR</span></div><div class="stat"><b>35%</b><span>(ex.) 2-night share</span></div><div class="stat"><b>+42%</b><span>(ex.) RevPAR</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>"High unit price" in a region is not "dearer than Tokyo" — it is "dearer than the other regional options." The axis of comparison is difference of experience, not price. The signature space, the quality standard and the program are how that difference is built.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — choose the signature space; benchmark room equipment against the national standard</li>
+<li>Weeks 2–4 — signature-space design (brand-consistency check)</li>
+<li>Weeks 5–8 — room equipment works (mattress → lighting → sound)</li>
+<li>Week 9 — two-night plan pricing</li>
+<li>Week 10 — rate increase plus content production of the new space</li>
+</ul>`
+  }},
+{
+  slug:'regional-identity-brand-nhatrang',
+  date:'2026-06-10',
+  cat:'ブランディング', catEn:'Branding',
+  image:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'【事例】地域性をブランドに翻訳した宿の作り方',en:'Case: Translating Regional Identity Into a Hotel Brand'},
+  excerpt:{ja:'Nha Trangの新拠点に見る、地域性をブランドに翻訳する方法論。',en:'A methodology for translating a destination\'s identity into brand, seen through a new base in Nha Trang.'},
+  body:{
+  ja:`<p>宿がある「地域」を、その宿のブランドにどう「翻訳」するか。東南アジアの都市（Nha Trang）での「新拠点」プロジェクトのパターンを元に、地域性をブランドに翻訳する4ステップの方法論を解説します。</p>
+<h2>なぜ「翻訳」か — 地域性の2つの失敗</h2>
+<p>地域性を活かすブランディングには、典型的な失敗が2つあります：</p>
+<ul>
+<li><strong>「詰め込み」の失敗</strong> — 「海も山も歴史も食もある」。全部入れると、ゲストはどれも覚えてくれない。</li>
+<li><strong>「どこでも」の失敗</strong> — 地域との関係がないブランド。東京でも大阪でも成立してしまう。「行く理由になる場所」が存在しない。</li>
+</ul>
+<p>地域ブランディングとは、多くの資産の中から<strong>ひとつの「オンリーワン」を選び、ゲストの体験に翻訳する</strong>作業です。</p>
+<h2>ステップ1：「地域資産」の棚卸し</h2>
+<p>宿の周辺にあるものを全部書き出す。人・食・自然・歴史・生産・イベント。この段階で判断は不要——「宝石を見落とさない」ことが目的です。</p>
+<h2>ステップ2：「オンリーワン」の選択</h2>
+<p>リストから、3つの基準で1つを選びます：</p>
+<ol>
+<li><strong>世界では珍しく、地域では普通</strong> — 「ここでは普通で、ゲストには特別」なもの</li>
+<li><strong>体験できる</strong> — メニュー・プログラム・空間に変換できるか</li>
+<li><strong>続けられる</strong> — 安定して供給可能か（一発のイベントではないか）</li>
+</ol>
+<p>一例：海辺の都市なら、リストには海・漁・ココナッツ・植民地時代の遺産が並ぶ。「海」を一本軸に選べば、部屋の眺め・メニュー・スタッフのストーリー・カラーパレットが、すべて一本の軸で揃います。</p>
+<h2>ステップ3：ゲストの体験に翻訳</h2>
+<p>選んだ「ひとつ」を、3つの媒体に翻訳します：</p>
+<ul>
+<li><strong>メニュー</strong> — 軸を語る食材・料理</li>
+<li><strong>空間</strong> — 軸を語る素材・色・アート・眺め</li>
+<li><strong>スタッフのスクリプト</strong> — 軸についての30秒で覚えられる「ひとことストーリー」</li>
+</ul>
+<h2>ステップ4：証拠で証明する</h2>
+<p>証拠のないブランドはスローガンです。軸を「証拠」で示します。レビュー（軸が語られている文言）、写真（軸が部屋にある証拠）、メディア（軸のストーリーが報じられる）。<strong>ゲストの言葉が「軸の言葉」を使い始めたら、翻訳は完成</strong>です。</p>
+<div class="note"><span class="tag">InnBuddy Note</span>地域ブランディングで最も多い失敗は「詰め込み」です。「引き算」の規律が腕の見せ所。選んだ「オンリーワン」は、ゲストが「この宿を選んだ理由」であり、「語って回る理由」になります。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：地域資産の棚卸し（チーム全体で、ワークショップ形式）</li>
+<li>2週目：3基準での選択</li>
+<li>3〜6週目：メニュー・空間・スタッフスクリプトへの翻訳</li>
+<li>7〜12週目：証拠の蓄積（レビュー・写真・メディア）</li>
+</ul>`,
+  en:`<p>How do you "translate" a destination into a property's brand? Using the pattern of a new-base project in a Southeast Asian city (Nha Trang), a four-step methodology for turning regional identity into brand.</p>
+<h2>Why "translate"? — the two failures of regional identity</h2>
+<ul>
+<li><strong>The "crammed-in" failure</strong> — "we have sea, mountains, history and food" — everything in, nothing remembered.</li>
+<li><strong>The "generic" failure</strong> — a brand that could sit in any city; the "place" that justifies the trip is missing.</li>
+</ul>
+<p>Regional branding is choosing <strong>one "one and only"</strong> from many assets and translating it into the guest experience.</p>
+<h2>Step 1: inventory the regional assets</h2>
+<p>List everything around the property — people, food, nature, history, producers, events. No judgement yet; the goal is not to miss a gem.</p>
+<h2>Step 2: select the "one and only"</h2>
+<ol>
+<li><strong>Rare in the world, ordinary in the region</strong> — "normal here, special for the guest"</li>
+<li><strong>Experiencable</strong> — can it become a menu, a program, a space?</li>
+<li><strong>Sustainable</strong> — can it be supplied reliably (not a one-off event)?</li>
+</ol>
+<p>Example: a coastal city lists sea, fishing, coconut and colonial-era heritage — choose "the sea" as the single axis and everything (room views, menu, staff stories, palette) aligns on it.</p>
+<h2>Step 3: translate into the guest experience</h2>
+<ul>
+<li><strong>Menu</strong> — ingredients and dishes that speak the axis</li>
+<li><strong>Space</strong> — materials, palette, art and views that speak it</li>
+<li><strong>Staff script</strong> — a 30-second, memorizable one-line story about the axis</li>
+</ul>
+<h2>Step 4: prove it with evidence</h2>
+<p>Without evidence, a brand is a slogan. Prove the axis with reviews (phrases that use it), photos (it visible in the room) and media (it being reported). <strong>When guests' own words start using the axis's words, the translation is complete.</strong></p>
+<div class="note"><span class="tag">InnBuddy Note</span>The classic failure is cramming everything in. Subtraction is the craft. The "one and only" you choose is why guests pick the property — and why they retell it.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — regional asset inventory (whole team, workshop)</li>
+<li>Week 2 — selection with the three criteria</li>
+<li>Weeks 3–6 — translate into menu / space / staff script</li>
+<li>Weeks 7–12 — accumulate evidence (reviews / photos / media)</li>
+</ul>`
+  }},
+
+/* ------------------- FEATURED SET 02 ------------------- */
+{
+  slug:'direct-booking-42',
+  date:'2026-05-28',
+  cat:'OTA集客', catEn:'OTA Acquisition',
+  image:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'直予約比率を42%まで上げた3つの仕掛け',en:'Three Mechanisms That Raised Our Direct Booking Ratio to 42%'},
+  excerpt:{ja:'自社サイト誘導・特典設計・チャット対応で、OTA手数料を削減した事例。',en:'Own-site funnels, benefit design and chat — cutting OTA commissions.'},
+  body:{
+  ja:`<p>OTAの手数料は15〜25%。予約が入るたびに払う「税金」です。本記事は、直予約比率を22%から42%まで（ADRを据え置いたまま）引き上げる3つの仕掛けを、20室のプロパティを一例として、金額感まで含めて解説します。先に金額の目安を言うと、20室（ADR1.5万円・手数料15%・年間直予約180泊）の一例では、年間の手数料削減額は約810万円（参考値）。</p>
+<p>ただし先に前提を。OTAは敵ではなく「チャネル」です。現在の22%は、OTAがあなたに届けてくれた需要です。目標は、その需要の「2泊目以降」を直結に転換すること。OTA側の価格を下げて差をつけようとするのは、チャネルパリティ規約を破ってペナルティを食らう道——負ける道です。</p>
+<h2>仕掛け1：直結を「合理的な選択」にする</h2>
+<p>設計原则は「同じ価格、優れる特典」。直結価格はOTAと同一ですが、2〜3つの小さな特典を付けます：</p>
+<ul>
+<li>朝食付き（原価400〜600円、体感価値1,500円）</li>
+<li>ウェルカムドリンク（原価200円未満）</li>
+<li>非繁忙日のレイトチェックアウト選択（フロント裁量で）</li>
+</ul>
+<p>予約画面で「総価値」を見せれば、直結ページは5〜10%割安に見えます。重要なのは、ルームレート自体を下げないこと。手数料の予算を「特典」に変換して使うだけで、1泊あたりのマージンはそのままです。</p>
+<h2>仕掛け2：誘導の4タッチポイント</h2>
+<p>直結予約は自然発生しません。ゲストがあなたに最も興味を持っている4つの瞬間に「誘導」します：</p>
+<ol>
+<li><strong>客室のQRコード</strong> — チェックイン時、夕方に部屋が整った時、という満足度のゴールデンタイムに配置。「この季節は直結で朝食付き」と一言添える。</li>
+<li><strong>予約確定メール</strong> — 「[宿名]をお選びいただきありがとうございます」の1〜2文＋直結リンク。</li>
+<li><strong>レビュー返信の署名</strong> — 全返信に「直結予約ページ」URLを1行入れる。</li>
+<li><strong>SNSのプロフィール</strong> — バ-ioに直結リンク、Storyは毎回添付。</li>
+</ol>
+<h2>仕掛け3：予約で終わらないCRM</h2>
+<p>リピーターは最終的に最も安いチャネルです。リピーターのLTVは初回ゲストの約2.3倍で、しかもOTA手数料がゼロ。2つのモーション：</p>
+<ul>
+<li><strong>チェックアウト30日後の「次のシーズン」メール</strong> — 季節キャンペーン（例「紅葉シーズン15%OFF」）を添えて。頻度は月1回まで。それ以上は信頼を削ります。</li>
+<li><strong>チャットの即応</strong> — 「今週末空きはありますか？」からの1時間以内に返すことが、予約のゴールデンタイムです。逃すと、その予約はOTA経由になります。</li>
+</ul>
+<div class="stats"><div class="stat"><b>22%→42%</b><span>（例）10ヶ月での直予約比率</span></div><div class="stat"><b>±0円</b><span>（例）ADRの動き（据え置き）</span></div><div class="stat"><b>約810万円</b><span>（例）年間手数料削減額</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>最も多い失敗は「OTAを減らして直結を増やす」トレードオフ——総量を縮める動きです。OTAは「新しい」需要を取りに、直結は「継続」の需要を取りに。両方育てれば、売上と利益は同時に上向きます。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：直結特典2〜3個と予約ページの設計</li>
+<li>2週目：客室QRの配置、確定メールの書き換え</li>
+<li>3週目：レビュー返信署名、SNSプロフィール</li>
+<li>2ヶ月目：チェックアウト30日後メールの開始</li>
+<li>月次：直結比率・リピート率・ADR（据え置きを確認）の3指標をモニタリング</li>
+</ul>`,
+  en:`<p>OTA commissions run 15–25% — a tax on every booking. Here are the three mechanisms that lift direct share from 22% to 42% with flat ADR, illustrated on a 20-room property (all figures illustrative). In money terms: about ¥8.1M saved annually (20 rooms, ¥15,000 ADR, 15% commission, ~180 direct nights a year).</p>
+<p>First, the premise. The OTA is a channel, not an enemy. Those 22% started life as OTA-acquired demand. The goal is to convert the <em>second</em> and later stays to direct. Cutting OTA rates to create a gap breaches parity terms and gets you penalized — a losing path.</p>
+<h2>Mechanism 1: Make direct the rational choice</h2>
+<p>The principle: same rate, better bundle. The direct rate matches the OTA; the direct page adds two or three small benefits:</p>
+<ul>
+<li>Breakfast included (cost ¥400–600, perceived value ¥1,500)</li>
+<li>Welcome drink (under ¥200)</li>
+<li>Flexible late checkout off-peak (front-desk discretion)</li>
+</ul>
+<p>Show the total value at booking and the direct page reads 5–10% cheaper. The room rate itself is untouched — you are re-spending the commission budget as benefits, so margin per room stays flat.</p>
+<h2>Mechanism 2: The four induction points</h2>
+<p>Direct bookings do not happen spontaneously. Induce them at the four moments of maximum guest interest:</p>
+<ol>
+<li><strong>In-room QR</strong> — placed at peak-satisfaction moments: check-in and the set evening. Add one line: "Book direct this season — breakfast included."</li>
+<li><strong>Confirmation email</strong> — one or two thank-you lines plus the direct link.</li>
+<li><strong>Review-reply signature</strong> — a one-line direct URL in every reply.</li>
+<li><strong>SNS profile</strong> — direct link in bio, attached to every Story.</li>
+</ol>
+<h2>Mechanism 3: CRM that outlives the booking</h2>
+<p>Repeat guests are the ultimate low-cost channel: LTV roughly 2.3× a first-timer, with zero commission. Two motions:</p>
+<ul>
+<li><strong>A "next season" email 30 days post-checkout</strong> — one seasonal campaign (e.g. "autumn foliage, 15% off"). Cap at one per month; more erodes trust.</li>
+<li><strong>Instant chat response</strong> — the hour after "Are you free this weekend?" is the golden booking window. Miss it and the stay goes to the OTA.</li>
+</ul>
+<div class="stats"><div class="stat"><b>22%→42%</b><span>(ex.) direct share in 10 months</span></div><div class="stat"><b>±¥0</b><span>(ex.) ADR movement (flat)</span></div><div class="stat"><b>~¥8.1M</b><span>(ex.) annual commission saved</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The classic failure is the "OTA down, direct up" trade — shrinking the pie. The OTA acquires new demand; direct captures repeat demand. Grow both and revenue and profit move together.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — design the direct benefits and the booking page</li>
+<li>Week 2 — in-room QR plus confirmation-email rewrite</li>
+<li>Week 3 — reply signatures and SNS profile</li>
+<li>Month 2 — launch the 30-day post-checkout email</li>
+<li>Monthly — track direct share, repeat rate, ADR (confirm flat)</li>
+</ul>`
+  }
+},
+{
+  slug:'recruitment-showcase-pr',
+  date:'2026-05-22',
+  cat:'人材・採用', catEn:'Talent & Hiring',
+  image:'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'採用に困らない宿がやっている「見せ方」採用広報',en:'The "Show, Don\'t Post" Hiring Playbooks of Lodges That Never Struggle to Staff'},
+  excerpt:{ja:'求人票の前にやるべき、現場の魅力を伝える写真とストーリー設計。',en:'The storytelling and visual design that come before the job posting.'},
+  body:{
+  ja:`<p>「求人を出す → 応募を待つ」は、世界で最も弱いファネルです。本記事は、採用に困らない宿がやっている採用広報の設計——求人を出す「前」に「来てみたい」と思わせる方法——を解説します。主張の核心は、<strong>採用はゲスト集客と同じマーケティングの「逆方向」</strong>である、ということです。</p>
+<h2>1. なぜ「求人票から」が失敗するのか</h2>
+<p>宿の求人への応募率は、典型的に2%以下です。そして求人票は、そのファネルの「最後の5メートル」に過ぎません。それ以前に「興味」がなければ、求人票自体は読まれません。</p>
+<p>ゲスト側から考えてみましょう。ゲストは「ホテルを探す」のではなく、写真を見て惹かれて、それから検索します。スタッフも同じです。「仕事を探す」のではなく、宿の日々を見て「ここで働きたい」と感じ、それから求人を見ます。その「来てみたい」を作る設計が採用広報です。</p>
+<h2>2. 設計1：60秒の「宿のある一日」動画</h2>
+<p>最も効く採用素材は、<strong>スタッフの一日を60秒で撮った動画</strong>です：</p>
+<ul>
+<li>スタッフが自ら撮る（スマホで十分）</li>
+<li>シフト引き継ぎ、仕込み、ゲストとのやりとりの「生」</li>
+<li>ナレーション不要。宿の「音」と「空気」</li>
+</ul>
+<p>「見栄えの良さ」は敵です。<strong>実際に働いている人間の生々しさが「ここで働きたい」と伝えます。</strong>採用ページにもSNSにも求人板にも、同じものを載せます。</p>
+<h2>3. 設計2：見せる5つの資産</h2>
+<ul>
+<li><strong>スタッフ寮の写真</strong> — 「住んでもいい」は地方の宿にとって最強のフック</li>
+<li><strong>スタッフ食の写真</strong> — 毎日何を食べるかは、福利厚生のリストより語る</li>
+<li><strong>見えるキャリアパス</strong> — 「入社3年でシフトリーダー」を具体的に</li>
+<li><strong>経営者の短い言葉</strong> — 「この宿をなぜやるのか、スタッフに何を感じてほしいか」</li>
+<li><strong>季節の1年写真</strong> — 春・夏・秋・冬、宿の姿</li>
+</ul>
+<h2>4. 設計3：「人」である求人票</h2>
+<p>求人票の「担当者」は、<strong>採用するマネージャー本人。写真と短い自己紹介付き</strong>です。人事課ではありません。候補者が選んでいるのは「会社」ではなく「一緒に働く人」です。</p>
+<div class="stats"><div class="stat"><b>3.2倍</b><span>（例）採用ページへの来訪</span></div><div class="stat"><b>5.8%</b><span>（例）応募率（従来2.1%）</span></div><div class="stat"><b>78%</b><span>（例）内定承諾率</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>採用はブランドの「逆方向」です。ゲストは宿を選び、スタッフは「人」を選びます。同じブランド資産が両方向に効く——見せるかどうか、の差だけです。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：「宿のある一日」60秒動画を撮る（スタッフに撮らせる）</li>
+<li>2週目：見せる5資産を写真化する</li>
+<li>3週目：求人票を「人」の顔に書き換える</li>
+<li>常時：採用ページ・SNS・求人板の3か所に同じ資産を載せ続ける</li>
+</ul>`,
+  en:`<p>"Post the job, then wait" is the weakest funnel there is. Here is the hiring-PR design of lodges that never struggle to staff: making people <em>want</em> to work there before any posting goes up. The core idea: <strong>hiring is the reverse direction of the same marketing as guest acquisition.</strong></p>
+<h2>1. Why "post first" fails</h2>
+<p>Application rates on hospitality postings run under 2%. And the posting is only the last five meters. Without interest before it, the posting is never read.</p>
+<p>Think like the guest. Guests don't "search hotels" — they see a photo, feel moved, then search. Staff are the same: they don't "search jobs" — they see a lodge's daily life, feel "I want to be there," and only then look at the posting. The design that creates that pull is hiring PR.</p>
+<h2>2. Design 1: a 60-second "a day in the lodge" video</h2>
+<p>The single most effective asset is a <strong>60-second video of a staff day</strong>:</p>
+<ul>
+<li>Filmed by the staff themselves (a phone is fine)</li>
+<li>The real shift handover, the meal prep, the guest moments</li>
+<li>No voice-over — the sounds and air of the place</li>
+</ul>
+<p>"Polished" is the enemy. <strong>The reality of people actually working there is what says "it's a good place to work."</strong> Put the same asset on the careers page, on social, and on the job boards.</p>
+<h2>3. Design 2: the five presentation assets</h2>
+<ul>
+<li><strong>Staff-dorm photos</strong> — "you can live here too" is the strongest hook for a regional property</li>
+<li><strong>Staff-meal photos</strong> — what you eat daily says more than a benefits list</li>
+<li><strong>A visible career path</strong> — "new hire to shift leader in three years," made concrete</li>
+<li><strong>A short owner message</strong> — why the lodge exists, what the team should feel</li>
+<li><strong>A year of seasons</strong> — spring, summer, autumn, winter at the property</li>
+</ul>
+<h2>4. Design 3: a posting by a "person"</h2>
+<p>The job's "person in charge" should be <strong>the hiring manager — with a face and a short personal note</strong>, not an HR department. Candidates aren't choosing a "company"; they're choosing the "people" they'll work with.</p>
+<div class="stats"><div class="stat"><b>3.2×</b><span>(ex.) careers-page views</span></div><div class="stat"><b>5.8%</b><span>(ex.) application rate (from 2.1%)</span></div><div class="stat"><b>78%</b><span>(ex.) offer acceptance</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>Hiring is the brand's reverse direction. Guests choose the lodge; staff choose the people. The same brand asset serves both — the only difference is whether you make it visible.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — shoot the 60-second "a day in the lodge" video (let staff film it)</li>
+<li>Week 2 — turn the five assets into photos</li>
+<li>Week 3 — rewrite the posting around a person's face</li>
+<li>Ongoing — keep the same assets on the careers page, social and job boards</li>
+</ul>`
+  }
+},
+{
+  slug:'revpar-18x-dynamic-pricing',
+  date:'2026-05-19',
+  cat:'収益改善', catEn:'Revenue Growth',
+  image:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'RevPARが1.8倍に。値付けを「感覚」から「設計」へ',en:'RevPAR Up 1.8×: Pricing From "Gut Feeling" to "Design"'},
+  excerpt:{ja:'曜日・イベント・在庫を加味したダイナミックプライシング入門。',en:'A practical intro to dynamic pricing with day-of-week, events and inventory.'},
+  body:{
+  ja:`<p>地方の40室ブティックホテルを一例に、14ヶ月でADRが12,400円から19,600円、稼働率が71%から83%、RevPARが1.0倍から1.8倍になるパターンを見てみましょう（下記の数値はすべて参考値・一例です）。リノベーションはしていないし、マーケティング予算も変えていません。変わったのはひとつだけ——<strong>「価格を決める方法」</strong>です。本記事は、値付けを「感覚」から「設計」に変えた3つのデザインを拆します。</p>
+<h2>1. 診断：「感覚値付け」の二重損失</h2>
+<p>値付けプロジェクトの第一歩は診断です。この宿の元のパターンは「通年ほぼ固定価格、冬期に小幅アップ」。問題は、二重損失でした：</p>
+<ul>
+<li><strong>繁忙期の損失</strong> — 年30〜40日ある高需要日（祝日・イベント日）を、市場レートより20〜30%安く売り切っていた。「満室になったから大丈夫」は、ホテル業で最も高価な思考です。</li>
+<li><strong>閑散期の損失</strong> — 需要の低い日に高価格を維持し、在庫を放置し、直前に値切り——感謝されないディスカウントになっていた。</li>
+</ul>
+<p>診断方法：「あなたの販売価格」と「半径3km以内の200室相当の平均販売価格」を、日単位で並べて、その差の総和を計算します。この例では、年間ギャップは潜在売上の14%でした。これこそが改善の余地の大きさです。</p>
+<h2>2. 設計1：曜日×リードタイムの3段階最低価格</h2>
+<p>ダイナミックプライシングは「AIが毎日勝手に価格を動かすこと」ではありません。最初に作るべきは<strong>3段階のルール表</strong>です：</p>
+<ol>
+<li><strong>ベースレート</strong> — 需要の低い火・水曜用。市場レートの85〜90%。これが「ウォークインの底値」です。</li>
+<li><strong>ミッドレート</strong> — 通常の需要用。市場レートの95〜100%。</li>
+<li><strong>ピークレート</strong> — 高需要（金・土・祝日・イベント）用。市場レートの110〜130%。</li>
+</ol>
+<p>その上に「リードタイム」の次元を足します：48時間前の予約には+10%（予定の固まっている人は払える）、直前には−10%（値引きは残り在庫用）。ルール表ができると、フロントが一人で価格判断ができるようになります。「感覚」が消えるのは、ここからです。</p>
+<h2>3. 設計2：半径3kmの「200室」コンペティターセット</h2>
+<p>値付けの軸は「原価」ではなく「市場の売れ筋」です：</p>
+<ul>
+<li><strong>通常日</strong> — 最も近い5競合の売れ筋を見る。3以上が80%以上埋まっていれば、1段階上げてもいい。</li>
+<li><strong>イベント日</strong> — コンサートや見本市の日は、街全体の在庫が減ります。ピークレートを打つのはこの日。繁忙期の利益の7割はここで生まれます。</li>
+</ul>
+<h2>4. 設計3：最低宿泊日数とチャネル規律</h2>
+<ul>
+<li><strong>ピーク日は2泊最低</strong> — 清掃の作業回数を減らし、1室あたりのRevPARを上げる。</li>
+<li><strong>ピークの一部は「金曜限定」</strong> — 金・土のセットを売り、ADRを上げる。</li>
+<li><strong>チャネルパリティ</strong> — 全チャネル同一価格。OTAとの関係を護る鉄則です。</li>
+</ul>
+<div class="stats"><div class="stat"><b>+58%</b><span>（例）ADR（12,400→19,600円）</span></div><div class="stat"><b>83%</b><span>（例）稼働率（71%→83%）</span></div><div class="stat"><b>1.8倍</b><span>（例）RevPAR</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>ダイナミックプライシングで最も大事なのは「上げる」ことではなく「底値」の設定です（市場レートの85〜90%のウォークイン底値）。底値があればフロントは不安を無くし、チームはダイナミックプライシングを先に受け入れます。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：コンペティターセットを作る（半径3kmの200室をリスト化）</li>
+<li>2週目：診断——年間ギャップを計算</li>
+<li>3週目：3段階ルール表＋リードタイムルールを作成</li>
+<li>4週目：最低宿泊日数ルール、チャネルパリティ確認</li>
+<li>2ヶ月目〜：毎週の振り返り。ルール表は四半期ごとに調整</li>
+</ul>`,
+  en:`<p>Consider a 40-room regional boutique (all figures illustrative). In 14 months: ADR from ¥12,400 to ¥19,600, occupancy from 71% to 83%, RevPAR up 1.8×. No renovation, no added marketing budget. One thing changed — <strong>how the price is decided</strong>. Here is the three-part design that turned pricing from "gut feeling" into "design."</p>
+<h2>1. Diagnosis: the double loss of gut pricing</h2>
+<p>Every pricing project starts with diagnosis. This property ran a flat rate year-round with a small winter bump. The result was a double loss:</p>
+<ul>
+<li><strong>Peak loss</strong> — on the 30–40 high-demand days a year it sold out at 20–30% under market. "It sold out, so it's fine" is the most expensive belief in hotels.</li>
+<li><strong>Off-peak loss</strong> — on soft days it held the high rate, left inventory sitting, then slashed late — a discount guests never thank you for.</li>
+</ul>
+<p>Method: compare your selling rate against the average rate of the ~200-room set within 3km, day by day, and sum the gap. In the example, the annualized gap was 14% of potential revenue — the size of the opportunity.</p>
+<h2>2. Design 1: a three-tier rule table (day-of-week × lead time)</h2>
+<p>Dynamic pricing is not "AI moving the rate daily." Build a <strong>three-tier rule table</strong> first:</p>
+<ol>
+<li><strong>Base</strong> — soft Tuesdays/Wednesdays. 85–90% of market. This is the walk-in floor.</li>
+<li><strong>Mid</strong> — normal demand. 95–100% of market.</li>
+<li><strong>Peak</strong> — Fri/Sat, holidays, events. 110–130% of market.</li>
+</ol>
+<p>Add the lead-time dimension: bookings 48+ hours out at +10% (scheduled guests can pay more); last-minute at −10% (the discount is for residual inventory). With the table in place, the front desk can price with confidence — and the "gut" starts to disappear.</p>
+<h2>3. Design 2: the 200-room competitor set within 3km</h2>
+<p>The axis of pricing is not your cost — it is the market's sell-through:</p>
+<ul>
+<li><strong>Normal days</strong> — watch the sell pace of the five closest competitors. Three or more at 80%+ sold means you can step one tier up.</li>
+<li><strong>Event days</strong> — concerts and conventions shrink the whole city's supply. That is when you price at peak. Roughly 70% of peak profit is made here.</li>
+</ul>
+<h2>4. Design 3: minimum stays and channel discipline</h2>
+<ul>
+<li><strong>2-night minimum</strong> on peak dates — cuts housekeeping turns and lifts RevPAR per room.</li>
+<li><strong>Fri-only availability</strong> on select peaks — sell the Fri+Sat bundle at a higher ADR.</li>
+<li><strong>Channel parity</strong> — identical rates across channels. The iron rule that protects the OTA relationship.</li>
+</ul>
+<div class="stats"><div class="stat"><b>+58%</b><span>(ex.) ADR (¥12,400→¥19,600)</span></div><div class="stat"><b>83%</b><span>(ex.) occupancy (from 71%)</span></div><div class="stat"><b>1.8×</b><span>(ex.) RevPAR</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>In dynamic pricing the most important number is not the peak — it is the floor (walk-in at 85–90% of market). With a floor, the front desk stops being anxious, and the team adopts dynamic pricing before you expect.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — build the competitor set (200 rooms within 3km)</li>
+<li>Week 2 — diagnosis: the annualized gap</li>
+<li>Week 3 — draft the three-tier table plus lead-time rules</li>
+<li>Week 4 — minimum-stay rules and a parity check</li>
+<li>Month 2+ — weekly review; tune the table quarterly</li>
+</ul>`
+  }
+},
+
+/* ------------------- FEATURED SET 03 ------------------- */
+{
+  slug:'hotel-photos-90',
+  date:'2026-05-10',
+  cat:'ブランディング', catEn:'Branding',
+  image:'https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'「写真が9割」— 予約が入るホテル写真の共通点',en:'"The Photo Is 90%": What Bookable Hotel Photos Have in Common'},
+  excerpt:{ja:'光・生活感・余白の3原則で、予約率が変わる。',en:'Three principles — light, lived-in feel and negative space — that change booking rates.'},
+  body:{
+  ja:`<p>「予約の判断は、サムネイルの3秒間で決まる。」これは誇張ではありません。OTA検索では、写真が「クリックするか」判断の9割を決めます。本記事は、予約が入る写真に共通する<strong>光・生活感・余白</strong>の3原則を拆し、12枚の必备ショットリストを提示します。</p>
+<h2>1. なぜ「写真が9割」なのか</h2>
+<p>OTAの行動は、厳密なファネルをたどります：<strong>サムネイル（リスト画面）→ クリック → 最初の3枚 → 詳細 → 予約</strong>。リスト画面のCTRは典型的に3〜8%で、写真がその最大のレバーです。実際の運用では、写真変更だけでCTRが±30%動くことはよく観測されるレンジです。詳細画面も同じで、最初の3枚で「空間」が伝わらなければ、スクロールはそこで終わります。</p>
+<p>つまり写真最適化は「デザイン作業」ではなく、ファネルの最上流にある<strong>売上作業</strong>です。</p>
+<h2>2. 原則1：光</h2>
+<ul>
+<li><strong>朝に撮る。</strong> 日の出後60〜90分がゴールデンタイム。光が柔らかく、影が長い。</li>
+<li><strong>窓に向ける。</strong> 自然光が部屋を斜めに横切る角度で撮る。</li>
+<li><strong>天井灯は消す。</strong> 室内照明のみの写真は、部屋を扁平に見せる——最も多いミス。</li>
+</ul>
+<h2>3. 原則2：生活感</h2>
+<p>「ゲストが入室する直前」の瞬間が、最高のスタイリングです：</p>
+<ul>
+<li>ベッド足元に置いたタオル</li>
+<li>テーブルの上のカップ、またはグラスの水</li>
+<li>少しずらしたクッション1つ</li>
+</ul>
+<p>「整えられているが空っぽ」の写真はショールームに見えます。綺麗だが、住める気はしない。<strong>小さな「生活」が転換を上げる</strong>——ゲストの脳は「自分がここで過ごす」をシミュレーションしており、そのシミュレーションが予約を作ります。</p>
+<h2>4. 原則3：余白</h2>
+<p>画の30%を空けて、「家具」ではなく「眺め」を伝えます：</p>
+<ul>
+<li>家具で画を塞ぎ切らない</li>
+<li>空・山・街並みに呼吸させる</li>
+<li>「場所」を語らせる——それは隣競合が真似できない差別化</li>
+</ul>
+<h2>12枚の必备ショットリスト</h2>
+<ol>
+<li>最初の1枚 — 客室（朝光）</li>
+<li>客室の第2アングル（窓から）</li>
+<li>寝具のクローズアップ（質感）</li>
+<li>バスルーム（明るい）</li>
+<li>眺め（部屋から見えるもの）</li>
+<li>レストラン／朝食のテーブル</li>
+<li>宿のシンボル空間（ラウンジ等）</li>
+<li>ブランドを語るディテール（アート・素材）</li>
+<li>周辺エリア／アクセス</li>
+<li>経営者またはスタッフ（人が温かみを伝える）</li>
+<li>季節のスタイリング（季節で替わる「更新感」）</li>
+<li>グループ・ファミリー利用（対象を広げる）</li>
+</ol>
+<div class="stats"><div class="stat"><b>+32%</b><span>（例）CTR（リスト画面）</span></div><div class="stat"><b>+18%</b><span>（例）詳細→予約転換率</span></div><div class="stat"><b>上位3</b><span>（例）OTA検索順位</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>最初の1枚は「看板」、その次の3枚は「ストーリー」です。「最初の1枚 → 次の3枚 → 残りの順」に最適化すると、1時間あたりの影響が最大になります。</div>`,
+  en:`<p>"A booking decision is made in three seconds, from a thumbnail." That is not an exaggeration. On an OTA search list, the photo decides 90% of the click. This article breaks down the three principles — <strong>light, lived-in feel, negative space</strong> — common to photos that get booked, and gives you a 12-shot essential shot list.</p>
+<h2>1. Why "the photo is 90%"</h2>
+<p>OTA behavior follows a strict funnel: <strong>thumbnail → click → first three images → details → booking</strong>. List CTR runs 3–8%, and the photo is its biggest lever. In practice, photo changes alone have moved CTR by ±30%. The detail page is the same: if the guest can't feel the space in the first three images, the scroll ends there.</p>
+<p>Photo optimization is therefore not a "design task" — it is a <strong>revenue task</strong> at the very front of the funnel.</p>
+<h2>2. Principle 1: Light</h2>
+<ul>
+<li><strong>Shoot in the morning.</strong> 60–90 minutes after sunrise is golden hour: soft light, long shadows.</li>
+<li><strong>Face the window</strong> — angle the camera so natural light crosses the room.</li>
+<li><strong>Turn off the ceiling lights.</strong> Ceiling-light-only photos make rooms feel flat — the most common mistake.</li>
+</ul>
+<h2>3. Principle 2: Lived-in feel</h2>
+<p>The "just before a guest walks in" moment is the best staging:</p>
+<ul>
+<li>A towel placed at the foot of the bed</li>
+<li>A cup, or a glass of water, on the table</li>
+<li>One cushion slightly off-center</li>
+</ul>
+<p>"Staged but empty" looks like a showroom — clean, but you don't feel you could live in it. <strong>A little "life" lifts conversion</strong>, because the guest's brain is simulating "me staying here" — and that simulation is what creates the booking.</p>
+<h2>4. Principle 3: Negative space</h2>
+<p>Keep ~30% of the frame empty. Sell the view, not the furniture:</p>
+<ul>
+<li>Don't fill the frame edge to edge with furniture</li>
+<li>Let the sky, the mountains, the city breathe</li>
+<li>Let the "place" speak — the differentiator your next-door competitor cannot copy</li>
+</ul>
+<h2>The 12-shot essential list</h2>
+<ol>
+<li>First image — the room, morning light</li>
+<li>Room, second angle (from the window)</li>
+<li>Bedding close-up (texture)</li>
+<li>Bathroom (bright)</li>
+<li>The view from the room</li>
+<li>Restaurant / breakfast table</li>
+<li>The signature space (lounge, etc.)</li>
+<li>A detail that signals the brand (art, materials)</li>
+<li>Neighborhood / access</li>
+<li>The owner or a team member (a person conveys warmth)</li>
+<li>Seasonal staging (a sense of renewal)</li>
+<li>Group or family setup (widen the audience)</li>
+</ol>
+<div class="stats"><div class="stat"><b>+32%</b><span>(ex.) list CTR</span></div><div class="stat"><b>+18%</b><span>(ex.) detail → booking conversion</span></div><div class="stat"><b>Top 3</b><span>(ex.) OTA search position</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The first image is the storefront; the next three are the story. Optimize in that order — first image, then three, then the rest — for the biggest impact per hour.</div>`
+  }
+},
+{
+  slug:'instagram-saveable-account',
+  date:'2026-05-04',
+  cat:'SNS運用', catEn:'Social Media',
+  image:'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'Instagramで「保存される」宿のアカウント設計',en:'Designing an Instagram Account for "Saves," Not Followers'},
+  excerpt:{ja:'フォロワー数より保存数。旅マエに選ばれる投稿フォーマット。',en:'Saves beat followers: the pre-travel shortlist format that gets you booked.'},
+  body:{
+  ja:`<p>宿のInstagram運用で、予約と本当に相関するのは「いいね」ではなく「保存（ブックマーク）」です。本記事は「保存される＝旅の候補リストに入る」アカウント設計を解説します。</p>
+<h2>1. なぜ「保存」がKPIか</h2>
+<p>あなたに来るゲストの予約経路を想像してください。<strong>旅マエにSNSで発見 → 候補リストに加える（保存） → 旅マエに検索・比較 → 予約</strong>。「保存」は「候補リスト入り」の動作です。いいね100・保存0の投稿は「liked content」で、いいね20・保存30の投稿は「旅のプラン候補」です。</p>
+<p>月次で見るべきは「1投稿あたりの保存数」と「レビュー内での『IGで見た』比率」の2つです。</p>
+<h2>2. アカウント設計：5コンテンツピラーの固定比率</h2>
+<p>9マス（プロフィール）はランダムなフィードではありません。5つのピラーで固定比率を設計します：</p>
+<ul>
+<li><strong>シグネチャー空間</strong>（3投稿に1） — ブランドの象徴</li>
+<li><strong>客室</strong>（4投稿に1） — 「滞在の姿」</li>
+<li><strong>食事</strong>（4投稿に1） — 最も撮られるコンテンツ</li>
+<li><strong>周辺・アクセス</strong>（4投稿に1） — 実用価値（保存の源泉）</li>
+<li><strong>人</strong>（6投稿に1） — スタッフ・経営者の温かさ</li>
+</ul>
+<p>ポイントは「プロフィール全体がひとつの物語として読める」こと。初見の訪問者が3秒で「こういう宿だ」と分かること。</p>
+<h2>3. 保存される4つの投稿フォーマット</h2>
+<ol>
+<li><strong>「アクセスガイド・使いこなし」型</strong> — 「ここで日の出を見るベストな3タイミング」。実用価値＝保存の源泉。</li>
+<li><strong>「ビフォー／アフター」型</strong> — スタイリングのプロセス、改装のプロセス。「見えない手間」が人を動かす。</li>
+<li><strong>「ひとつの推薦」型</strong> — 一皿・一景色・一アメニティの一点推薦。他を削ってもいい。</li>
+<li><strong>「スタッフの一日」型</strong> — 「ここ働きたい／ここ来たい」が伝わる裏側。信頼の源泉。</li>
+</ol>
+<h2>4. 投稿リズムとCTA</h2>
+<ul>
+<li><strong>週3〜4投稿</strong>＋毎週のStories（裏側）。量より継続。</li>
+<li>キャプションに<strong>「旅の計画に保存してください」と明示</strong>。明示CTAは保存率を上げる。</li>
+<li>予約リンクはプロフィール＋リンクインバイオツールへ。</li>
+</ul>
+<div class="stats"><div class="stat"><b>30+</b><span>（例）1投稿あたり保存数（基準10）</span></div><div class="stat"><b>18%</b><span>（例）レビューの「IGで見た」比率</span></div><div class="stat"><b>3倍</b><span>（例）予約ページクリック</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>フォロワー数を追いかけない。本当のKPIは「保存された候補リスト」——ゲストがあなたの宿を「行ってみたい」リストに入れた瞬間、予約の勝負が始まっています。保存されるアカウントは、24時間稼働する看板です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：5ピラーと9マスの比率を決める</li>
+<li>2週目：12投稿分をストック（4フォーマット×3本）</li>
+<li>3週目〜：週3〜4投稿＋毎週Stories</li>
+<li>月次：保存数/投稿＋レビューの「IGで見た」比率を確認</li>
+</ul>`,
+  en:`<p>For hospitality Instagram, the KPI that actually predicts bookings is not likes — it is <strong>saves</strong>. The account design for being "saved into the travel plan."</p>
+<h2>1. Why saves are the KPI</h2>
+<p>Follow the future guest's path: <strong>discover on social before the trip → shortlist (save) → compare → book</strong>. A save is the act of being added to the shortlist. A post with 100 likes and 0 saves was "liked content"; a post with 20 likes and 30 saves is a "trip-plan candidate."</p>
+<p>Track two monthly indicators: saves-per-post, and the share of reviews that mention "saw it on IG."</p>
+<h2>2. Account design: five pillars, fixed ratio</h2>
+<p>The profile grid is not a random feed — design it on five pillars in fixed ratio:</p>
+<ul>
+<li><strong>Signature space</strong> (~1 in 3) — the brand symbol</li>
+<li><strong>Rooms</strong> (~1 in 4) — the "picture of the stay"</li>
+<li><strong>Food</strong> (~1 in 4) — the most photographed content</li>
+<li><strong>Neighborhood / access</strong> (~1 in 4) — practical value, a save driver</li>
+<li><strong>People</strong> (~1 in 6) — staff and owner warmth</li>
+</ul>
+<p>The grid should read as one story: a first-time visitor should get "this is a place like X" within three seconds.</p>
+<h2>3. The four post formats that get saved</h2>
+<ol>
+<li><strong>Guide / how-to</strong> — "the 3 best times to see the sunrise here." Practical value is a save driver.</li>
+<li><strong>Before / after</strong> — staging and renovation processes; the unseen effort moves people.</li>
+<li><strong>One strong recommendation</strong> — one dish, one viewpoint, one amenity. Omission is fine.</li>
+<li><strong>A day in the staff life</strong> — behind-the-scenes that builds trust.</li>
+</ol>
+<h2>4. Cadence and CTA</h2>
+<ul>
+<li><strong>3–4 posts a week</strong> plus weekly Stories. Consistency over volume.</li>
+<li>Say <strong>"save this for your trip planning"</strong> in the caption — explicit CTAs lift the save rate.</li>
+<li>Booking link in bio, refreshed with campaigns.</li>
+</ul>
+<div class="stats"><div class="stat"><b>30+</b><span>(ex.) saves per post (baseline 10)</span></div><div class="stat"><b>18%</b><span>(ex.) "saw on IG" in reviews</span></div><div class="stat"><b>3×</b><span>(ex.) booking-page clicks</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>Don't chase followers. The real KPI is the saved shortlist — the moment a guest adds you to "want to go" is when the booking race begins. A saveable account is a storefront that works 24 hours.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — set the five pillars and grid ratio</li>
+<li>Week 2 — stock 12 posts (four formats × three)</li>
+<li>Week 3+ — 3–4 posts weekly plus Stories</li>
+<li>Monthly — track saves/post and "saw on IG" mentions</li>
+</ul>`
+  }},
+{
+  slug:'small-experiences-5-touchpoints',
+  date:'2026-04-28',
+  cat:'体験設計', catEn:'Experience Design',
+  image:'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'チェックアウト後に語られる「小さな体験」の作り方',en:'The "Small Experiences" Guests Talk About After Checkout'},
+  excerpt:{ja:'コストほぼゼロで口コミを生む、滞在中の5つのタッチポイント。',en:'Five near-zero-cost touchpoints that turn stays into word of mouth.'},
+  body:{
+  ja:`<p>チェックアウト後にゲストが話すのは、「素晴らしいサービスでした」ではなく、<strong>オーナーが30秒でやった「小さなこと」</strong>です。本記事は、行動経済学のピークエンドの法則に基づき、ほぼゼロコストで口コミを生む5つのタッチポイントを提示します。</p>
+<h2>1. 仕組み：なぜ「小さなこと」が語られるのか</h2>
+<p>行動経済学者ダニエル・カーネマンの<strong>ピークエンドの法則</strong>：体験の評価は、「ピーク（最高地点）」と「エンド（終わり）」で決まり、平均では決まらない。</p>
+<p>つまり、あなたの宿への評価は7日間の合計ではなく、「最高の瞬間」と「チェックアウトの瞬間」で決まります。そして「ピーク」の素材になるのは、意外にも小さな、予想外のものです。「小さな体験」がレバレッジを持つのは、このためです。</p>
+<h2>2. タッチポイント1：手書きのウェルカムメモ</h2>
+<p>ゲストの名前＋1行のメッセージ。コストは1分。</p>
+<ul>
+<li>「○○様、お迎えいたします。ごゆっくりお過ごしください。」が基本</li>
+<li>宿泊の目的（記念日・出張など）が分かっていれば、もう1行</li>
+</ul>
+<p>手書きであることが肝です。「あなたのために書いてくれた」という空気は、印刷物では伝わりません。</p>
+<h2>3. タッチポイント2：小さな地域のお土産（500円以下）</h2>
+<p>地元の小さな名産、または仕入先生産者の甘味。原価300〜500円で、「故郷の百貨店では買えないお土産」——これが語られます。ポイントは「小さく軽く」（持ち帰りやすい）ことと、生産者のストーリーが付いていることです。</p>
+<h2>4. タッチポイント3：チェックアウト時の30秒のお別れ</h2>
+<p>チェックアウト時、フロントからゲストごとに一言。「雨が降ってしまいましたが、晴れた日にまたどうぞ」「来年、紅葉の季節にまた」。30秒ルール。<strong>滞在の最後の一言が、持ち帰られるもの</strong>です。</p>
+<h2>5. タッチポイント4：滞在中の写真</h2>
+<p>滞在中に撮った写真1〜2枚をプリント（またはQRで送付）。コストはほぼゼロで、ゲストが「SNSに投稿する写真」になる——無報酬のPR効果です。（ゲストの同意を得た上で。）</p>
+<h2>6. タッチポイント5：滞在先からのケアメール（30日後）</h2>
+<p>チェックアウト30日後に、短いメール。「ご利用いただきありがとうございます。この季節、△△をご用意しております。またのお越しをお待ちしております。」これは同時に、直結予約の仕組み（「直予約42%」記事参照）であり、レビュー依頼の仕組みでもあります。</p>
+<div class="stats"><div class="stat"><b>2.1倍</b><span>（例）「また来たい」と言われる率</span></div><div class="stat"><b>+34%</b><span>（例）レビュー文字数</span></div><div class="stat"><b>19%</b><span>（例）リピート率（従来11%）</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>「小さな体験」は「記憶されるコスト」です。1人あたり300〜800円を「瞬間」に使うと、レビュー・口コミ・リピーターという形で返ってきます。リノベーションよりROIが高い小さな体験はありません。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：手書きメモ＋お別れの一言を標準化</li>
+<li>2週目：地域のお土産を決める（生産者との交渉）</li>
+<li>3週目：滞在中の写真（同意フローを含む）</li>
+<li>4週目：チェックアウト30日後メール</li>
+<li>月次：レビューを読み、「語られたピーク瞬間」を特定し、新しいタッチポイントを追加</li>
+</ul>`,
+  en:`<p>After checkout, guests don't talk about "five-star service" — they talk about the small thing that cost the owner thirty seconds. Five touchpoints that generate word of mouth at near-zero cost, grounded in the peak-end rule.</p>
+<h2>1. The mechanism: why the small gets talked about</h2>
+<p>Daniel Kahneman's <strong>peak-end rule</strong>: an experience is judged by its <em>peak</em> and its <em>end</em>, not its average.</p>
+<p>Your property's rating is therefore not the sum of the stay — it is set by "the best moment" and "the checkout moment." And the raw material for the peak is, remarkably, the small, unexpected thing. That is why small experiences have such leverage.</p>
+<h2>2. Touchpoint 1: a handwritten welcome note</h2>
+<p>The guest's name, plus one line. It costs a minute.</p>
+<ul>
+<li>"Welcome, Mr./Ms. Tanaka. Enjoy your stay." is the base</li>
+<li>If you know the occasion — an anniversary, a business trip — add one line for it</li>
+</ul>
+<p>The handwriting is the point. "Someone wrote this for me" is something a printed card cannot convey.</p>
+<h2>3. Touchpoint 2: a small local souvenir (under ¥500)</h2>
+<p>A small local specialty or a sweet from a producer you work with. It costs ¥300–500, but it is "a souvenir I can't buy back home" — that is what gets talked about. Keep it small and light (easy to carry home) and carry the producer's story on it.</p>
+<h2>4. Touchpoint 3: the 30-second checkout farewell</h2>
+<p>At checkout, one line of farewell matched to that guest. "Sorry about the rain — come back on a clear day." "See you when the leaves turn." The 30-second rule. <strong>The last words of the stay are the ones carried home.</strong></p>
+<h2>5. Touchpoint 4: photos of the stay</h2>
+<p>Print one or two photos from the stay (or deliver by QR). Near-zero cost, and it becomes a photo the guest posts to social — free PR. (With the guest's consent.)</p>
+<h2>6. Touchpoint 5: the post-stay care email (day 30)</h2>
+<p>Thirty days after checkout, a short email: "Thank you for your stay. This season we're offering X. We'd love to see you again." It is simultaneously the direct-booking engine (see the 42% direct article) and the review-invite engine.</p>
+<div class="stats"><div class="stat"><b>2.1×</b><span>(ex.) "want to return" mentions</span></div><div class="stat"><b>+34%</b><span>(ex.) review word count</span></div><div class="stat"><b>19%</b><span>(ex.) repeat rate (from 11%)</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>A "small experience" is a cost that gets remembered. A ¥300–800-per-guest budget spent on moments returns in reviews, word of mouth and repeat bookings. No renovation has a better ROI than a small experience.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — standardize the welcome note and the farewell line</li>
+<li>Week 2 — final supplier for the local souvenir</li>
+<li>Week 3 — photos of the stay (with consent flow)</li>
+<li>Week 4 — the day-30 post-stay email</li>
+<li>Monthly — read the reviews, find the "peak moments" mentioned, add a new touchpoint</li>
+</ul>`
+  }
+},
+
+/* ------------------- CATEGORY ARCHIVE: OTA集客 ------------------- */
+{
+  slug:'brooklyn-cross-border-opening',
+  date:'2026-03-20',
+  cat:'OTA集客', catEn:'OTA Acquisition',
+  image:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'【越境開業】ニューヨーク・ブルックリンに学ぶ、海外で選ばれる宿の作り方',en:'Cross-Border Opening: What Brooklyn Teaches About Being Chosen Overseas'},
+  excerpt:{ja:'グローバルなプロパティが教えてくれる、海外の「選択システム」と開業フレームワーク。',en:'What global properties teach about the overseas "selection system" — and an opening framework.'},
+  body:{
+  ja:`<p>海外の「選択システム」とは、どんなものか。ニューヨーク・ブルックリンの密集したブティックホテル市場を参照軸に、「海外で選ばれる宿の作り方」の3つの教訓と、12ヶ月の開業フレームワークを解説します。</p>
+<h2>1. 海外の選択システムは5軸</h2>
+<p>海外のOTA（Booking.com等）で「選ばれる」ことは、5つの軸で決まり、それぞれの重みは国内より強いです：</p>
+<ol>
+<li><strong>写真の品質</strong> — 「ホテル写真ってこう見えるもの」という国際基準</li>
+<li><strong>英語コンテンツ</strong> — 正確さ＋ローカライズ（直訳ではない）</li>
+<li><strong>レビュースコアと速度</strong> — 開業後6ヶ月で基線が決まる</li>
+<li><strong>レートパリティ</strong> — チャネル間の価格整合規律</li>
+<li><strong>ローカル体験</strong> — 「このエリアに来る理由」の重み</li>
+</ol>
+<h2>2. ブルックリンの教訓1：エリア自体がブランドになる</h2>
+<p>ブルックリンでは、宿のブランドは「ホテルそのもの」ではなく「そのブロックのストーリー」です。「Williamsburgで過ごす滞在」「DUMBOで過ごす滞在」——そのナラティブ自体が商品です。<strong>海外ゲストは「部屋」ではなく「エリア」を予約する</strong>。教訓：ストーリーのあるエリアを選び、「エリアガイド」を主コンテンツにする。</p>
+<h2>3. ブルックリンの教訓2：ハイパー・ローカルな提携</h2>
+<p>近所のコーヒー店・ジム・ギャラリー・理容室とのコラボレーションは、密集した市場では差別化であると同時に「地域での信頼」の取得手段です。<strong>「会員割引カード」や「角の店との朝食セット」は、チェーンホテルが真似できないコンテンツ</strong>になり、レビューで語られます。</p>
+<h2>4. ブルックリンの教訓3：レビューの速度</h2>
+<p>競合の多い市場では、開業後<strong>最初の30日でレビューを積み上げる速度</strong>が、最初の6ヶ月を決めます。開業前の予約確保（知人・地域インフルエンサー・ソフトオープン）、客室内のレビューQR、返信の速度——「レビュー・スプリント」は新開業の標準的な動きです。</p>
+<h2>5. 12ヶ月の開業フレームワーク</h2>
+<ol>
+<li><strong>D-12〜D-9ヶ月</strong>：ブランド・ストーリー・コンテンツ制作（写真・動画・英語コピー）</li>
+<li><strong>D-9〜D-6ヶ月</strong>：OTAリスト作成、プレbooking公開、PR（旅行メディア）</li>
+<li><strong>D-6〜D-3ヶ月</strong>：ソフトオープン（知人・地域）、レビュー・スプリント準備</li>
+<li><strong>D-3ヶ月〜開業</strong>：全面公開、最初の30日のレビュー・スプリント、週次の価格微調整</li>
+</ol>
+<div class="stats"><div class="stat"><b>90日</b><span>レビュー・スプリントの期間</span></div><div class="stat"><b>50+</b><span>（例）最初の90日でのレビュー数</span></div><div class="stat"><b>4.7+</b><span>（例）6ヶ月の目標スコア</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>海外の「選択システム」は国内より速く、よりアルゴリズミックです。「コンテンツの速度」（写真・英語コピー・レビュー）自体が参入障壁になります。開業の12ヶ月前にコンテンツ制作を始めると、最初の6ヶ月はすでに勝ちです。</div>`,
+  en:`<p>What does the overseas "selection system" look like? Using the dense boutique-hotel market of Brooklyn, New York as a frame, three lessons for being chosen abroad — plus a 12-month opening framework.</p>
+<h2>1. The five axes of the overseas selection system</h2>
+<ol>
+<li><strong>Photo quality</strong> — the international standard for hotel imagery</li>
+<li><strong>English content</strong> — accurate and localized, not literal</li>
+<li><strong>Review score and speed</strong> — the first six months set the baseline</li>
+<li><strong>Rate parity</strong> — cross-channel price discipline</li>
+<li><strong>Local experience</strong> — "a reason to be in this neighborhood" carries heavy weight</li>
+</ol>
+<h2>2. Brooklyn lesson 1: the neighborhood is the brand</h2>
+<p>In Brooklyn, a property's brand is not "the hotel" — it is "the story of the block." "A stay in Williamsburg" is the product. <strong>Overseas guests book the neighborhood, not the room.</strong> Choose a story-worthy neighborhood, and make the neighborhood guide your lead content.</p>
+<h2>3. Brooklyn lesson 2: hyper-local partnerships</h2>
+<p>Collabs with the local coffee shop, gym, gallery and barbershop are differentiation and "local credibility" at once. A "member perk" or a "corner-shop morning set" is content chains cannot copy — and it ends up in reviews.</p>
+<h2>4. Brooklyn lesson 3: review velocity</h2>
+<p>In a dense market, <strong>the speed of review accumulation in the first 30 days</strong> sets the next six months. Pre-opening bookings (friends, locals, a soft opening), the in-room review QR and fast replies — the "review sprint" is a standard opening motion.</p>
+<h2>5. The 12-month opening framework</h2>
+<ol>
+<li><strong>D-12 to D-9</strong> — brand, story and content (photos, video, English copy)</li>
+<li><strong>D-9 to D-6</strong> — OTA listing, pre-booking open, travel-media PR</li>
+<li><strong>D-6 to D-3</strong> — soft opening (friends/locals), sprint preparation</li>
+<li><strong>D-3 to opening</strong> — go public; 30-day review sprint; weekly rate tuning</li>
+</ol>
+<div class="stats"><div class="stat"><b>90 days</b><span>review-sprint window</span></div><div class="stat"><b>50+</b><span>(ex.) reviews in the first 90 days</span></div><div class="stat"><b>4.7+</b><span>(ex.) target score, first six months</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The overseas selection system is faster and more algorithmic than domestic. "Speed of content" — photos, English copy, reviews — is itself the barrier to entry. Start content 12 months out and the first six months are already won.</div>`
+  }},
+{
+  slug:'us-market-cross-border-branding',
+  date:'2026-02-22',
+  cat:'OTA集客', catEn:'OTA Acquisition',
+  image:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'アメリカ市場に挑戦 — 越境ブランディングの舞台裏',en:'Entering the US Market — Behind the Scenes of Cross-Border Branding'},
+  excerpt:{ja:'日本の宿のストーリーを、アメリカのゲストにどう翻訳するか。表に出なかったプロセス。',en:'How to translate a Japanese stay for American guests — the unpublicized process.'},
+  body:{
+  ja:`<p>日本の宿がアメリカ市場に向き合うとき、最大の壁は言語ではなく「価値観のギャップ」です。本記事は、日本の宿のストーリーをアメリカのゲスト用に「翻訳する」プロセスと、表に出なかった3つのギャップと4ステップのプロセスを解説します。</p>
+<h2>1. 3つの翻訳ギャップ</h2>
+<ul>
+<li><strong>ギャップ1：言語</strong> — 直訳とローカライズの差。「おもてなし」はアメリカではそのまま通じない言葉です。</li>
+<li><strong>ギャップ2：価値観</strong> — 日本的な「職人技・ディテール」の強調 vs 美国的な「体験・ストーリー」の強調。同じ事実が、違う重みで届く。</li>
+<li><strong>ギャップ3：ビジュアル</strong> — 日本的な「余白・抑制」 vs 美国的な「ボールドネス」。日本で「ちょうどいい」演出は、アメリカでは「空っぽ」に見えることがある。</li>
+</ul>
+<h2>2. 具体例：「おもてなし」の翻訳</h2>
+<p>「おもてなし」はアメリカでは通りません——しかし「その裏の動作」は通じます。翻訳の方法は、<strong>概念を具体的な動作に変換する</strong>ことです：</p>
+<ul>
+<li>✗ 「おもてなしを提供します」→ ○ 「ご宿泊者のお名前の入った、手書きのウェルカムメモ」</li>
+<li>✗ 「完璧な清潔さ」→ ○ 「寝具は毎日交換、浴室は3回チェック」</li>
+</ul>
+<p>アメリカのゲストが信頼するのは「評価語」ではなく「動作の証拠」です。</p>
+<h2>3. 翻訳の4ステップ・プロセス</h2>
+<ol>
+<li><strong>オーディエンスのインタビュー</strong> — アメリカのゲストは「日本の滞在」に何を検索し、何を期待しているか？（回答は日本の側の想定と異なることが多い。）</li>
+<li><strong>メッセージ・マッピング</strong> — 「日本的な価値 → 美国的な言い回し」の1対1の表を作る。</li>
+<li><strong>コンテンツ制作</strong> — マッピングを基に、写真・動画・コピー（英語）を制作。</li>
+<li><strong>テスト＆ラーニング</strong> — OTAリストと自社サイトのCTR・転換をA/Bテスト。文言を回す。</li>
+</ol>
+<div class="stats"><div class="stat"><b>+27%</b><span>（例）CTR改善（直訳→ローカライズ）</span></div><div class="stat"><b>+19%</b><span>（例）詳細→予約転換改善</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>翻訳は「翻訳」ではなく「再創造」です。対象の文化が分かる形で、核を再創造する。頭に残る「ひとことメッセージ」が、越境ブランディングの成果物です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：オーディエンス調査（アメリカのゲスト5名以上のインタビューまたは調査票）</li>
+<li>2週目：メッセージ・マッピング表の作成</li>
+<li>3〜6週目：コンテンツ制作（写真・動画・英語コピー）</li>
+<li>7週目〜：A/Bテスト開始、月次で文言を回す</li>
+</ul>`,
+  en:`<p>When a Japanese property faces the US market, the wall is not language — it is the <strong>values gap</strong>. The process of translating a Japanese stay for American guests: three gaps, four steps.</p>
+<h2>1. The three translation gaps</h2>
+<ul>
+<li><strong>Gap 1 — language</strong>: literal vs localized. "Omotenashi" does not travel as a word.</li>
+<li><strong>Gap 2 — values</strong>: Japan emphasizes craft and detail; the US emphasizes experience and story. The same fact lands differently.</li>
+<li><strong>Gap 3 — visuals</strong>: Japanese restraint reads as "empty" to an American eye; boldness is the local idiom.</li>
+</ul>
+<h2>2. Concrete: translating "omotenashi"</h2>
+<p>The concept doesn't pass — <strong>the behavior behind it does</strong>:</p>
+<ul>
+<li>✗ "We provide omotenashi" → ✓ "A handwritten welcome note with your name on it"</li>
+<li>✗ "Immaculate cleanliness" → ✓ "Bedding changed daily; the bathroom checked three times"</li>
+</ul>
+<p>American guests trust behavior, not adjectives.</p>
+<h2>3. The four-step process</h2>
+<ol>
+<li><strong>Audience interviews</strong> — what do US guests search for and expect from a "Japanese stay"? (Often different from the local assumption.)</li>
+<li><strong>Message mapping</strong> — a 1:1 table of "Japanese value → American phrasing."</li>
+<li><strong>Content production</strong> — photos, video and English copy built on the map.</li>
+<li><strong>Test &amp; learn</strong> — A/B the OTA listing and website copy on CTR and conversion; iterate.</li>
+</ol>
+<div class="stats"><div class="stat"><b>+27%</b><span>(ex.) CTR, literal → localized</span></div><div class="stat"><b>+19%</b><span>(ex.) detail → booking conversion</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>Translation is re-creation, not translation. Recreate the core so the target culture understands it. The one-line message you keep is the deliverable of cross-border branding.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — audience research (interviews or surveys with 5+ US guests)</li>
+<li>Week 2 — build the message-mapping table</li>
+<li>Weeks 3–6 — content production (photos, video, English copy)</li>
+<li>Week 7+ — start A/B tests; iterate the wording monthly</li>
+</ul>`
+  }},
+{
+  slug:'story-branding-exhibition',
+  date:'2025-12-11',
+  cat:'ブランディング', catEn:'Branding',
+  image:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'“物語で選ばれる宿” — 展示が示すブランディングの力',en:'"The Stay Chosen by Its Story" — What the Exhibition Reveals About Branding'},
+  excerpt:{ja:'展示が示す、物語が人を動かす「選択の仕組み」。',en:'An exhibition case study showing how narrative moves the selection decision.'},
+  body:{
+  ja:`<p>OTAのリスト画面でも展示会でも、「スペック」（価格・立地・部屋数・設備）は比較されやすい——しかし「ストーリー」は比較できません。本記事は、「展示」の形式を通じて、ストーリーが価格競争から抜け出す差別化になる仕組みと、「ワンソースストーリー」の構造を解説します。</p>
+<h2>1. 仕組み：なぜ「ストーリー」が価格競争から抜けられるか</h2>
+<p>ゲストが宿を比較するとき、まず「スペック」を比較します——そしてそこで価格比較が始まります。<strong>ストーリーは、比較表に載せられない唯一の次元</strong>です。ストーリーは「1,500円の差」を「払う価値のある差」に変換する——それが仕組みです。これが「物語で選ばれる宿」のメカニズムです。</p>
+<h2>2. ストーリーの4要素</h2>
+<p>人を動かすストーリーの構造は、常に4要素です：</p>
+<ol>
+<li><strong>Who</strong> — この宿を誰がやっている（人・家族・チーム）</li>
+<li><strong>Why</strong> — なぜこの宿が存在するのか（存在理由）</li>
+<li><strong>What is protected</strong> — 何が守られている／受け継がれている（地域・職人技・暮らし）</li>
+<li><strong>What is offered</strong> — ゲストは何の体験を受け取るのか</li>
+</ol>
+<p>4要素が揃ったストーリーは「信頼できる」になり、1つでも欠けたストーリーは「スローガン」に留まります。</p>
+<h2>3. 「ワンソースストーリー」と3つの翻訳版</h2>
+<p>ストーリーは<strong>一度だけ</strong>書いて、3つの版に翻訳します：</p>
+<ul>
+<li><strong>30秒版</strong> — リストの「about」、フロントの自己紹介、トークの冒頭に</li>
+<li><strong>3分版</strong> — 展示会ブース、取材、ウェブサイトの「about us」に</li>
+<li><strong>10分版</strong> — ディープなメディア取材、B2B提案に</li>
+</ul>
+<p>「ワンソース」の価値：ストーリーが媒体間でブレず、語られるたびに「厚み」が出ていくこと（レビュー・写真・記事の蓄積）。</p>
+<h2>4. ストーリーを「展示」する場所</h2>
+<ul>
+<li><strong>OTAリスト</strong> — 30秒版＋証拠（写真・レビュー）</li>
+<li><strong>展示会ブース</strong> — 3分版＋ビジュアル（シンボル画像を1枚に絞る）</li>
+<li><strong>プレス資料</strong> — 10分版＋ファクトボックス（数字・実績・引用）</li>
+<li><strong>客室内</strong> — 30秒版を1枚のカードに印刷（「撮られるカード」）</li>
+</ul>
+<div class="note"><span class="tag">InnBuddy Note</span>ストーリーは「価格」と「価値」の間の「信頼の橋」です。ブランディングの仕事は「ストーリーを発明する」ことではなく「本当のストーリーを見つけて、すべての媒体に翻訳する」こと。本当のストーリーには作られたストーリーにはない一貫性があり、ゲストはそれを見分けられます。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：経営者インタビュー（4要素の素材）</li>
+<li>2週目：30秒・3分・10分版のドラフト</li>
+<li>3週目：リスト・ウェブサイト・客室への配置</li>
+<li>4週目〜：展示会・PRで使い続ける（証拠を蓄積）</li>
+</ul>`,
+  en:`<p>On an OTA listing or at a trade show, "specs" (rate, location, room count, equipment) are easy to compare — <strong>stories are not</strong>. Through the "exhibition" lens, how a story becomes the differentiator that escapes price comparison — and the structure of a single-source story.</p>
+<h2>1. The mechanism: why stories escape price comparison</h2>
+<p>Guests compare specs first — and that is where price comparison begins. <strong>Story is the one dimension that cannot go into the comparison table.</strong> It converts "a ¥1,500 difference" into "a difference worth paying for." That is how a stay gets "chosen by its story."</p>
+<h2>2. The four elements of a story</h2>
+<ol>
+<li><strong>Who</strong> — who runs the property (a person, a family, a team)</li>
+<li><strong>Why</strong> — why it exists</li>
+<li><strong>What is protected</strong> — what is kept alive (a region, a craft, a way of life)</li>
+<li><strong>What is offered</strong> — the experience the guest receives</li>
+</ol>
+<p>Four elements make a story trustworthy; miss one and it is a slogan.</p>
+<h2>3. One source, three translations</h2>
+<p>Write the story <strong>once</strong>, translate it three ways:</p>
+<ul>
+<li><strong>30-second</strong> — listing "about," front-desk intro, talk opener</li>
+<li><strong>3-minute</strong> — trade-show booth, interviews, website "about"</li>
+<li><strong>10-minute</strong> — deep media interviews, B2B pitches</li>
+</ul>
+<p>One source keeps the story consistent across media — and it grows richer with every telling (reviews, photos, coverage).</p>
+<h2>4. Where the story is exhibited</h2>
+<ul>
+<li><strong>OTA listing</strong> — 30-second version plus evidence (photos, reviews)</li>
+<li><strong>Exhibition booth</strong> — 3-minute version plus one symbol image</li>
+<li><strong>Press kit</strong> — 10-minute version plus a fact box (numbers, quotes)</li>
+<li><strong>In-room</strong> — the 30-second version on one card (the "photo-worthy" card)</li>
+</ul>
+<div class="note"><span class="tag">InnBuddy Note</span>A story is the trust bridge between price and value. Branding is not inventing a story — it is finding the true one and translating it into every medium. True stories have a consistency invented ones lack, and guests can tell the difference.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — owner interview (the four elements, raw)</li>
+<li>Week 2 — draft the 30s / 3min / 10min versions</li>
+<li>Week 3 — place on listing, website and in-room</li>
+<li>Week 4+ — use at exhibitions and PR; accumulate evidence</li>
+</ul>`
+  }},
+{
+  slug:'veg-menu-options',
+  date:'2025-09-02',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'【ベジ対応メニュー】多様な食嗜好に応える宿の選択肢設計',en:'Veggie Menus: Designing Menu Options for Diverse Food Preferences'},
+  excerpt:{ja:'コスト5%増で実現できる、多様な食嗜好へのメニュー設計。',en:'Menu engineering that handles diverse diets at ~5% added cost.'},
+  body:{
+  ja:`<p>ゲストの食の嗜好は、かつてないほど多様化しています。ベジタリアン・ビーガンに加え、乳製品不耐性（ラクトースフリー）、グルテンフリー、アレルギー、宗教的制約（ハラール・コーシャー）、そして和食由来の精進料理志向まで。「対応できない」は、そのゲスト——場合によってはそのパーティ全体——を失うことにつながります。本記事は、多様な食の嗜好に応える「選択肢の設計」を、コスト含め解説します。（下記の数値はすべて参考値・一例です。）</p>
+<h2>1. なぜ今「食の多様性」なのか</h2>
+<p>海外ゲストは、食事制限の自己管理が徹底している文化圏から来ます。原産国の多くはアレルゲン・食材表示の制度が厳格で、「何がはいっているか」を前提に食べる習慣があります。一方、国内ゲストもウェルネス志向・宗教的理由・単なる「今日は植物性で」を含む、幅広い動機で選択肢を探します。</p>
+<p>重要なのは、<strong>「対応できます」自体が差別化</strong>になることです。まだ多くの宿が「対応不可」か「分かりません」で終わっている。「対応できる」宿は、検索の時点で選ばれる確率が上がります。</p>
+<h2>2. 設計1：3層の「選択肢」構造</h2>
+<p>「ベジ対応」を個別の特別扱いにせず、メニュー全体に組み込みます：</p>
+<ol>
+<li><strong>層1：自然にベジ対応可能な基本設計</strong> — 全メニューの土台。野菜・穀物・豆・卵を主役に据え、肉や魚を「トッピング」として分離可能にする。</li>
+<li><strong>層2：指定ベジ・ベジタリアン皿</strong> — 一食あたり2〜3品を明確に設定し、メニューに「V」として表示。</li>
+<li><strong>層3：リクエスト対応</strong> — アレルギー・宗教的制約への「ご用意できます」スクリプト。事前連絡を促す導線を作る。</li>
+</ol>
+<h2>3. 設計2：交差汚染の管理（食品安全）</h2>
+<p>「対応できる」だけでは不十分です。「対応している」ことを証明する仕組みが信頼を作ります：</p>
+<ul>
+<li>調理エリア・器具の分離（専用まな板・鍋・収納ラベル）</li>
+<li>原産国由来のアレルゲン表示（主要アレルゲン＋乳・グルテン）</li>
+<li>スタッフへの「なぜ分離するか」の教育（対応の一貫性）</li>
+</ul>
+<p>「対応できる、且つ証明できる」——この二段が、ゲストの安心とSNSでの発信に繋がります。</p>
+<h2>4. 設計3：コストの管理</h2>
+<p>多様性対応はコスト増に見えますが、設計次第で抑えられます：</p>
+<ul>
+<li>共通のベース（野菜出汁・穀物・豆・卵）を増やす — 原価が低い食材が主役になる</li>
+<li>「肉・魚はトッピング」の分離設計 — 一皿を複数の嗜好で使える</li>
+<li>例：原価増は約5%。直結特典や季節メニューの価格に転嫁できる</li>
+</ul>
+<div class="stats"><div class="stat"><b>約5%</b><span>（例）原価増</span></div><div class="stat"><b>18%</b><span>（例）ベジ利用ゲストのリピート率</span></div><div class="stat"><b>増</b><span>（例）レビューの「対応してもらえた」言及</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>「対応できます」は差別化ですが、価値があるのは「対応していることを証明できる」宿だけです。分離の仕組み・表示・教育——この3つが揃って初めて、多様性対応は「信頼」になります。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：現在メニューの「ベジ化」棚卸し（どこを分離可能にするか）</li>
+<li>2週目：3層構造の設計＋メニューの「V」表示</li>
+<li>3週目：交差汚染の管理（器具・表示・教育）</li>
+<li>4週目：リクエスト対応スクリプト＋事前連絡導線</li>
+<li>5週目：原価の検証（5%以内に抑えられるか）</li>
+</ul>`,
+  en:`<p>Guests' food preferences are more diverse than ever. Beyond vegetarian and vegan — lactose-free, gluten-free, allergies, religious restrictions (halal, kosher), and a Japanese shojin-ryori sensibility. "We can't accommodate" means losing that guest — sometimes the whole party. Here is how to design "options" that respond to diverse preferences, cost included. (All figures below are illustrative.)</p>
+<h2>1. Why food diversity, now</h2>
+<p>International guests come from cultures where managing dietary restrictions is routine. In many origin countries, allergen and ingredient labelling is strict, and "what is in it" is the default question. Domestically, guests also seek options for wellness, religious, or simply "plant-based today" reasons.</p>
+<p>The key: <strong>"we can accommodate" is itself a differentiator.</strong> Many properties still end at "we can't" or "we're not sure." A property that can accommodate is more likely to be chosen at the search stage.</p>
+<h2>2. Design 1: a three-tier "options" structure</h2>
+<p>Don't treat "veg-friendly" as a special case — build it into the whole menu:</p>
+<ol>
+<li><strong>Tier 1 — a naturally veg-friendly base</strong> — make vegetables, grains, legumes and eggs the heroes; keep meat and fish separable as a "topping."</li>
+<li><strong>Tier 2 — designated veg / vegan plates</strong> — 2–3 per meal, clearly marked "V" on the menu.</li>
+<li><strong>Tier 3 — on request</strong> — a "we can provide" script for allergies and religious needs, plus a path that invites advance notice.</li>
+</ol>
+<h2>3. Design 2: cross-contact management (food safety)</h2>
+<p>"We can" is not enough. The proof is what builds trust:</p>
+<ul>
+<li>Separate prep areas and tools (dedicated boards, pans, labelled storage)</li>
+<li>Origin-style allergen labelling (the major allergens, plus dairy and gluten)</li>
+<li>Staff training on "why we separate" (consistency of service)</li>
+</ul>
+<p>"We can, and we can prove it" — that two-step feeds both guest reassurance and social sharing.</p>
+<h2>4. Design 3: cost control</h2>
+<p>Accommodation looks like a cost increase, but design contains it:</p>
+<ul>
+<li>More shared base (vegetable stock, grains, legumes, eggs) — low-cost ingredients become the hero</li>
+<li>"Meat and fish as a topping" separation — one plate serves several preferences</li>
+<li>Illustrative: cost up ~5%, transferable into direct-booking benefits or seasonal pricing</li>
+</ul>
+<div class="stats"><div class="stat"><b>~5%</b><span>(ex.) cost increase</span></div><div class="stat"><b>18%</b><span>(ex.) repeat rate, veg guests</span></div><div class="stat"><b>more</b><span>(ex.) "they accommodated me" in reviews</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>"We can accommodate" is a differentiator — but only a property that can prove it has value. Separation, labelling, training — once all three are in place, diversity support becomes trust.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — audit the current menu for "veg-able" parts (what can be separated)</li>
+<li>Week 2 — design the three tiers; add "V" marks to the menu</li>
+<li>Week 3 — cross-contact control (tools, labelling, training)</li>
+<li>Week 4 — on-request script plus an advance-notice path</li>
+<li>Week 5 — validate the cost (keep it within ~5%)</li>
+</ul>`
+  }
+},
+{
+  slug:'review-replies-trust',
+  date:'2025-08-31',
+  cat:'OTA集客', catEn:'OTA Acquisition',
+  image:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'感謝のメッセージが届きました — レビュー返信で信頼を積む',en:'A Thank-You Note Arrived — Building Trust Through Review Replies'},
+  excerpt:{ja:'返信が「ありがとう」を超えた時、起きる運営への効果。',en:'What happens when a reply goes beyond "thank you" — and its operational impact.'},
+  body:{
+  ja:`<p>レビュー返信は「顧客対応」ではなく、「未来のゲストに向けたマーケティング」です。あるゲストから「返信を読んで、また泊まりたいと思いました」という感謝のメッセージが届いた——その背景にある、レビュー返信で信頼を積み上げる設計を解説します。</p>
+<h2>1. 仕組み：返信には2人の読者がいる</h2>
+<p>レビュー返信は、実は2人に読まれます：</p>
+<ul>
+<li><strong>読者1：投稿したゲスト本人</strong> — 関係が深まり、リピートに繋がる。</li>
+<li><strong>読者2：予約前に返信を読む未来のゲスト</strong> — 返信は、予約判断に直接影響する公開のコンテンツです。</li>
+</ul>
+<p>返信は一度書くと<strong>舞台の上に残り続けるコンテンツ</strong>です。「ありがとう」だけで終わる返信と、「あなたのために何をしたか」が書かれた返信では、未来のゲストの判断がまったく変わります。</p>
+<h2>2. 良い返信の構造</h2>
+<p>信頼を作る返信には、共通の4要素があります：</p>
+<ol>
+<li><strong>名前＋ありがとう</strong> — 「○○様、ご宿泊ありがとうございました。」で冒頭を締める。</li>
+<li><strong>具体的な称賛の反映</strong> — ゲストが書いたポイントを具体的に拾う（「窓際の席がお気に召されたとのこと」）。</li>
+<li><strong>指摘への対応と改善アクション</strong> — 批判があれば、事実だけ＋「そのために何をしたか」を書く。</li>
+<li><strong>再来の誘い</strong> — 「またのお越しを、心よりお待ちしております。」</li>
+</ol>
+<p>黄金の一語は「<strong>何をしたか</strong>」——改善の具体的アクションです。ここが書かれている返信は、読者に「この宿は進化している」と伝えます。</p>
+<h2>3. 低評価レビューの扱い</h2>
+<p>低評価への返信は、5つ星の返信10通より未来のゲストに響きます：</p>
+<ul>
+<li><strong>72時間以内に返信</strong> — 低評価でも必ず返す（放置は最大の失点）。</li>
+<li><strong>防御しない</strong> — 受容 →（事実のみで）説明 → アクション → 誘い、の順。</li>
+<li>「お申し出の点について、〜を改善いたしました」——<strong>行動を示す</strong>。</li>
+</ul>
+<p>低評価を「改善の公開記録」に変えることが、信頼の積み方です。</p>
+<h2>4. 運営への波及効果</h2>
+<p>返信作業そのものが、運営の毎日フィードバックになります：</p>
+<ul>
+<li>レビューの言葉 → 清掃・F&B・フロントの改善点抽出</li>
+<li>「何をしたか」の蓄積 → 運営の改善履歴（次のゲストへの証拠）</li>
+<li>例：スコア4.5→4.8、予約転換+12%、リピート率の上昇（参考値）</li>
+</ul>
+<div class="stats"><div class="stat"><b>4.5→4.8</b><span>（例）レビュースコア</span></div><div class="stat"><b>+12%</b><span>（例）予約転換率</span></div><div class="stat"><b>増</b><span>（例）「返信が丁寧だった」言及</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>「ありがとう」だけでは信頼は積み上がりません。「あなたのために何をしたか」——改善の具体的アクションを書く返信が、未来のゲストの予約判断を変えます。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：返信テンプレの設計（4要素入り）</li>
+<li>2週目：低評価返信のフロー（受容→説明→アクション→誘い）</li>
+<li>3週目：既存の未返信レビューに追って返信</li>
+<li>常時：72時間以内返信の規律</li>
+<li>月次：レビューの言葉から運営改善点を抽出</li>
+</ul>`,
+  en:`<p>A review reply is not "customer service" — it is <strong>marketing to future guests</strong>. A guest once wrote: "Reading your reply made me want to stay again." Here is the design behind building trust through review replies.</p>
+<h2>1. The mechanism: a reply has two readers</h2>
+<ul>
+<li><strong>Reader 1 — the guest who posted</strong> — deepens the relationship, drives repeat.</li>
+<li><strong>Reader 2 — the future guest reading replies before booking</strong> — the reply is public content that directly affects the booking decision.</li>
+</ul>
+<p>A reply, once written, <strong>stays on the stage</strong>. A reply that ends at "thank you" and one that says "here is what we did for you" produce completely different judgments from the next guest.</p>
+<h2>2. The structure of a good reply</h2>
+<ol>
+<li><strong>Name + thanks</strong> — open with "Mr./Ms. X, thank you for staying."</li>
+<li><strong>Specific acknowledgement</strong> — pick up the exact point the guest raised ("glad you enjoyed the window seat").</li>
+<li><strong>Response + improvement action</strong> — for any criticism: facts only, plus "here is what we did about it."</li>
+<li><strong>Invitation to return</strong> — "We hope to welcome you again."</li>
+</ol>
+<p>The golden word is <strong>"what we did"</strong> — the concrete action. A reply that names it tells the reader "this property is improving."</p>
+<h2>3. Handling low ratings</h2>
+<p>A well-handled low rating speaks to future guests more than ten five-star replies:</p>
+<ul>
+<li><strong>Reply within 72 hours</strong> — always, even for low ratings (silence is the biggest loss).</li>
+<li><strong>Don't be defensive</strong> — acknowledge, explain (facts only), act, invite, in that order.</li>
+<li>"Regarding the point you raised, we have improved ~" — <strong>show the action.</strong></li>
+</ul>
+<p>Turning a low rating into a "public record of improvement" is how trust is built.</p>
+<h2>4. The operational ripple</h2>
+<ul>
+<li>Review language, pulled into improvement points for housekeeping, F&amp;B and front desk</li>
+<li>Accumulated "what we did", an improvement history (evidence for the next guest)</li>
+<li>Illustrative: score 4.5 to 4.8, booking conversion +12%, higher repeat</li>
+</ul>
+<div class="stats"><div class="stat"><b>4.5→4.8</b><span>(ex.) review score</span></div><div class="stat"><b>+12%</b><span>(ex.) booking conversion</span></div><div class="stat"><b>more</b><span>(ex.) "their replies were thoughtful"</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>"Thank you" alone does not build trust. The reply that names "what we did for you" — the concrete action — is what changes the next guest's booking decision.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — design the reply template (four elements)</li>
+<li>Week 2 — the low-rating flow (acknowledge, explain, act, invite)</li>
+<li>Week 3 — reply to existing unanswered reviews</li>
+<li>Ongoing — the 72-hour discipline</li>
+<li>Monthly — pull operational improvements from review language</li>
+</ul>`
+  }
+},
+{
+  slug:'zero-waste-communication',
+  date:'2025-07-02',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'本当にゼロウェイストは可能か？ サステナブル運営の伝え方',en:'Is Zero Waste Really Possible? Communicating Sustainable Operations'},
+  excerpt:{ja:'「サステナブル」をゲストが検証できる形で伝える、空っぽの主張を避ける伝え方。',en:'Avoiding greenwash — communicating sustainability in a form guests can verify.'},
+  body:{
+  ja:`<p>「サステナブル」は、ゲストが最も精査するマーケティング言葉です。示せなければ、それは「グリーンウォッシング」となり、何も言わないことよりも害になります。本記事は、サステナブル運営を「ゲストが検証できる形」で伝えるフレームワークを解説します。</p>
+<h2>1. なぜ「サステナブル」は「証拠」を必要とするのか</h2>
+<p>ゲストの環境意識は高まり、「サステナブルに取り組んでいます」だけでは、疑念を生みます。グリーンウォッシングの3形態は、<strong>誇張・曖昧・隠蔽</strong>です。どの形でも、一度「言葉が本当でない」と認識されると、ブランド全体に傷がつきます。</p>
+<h2>2. 3層のフレームワーク：Do — Measure — Show</h2>
+<p>サステナビリティを伝えるのは、3段です：</p>
+<ol>
+<li><strong>Do：実際にやる</strong> — ひとつからでいい。ただし「本物」であること。</li>
+<li><strong>Measure：数値化する</strong> — 洗濯の減回数、食品廃棄の減kg、プラスチックの削減量。</li>
+<li><strong>Show：数字を見せる</strong> — 客室のカード、ウェブサイト、メニューに載せる。</li>
+</ol>
+<p>「Do」だけでは見えない、「Show」だけでは空しい——3段が揃って初めて「信頼」になります。</p>
+<h2>3. 客室内コミュニケーションの設計</h2>
+<ul>
+<li><strong>洗濯のオプトイン制</strong> — 「リクエストがない限り洗濯いたしません」＋削減量の見える化。</li>
+<li><strong>「代わりにこうしています」カード</strong> — 「アミエニティの代わりに、地域の固形石鹸をご用意しました。」</li>
+<li><strong>ゲストを罪悪感にしない</strong> — 「参加の招待」のトーンで、命令ではなく。</li>
+</ul>
+<p>「参加できる」仕組みは、ゲストの記憶と発信に残ります。</p>
+<h2>4. 正直な言葉づかい</h2>
+<ul>
+<li><strong>「ゼロウェイスト」は状態ではなく方向</strong> — 「ゼロウェイストへ向けて取り組んでいます」と書く。</li>
+<li><strong>「まだできていないこと」も示す</strong> — 正直さが信頼を作る。</li>
+<li>「私たちは〜を%削減しました」——<strong>数字で示す</strong>のが一番強い。</li>
+</ul>
+<div class="stats"><div class="stat"><b>30%</b><span>（例）洗濯の削減率</span></div><div class="stat"><b>40%</b><span>（例）食品廃棄の削減率</span></div><div class="stat"><b>増</b><span>（例）レビューの「取り組みを嬉しく思った」</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>サステナビリティ通信の価値は「どれだけやったか」ではなく「どれだけ見せられるか」です。Do — Measure — Show の3段が揃ったとき、初めて「サステナブルな宿」ではなく「サステナブルに取り組んでいる宿」として選ばれるようになります。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：1つの「本物の」取り組みを決定（Do）</li>
+<li>2週目：数値化の仕組みを作る（Measure）</li>
+<li>3週目：客室・ウェブサイト・メニューへの表示（Show）</li>
+<li>4週目：洗濯オプトイン制の導入</li>
+<li>月次：数値の更新と正直な言葉づかいのレビュー</li>
+</ul>`,
+  en:`<p>"Sustainable" is the marketing word guests scrutinise most. If you cannot show it, it becomes greenwashing — worse than saying nothing. The framework for communicating sustainable operations "in a form guests can verify."</p>
+<h2>1. Why "sustainable" needs evidence</h2>
+<p>Guests' environmental awareness has risen; "we work on sustainability" alone raises suspicion. Greenwashing has three forms: <strong>exaggeration, vagueness, concealment.</strong> Once seen as "the words aren't real," the damage spreads to the whole brand.</p>
+<h2>2. The three-tier framework: Do — Measure — Show</h2>
+<ol>
+<li><strong>Do</strong> — actually do it. One thing is fine; it must be real.</li>
+<li><strong>Measure</strong> — quantify: laundry turned down, food waste reduced (kg), plastic cut.</li>
+<li><strong>Show</strong> — put the numbers in the room, on the website, on the menu.</li>
+</ol>
+<p>"Do" alone is invisible; "Show" alone is empty. Only all three together become "trust."</p>
+<h2>3. In-room communication design</h2>
+<ul>
+<li><strong>Opt-in laundry</strong> — "We won't launder unless you ask," plus the savings made visible.</li>
+<li><strong>"Instead, we do this" cards</strong> — "In place of amenities, a local solid soap."</li>
+<li><strong>Don't make guests feel guilty</strong> — a tone of "invitation to join," not command.</li>
+</ul>
+<p>Things guests can "join" stay in their memory and in their sharing.</p>
+<h2>4. Honest language</h2>
+<ul>
+<li><strong>"Zero waste" is a direction, not a state</strong> — write "working toward zero waste."</li>
+<li><strong>Show what you haven't done yet</strong> — honesty builds trust.</li>
+<li>"We reduced ~ by %%" — <strong>showing the number</strong> is the strongest move.</li>
+</ul>
+<div class="stats"><div class="stat"><b>30%</b><span>(ex.) laundry reduced</span></div><div class="stat"><b>40%</b><span>(ex.) food waste reduced</span></div><div class="stat"><b>more</b><span>(ex.) "I appreciated the effort"</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The value of sustainability communication is not "how much you did" but "how much you can show." When Do, Measure and Show are all in place, you stop being "a sustainable property" and start being "a property working on sustainability" — the one that gets chosen.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — pick one real initiative (Do)</li>
+<li>Week 2 — build the measurement (Measure)</li>
+<li>Week 3 — display in-room, on the website and menu (Show)</li>
+<li>Week 4 — introduce opt-in laundry</li>
+<li>Monthly — update the numbers; review the honest language</li>
+</ul>`
+  }
+},
+{
+  slug:'natural-winery-food-experience',
+  date:'2025-07-02',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'【ナチュラルワイナリー】生産者を語る宿の食体験',en:'The Natural Winery: A Food Experience That Tells the Producer\'s Story'},
+  excerpt:{ja:'「生産者」を主役にする、食体験の設計。',en:'Designing a food experience that puts the producer front and center.'},
+  body:{
+  ja:`<p>食（F&amp;B）は、宿のブランディングで最も強力なツールのひとつです。本記事は、ナチュラルワイン文化から学んだ「生産者を主役にする」メニューの価値と、宿での活用のフレームワークを解説します。</p>
+<h2>1. なぜ「生産者」が主役になるのか</h2>
+<p>ゲストはもう「美味しい」だけには満足しません。「なぜ美味しいのか」「どこから来たのか」を求めます。料理は真似できますが、<strong>生産者のストーリーは真似できません</strong>——これが、食で差別化を作る鍵です。</p>
+<h2>2. ナチュラル・ワイナリーの4要素</h2>
+<p>ナチュラルワイン文化には、宿の食体験にそのまま使える4要素があります：</p>
+<ol>
+<li><strong>テロワール（風土）</strong> — その土地の土・気候・水。「ここでしかできない」の根拠。</li>
+<li><strong>クラフト（手仕事）</strong> — 生産者の手・哲学・試行錯誤。</li>
+<li><strong>限定・季節性</strong> — 「今しか」の価値。</li>
+<li><strong>透明性</strong> — 何をしていないかを見せる（添加物なし・過度な加工なし）。</li>
+</ol>
+<h2>3. 宿での活用法</h2>
+<ul>
+<li><strong>生産者訪問</strong> — シェフが実際に会いに行く。訪問そのものがコンテンツ（写真・動画・ストーリー）。</li>
+<li><strong>メニューの「生産者カード」</strong> — 写真＋ひとことで、料理と一緒に提供。</li>
+<li><strong>テイスティングイベント・ペアリング</strong> — 季節ごとに1回。生産者との会話が体験になる。</li>
+</ul>
+<p>生産者との関係の深さが、メニューの深さになります。「名前で知っている」ことが、真似できない差別化です。</p>
+<h2>4. 収益への結びつき</h2>
+<ul>
+<li>ディナーコースの単品注文増（例：+25%）</li>
+<li>SNS投稿の増加（生産者のストーリーは発信の素材）</li>
+<li>イベント予約（例：満席率90%）——食が「泊まる理由」になる</li>
+</ul>
+<div class="stats"><div class="stat"><b>+25%</b><span>（例）ディナーコース単品注文</span></div><div class="stat"><b>2.1倍</b><span>（例）SNS投稿</span></div><div class="stat"><b>90%</b><span>（例）イベント満席率</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>食の差別化は「料理」ではなく「生産者との関係」の深さで決まります。名前で知っている生産者——それが、隣のプロパティが真似できない資産です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：周辺の生産者リスト作成（会いたい5名）</li>
+<li>2週目：シェフの生産者訪問（1名）＋コンテンツ撮影</li>
+<li>3週目：メニューへの「生産者カード」導入</li>
+<li>4週目：季節イベント（テイスティング）の企画</li>
+<li>月次：生産者との関係の深まりを記録</li>
+</ul>`,
+  en:`<p>Food &amp; beverage is one of the most powerful tools of a property's brand. The value of making "the producer" the protagonist of the menu — a framework learned from the natural-wine culture.</p>
+<h2>1. Why the producer becomes the protagonist</h2>
+<p>Guests no longer settle for "delicious" — they ask "why is it good, and where did it come from." Dishes can be copied; <strong>a producer's story cannot</strong>. That is the key to food differentiation.</p>
+<h2>2. The four elements of the natural-wine framework</h2>
+<ol>
+<li><strong>Terroir</strong> — the soil, climate and water of the land. The basis of "only here."</li>
+<li><strong>Craft</strong> — the producer's hands, philosophy and trial and error.</li>
+<li><strong>Limited / seasonal</strong> — the value of "only right now."</li>
+<li><strong>Transparency</strong> — showing what is <em>not</em> done (no additives, no over-processing).</li>
+</ol>
+<h2>3. Applying it at a property</h2>
+<ul>
+<li><strong>Producer visits</strong> — the chef actually goes to meet them; the visit itself is content (photos, video, story).</li>
+<li><strong>"Producer cards" on the menu</strong> — a photo plus one line, served with the dish.</li>
+<li><strong>Tasting events / pairings</strong> — once a season; the conversation with the producer is the experience.</li>
+</ul>
+<p>The depth of the relationship with the producer becomes the depth of the menu. "Knowing them by name" is the uncopyable difference.</p>
+<h2>4. The link to revenue</h2>
+<ul>
+<li>More à-la-carte on the dinner set (illustrative: +25%)</li>
+<li>More social posts (the producer's story is shareable material)</li>
+<li>Event bookings (illustrative: 90% full) — food becomes a "reason to stay"</li>
+</ul>
+<div class="stats"><div class="stat"><b>+25%</b><span>(ex.) dinner à-la-carte</span></div><div class="stat"><b>2.1×</b><span>(ex.) social posts</span></div><div class="stat"><b>90%</b><span>(ex.) event occupancy</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>Food differentiation is decided by the depth of the relationship with the producer, not by the dish. A producer you know by name is an asset the next-door property cannot copy.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — list nearby producers (five you'd like to meet)</li>
+<li>Week 2 — chef visits one producer; shoot the content</li>
+<li>Week 3 — introduce "producer cards" to the menu</li>
+<li>Week 4 — plan a seasonal tasting event</li>
+<li>Monthly — record the deepening of producer relationships</li>
+</ul>`
+  }
+},
+
+/* ------------------- CATEGORY ARCHIVE: ホテル運営 ------------------- */
+{
+  slug:'cave-room-design-monetization',
+  date:'2025-06-26',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'【洞窟を感じる客室】記憶に残る空間デザインと収益化',en:'Cave-Inspired Rooms: Memorable Spatial Design and Monetization'},
+  excerpt:{ja:'「語られる客室」の価格力。テーマ型客室の設計と収益。',en:'The pricing power of a room worth talking about — design and revenue for themed rooms.'},
+  body:{
+  ja:`<p>「テーマ型客室」——強いコンセプト（洞窟のような雰囲気など）を持つ客室。「記憶に残る」を、どう収益に変えるのか。ギミックに終わらせない設計フレームワークを解説します。</p>
+<h2>1. テーマ型客室の収益化メカニズム</h2>
+<p>テーマは「物語」であり、物語はプレミアム価格を正当化します（ストーリー・ブランディングの延長）。</p>
+<p>ただしテーマにはリスクが2つあります：</p>
+<ul>
+<li><strong>ギミック化</strong> — 記憶がすぐに消え、「一度見れば」で終わる。</li>
+<li><strong>コスト化</strong> — 装飾が高価で、維持・清掃が困難になる。</li>
+</ul>
+<p>収益になるテーマは、<strong>「語れる・撮れる・清掃できる」</strong>の3つを満たします。</p>
+<h2>2. 「洞窟感」の3つの設計原則</h2>
+<ol>
+<li><strong>素材</strong> — 石・漆喰・暗い木材。触れたくなる質感（触覚体験）。</li>
+<li><strong>光</strong> — 間接照明・低照度・包まれる感覚。光の「量」ではなく「質」。</li>
+<li><strong>「発見の瞬間」</strong> — 一番強く刺さる場面を1つに絞る（ドアを開けた瞬間、眺めが見えた瞬間）。</li>
+</ol>
+<h2>3. 価格とプロダクト設計</h2>
+<ul>
+<li><strong>テーマ型＝プレミアム層</strong> — 標準より+15〜30%（参考値）。</li>
+<li><strong>体験の付加</strong> — 照明シーン・香り・プレイリスト（テーマを完成させる）。</li>
+<li><strong>写真映え＝無料PR</strong> — テーマはゲストの発信になる。</li>
+</ul>
+<h2>4. 避けるべきこと</h2>
+<ul>
+<li>ひとことで語れないテーマ（曖昧＝ギミック）。</li>
+<li>清掃・維持を妨げる過剰な装飾（運営コスト）。</li>
+</ul>
+<div class="stats"><div class="stat"><b>+22%</b><span>（例）プレミアム価格</span></div><div class="stat"><b>85%</b><span>（例）売切率</span></div><div class="stat"><b>30%</b><span>（例）レビューのテーマ言及率</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>テーマは「ひとことで語れる」ことが第一条件です。ギミックは「一度見れば」で終わり、テーマは「また来たい」を作る。違いは「物語があるか」です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：テーマの「ひとこと」定義（語れるかテスト）</li>
+<li>2〜4週目：素材・光・発見の瞬間の設計</li>
+<li>5週目：体験の付加（照明シーン・香り・プレイリスト）</li>
+<li>6週目：価格設計（+15〜30%）＋コンテンツ撮影</li>
+<li>7週目：公開＋レビューの言及の監視</li>
+</ul>`,
+  en:`<p>A "themed room" — a room with a strong concept (a cave-like atmosphere, for example). How do you turn "memorable" into revenue? A design framework that keeps it from becoming a gimmick.</p>
+<h2>1. The monetisation mechanism of themed rooms</h2>
+<p>A theme is a "story," and a story justifies a premium (an extension of story branding).</p>
+<p>But a theme carries two risks:</p>
+<ul>
+<li><strong>Gimmick-isation</strong> — the memory fades fast; "seen it once" and done.</li>
+<li><strong>Cost-isation</strong> — expensive décor that is hard to maintain and clean.</li>
+</ul>
+<p>A theme that pays is one that is <strong>"tellable, photographable, cleanable."</strong></p>
+<h2>2. The three design principles of a "cave feel"</h2>
+<ol>
+<li><strong>Materials</strong> — stone, plaster, dark wood. Textures you want to touch (a tactile experience).</li>
+<li><strong>Light</strong> — indirect, low, enveloping. The "quality" of light, not the "quantity."</li>
+<li><strong>The "moment of reveal"</strong> — one scene that lands hardest (the door opening, the view appearing).</li>
+</ol>
+<h2>3. Pricing and product design</h2>
+<ul>
+<li><strong>Themed = premium tier</strong> — +15–30% over standard (illustrative).</li>
+<li><strong>Added experience</strong> — lighting scenes, scent, playlist (completes the theme).</li>
+<li><strong>Photographability = free PR</strong> — the theme becomes the guest's sharing.</li>
+</ul>
+<h2>4. What to avoid</h2>
+<ul>
+<li>A theme you can't say in one sentence (vague = gimmick).</li>
+<li>Excess décor that blocks cleaning and maintenance (operational cost).</li>
+</ul>
+<div class="stats"><div class="stat"><b>+22%</b><span>(ex.) premium rate</span></div><div class="stat"><b>85%</b><span>(ex.) sell-out rate</span></div><div class="stat"><b>30%</b><span>(ex.) reviews mentioning the theme</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The first test of a theme is "can you say it in one sentence?" A gimmick is "seen it once"; a theme creates "want to come back." The difference is whether there is a story.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — define the theme in one sentence (the "can you say it" test)</li>
+<li>Weeks 2–4 — design materials, light and the moment of reveal</li>
+<li>Week 5 — add the experience (lighting, scent, playlist)</li>
+<li>Week 6 — pricing (+15–30%) plus content shooting</li>
+<li>Week 7 — launch; watch the theme mentions in reviews</li>
+</ul>`
+  }
+},
+{
+  slug:'transparent-tomato-presentation',
+  date:'2025-06-24',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'【季節限定】透明トマトで魅せる、一皿の演出力',en:'Seasonal: The Presentation Power of a Single Transparent Tomato'},
+  excerpt:{ja:'「季節限定」を予約動機に変える演出の事例。',en:'How "seasonal only" becomes a booking driver — a presentation case.'},
+  body:{
+  ja:`<p>「季節限定」は、最も効く予約動機の一つです。本記事は、「透明トマト」という象徴的な一皿を通して、「季節限定の料理」をどう予約動機に変えるかの設計を解説します。</p>
+<h2>1. 「季節限定」の心理</h2>
+<p>希少＋期限付き＝「今来ないと食べられない」（FOMO）。これが季節限定の力です。</p>
+<p>ただし、毎季節更新されない「季節限定」は<strong>約束の不履行</strong>になり、逆効果になります。「今だけ」を信じるために、毎季節「次の今だけ」が必要なのです。</p>
+<h2>2. 「季節の代表料理」の3要素</h2>
+<ol>
+<li><strong>視覚的インパクト</strong> — 撮られる一場面（透明感・色の対比）。</li>
+<li><strong>生産者のストーリー</strong> — なぜ今か、生産者の言葉。</li>
+<li><strong>「もう一回来る理由」</strong> — 次の季節＝新しい料理。</li>
+</ol>
+<h2>3. 一皿を「予約動機」にする運営設計</h2>
+<ul>
+<li><strong>季節前にSNSで予告</strong> — 期待を作る（「今季だけの〜が戻ります」）。</li>
+<li><strong>OTAリスト・直結ページに「今季のみ」バナー</strong> — 検索の時点で伝える。</li>
+<li><strong>コースに組み込む</strong> — 運次第にせず、確実に提供する。</li>
+<li><strong>「食後の写真」を収集</strong> — （同意を得て）次の季節の素材にする。</li>
+</ul>
+<p>一皿の演出が、宿全体の予約理由になる——それが「季節限定」の設計です。</p>
+<h2>4. 収益への結びつき</h2>
+<ul>
+<li>その料理を理由に予約（例：40%）。</li>
+<li>季節コースの注文増（例：2.1倍）。</li>
+<li>SNS投稿（例：300+）——一皿が宿のPRになる。</li>
+</ul>
+<div class="stats"><div class="stat"><b>40%</b><span>（例）予約の料理言及率</span></div><div class="stat"><b>2.1倍</b><span>（例）季節コース注文</span></div><div class="stat"><b>300+</b><span>（例）SNS投稿</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>季節料理の真の価値は、料理そのものではなく「また来る理由」です。一皿の演出が、宿全体の予約理由になる——それが季節限定の設計です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>季節前6週間：今季の「代表料理」を決定</li>
+<li>4週間前：SNS予告（期待の作成）</li>
+<li>2週間前：OTA・直結ページのバナー更新</li>
+<li>シーズン中：コースへの組み込み＋写真収集</li>
+<li>シーズン後：振り返り＋次の季節の予告</li>
+</ul>`,
+  en:`<p>"Seasonal limited" is one of the most effective booking drivers. Through a symbolic dish — the "transparent tomato" — the design for turning a "seasonal dish" into a booking driver.</p>
+<h2>1. The psychology of "seasonal limited"</h2>
+<p>Scarce + time-limited = "if I don't come now I can't have it" (FOMO). That is the power of seasonal.</p>
+<p>But a "seasonal limited" that is not refreshed every season is a <strong>broken promise</strong> — the opposite effect. To believe "only now," you need a "next only-now" every season.</p>
+<h2>2. The three elements of a "signature seasonal dish"</h2>
+<ol>
+<li><strong>Visual impact</strong> — a scene worth photographing (transparency, colour contrast).</li>
+<li><strong>The producer's story</strong> — why right now, in the producer's words.</li>
+<li><strong>"One more reason to come"</strong> — next season = a new dish.</li>
+</ol>
+<h2>3. The operational design that makes one dish a "booking driver"</h2>
+<ul>
+<li><strong>Tease on social before the season</strong> — build anticipation ("our ~ is back, only this season").</li>
+<li><strong>"This season only" banner on the OTA listing and direct page</strong> — say it at the search stage.</li>
+<li><strong>Build it into the course</strong> — serve it reliably, not by chance.</li>
+<li><strong>Collect the "after-dinner" photos</strong> — (with consent) they become next season's material.</li>
+</ul>
+<p>The presentation of one dish becomes the booking reason for the whole property — that is the design of "seasonal limited."</p>
+<h2>4. The link to revenue</h2>
+<ul>
+<li>Bookings citing the dish (illustrative: 40%).</li>
+<li>Seasonal course orders (illustrative: 2.1×).</li>
+<li>Social posts (illustrative: 300+) — one dish becomes the property's PR.</li>
+</ul>
+<div class="stats"><div class="stat"><b>40%</b><span>(ex.) bookings citing the dish</span></div><div class="stat"><b>2.1×</b><span>(ex.) seasonal course orders</span></div><div class="stat"><b>300+</b><span>(ex.) social posts</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The true value of a seasonal dish is not the dish — it is "a reason to come back." The presentation of one dish becomes the booking reason for the whole property; that is the design of "seasonal limited."</div>
+<h2>Action list</h2>
+<ul>
+<li>6 weeks before — choose this season's "signature dish"</li>
+<li>4 weeks before — tease on social (build anticipation)</li>
+<li>2 weeks before — update the OTA and direct-page banner</li>
+<li>In season — build into the course; collect photos</li>
+<li>After — review; tease the next season</li>
+</ul>`
+  }
+},
+{
+  slug:'cheese-sourcing-story',
+  date:'2025-05-29',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'チーズが世界を笑顔にする — 仕入れを物語に変える',en:'Cheese That Makes the World Smile — Turning Sourcing Into Story'},
+  excerpt:{ja:'「どこから来たか」をメニューの主語にする、仕入れの価値。',en:'Making origin the menu\'s protagonist — the value of sourcing as story.'},
+  body:{
+  ja:`<p>チーズ一皿が、食事の印象を大きく変えます。本記事は、メニューの主語を「どこから来たか」に変える——仕入れを物語に変える設計を解説します。</p>
+<h2>1. なぜチーズ——食の「入口」</h2>
+<p>チーズは「凝縮」された食品です。土地・乳・手仕事・時間が、ひとかけめに詰め込まれています。ゲストは「ひとかけめの背景の物語」に強く惹かれます——それが、食で差別化を作る入口です。</p>
+<h2>2. 仕入れストーリーの3層構造</h2>
+<ol>
+<li><strong>テロワール（土地）</strong> — 生産された牧場・地域（景観・牛種・飼料）。</li>
+<li><strong>クラフト（手仕事）</strong> — チーズ職人の手・哲学・熟成期間。</li>
+<li><strong>接続（つながり）</strong> — それがあなたの宿にどう届くか（誰から、いつ、買うか）。</li>
+</ol>
+<p>3層が揃って初めて、「一皿の物語」になります。</p>
+<h2>3. 活用の設計</h2>
+<ul>
+<li><strong>仕入れ訪問</strong> — シェフが牧場に実際に会いに行く。訪問そのものがコンテンツ（写真・動画・ストーリー）。</li>
+<li><strong>メニューの「産地カード」</strong> — 写真＋ひとことで、チーズと一緒に提供。</li>
+<li><strong>テイスティング</strong> — 季節ごとに1回。チーズ職人の言葉が体験になる。</li>
+<li><strong>スタッフスクリプト</strong> — テーブルでの「ひとこと」（30秒で覚えられる）。</li>
+</ul>
+<h2>4. 収益への結びつき</h2>
+<ul>
+<li>チーズコース・ペアリングの注文増（例：+20%）。</li>
+<li>ディナーセットの注文増（例：+12%）。</li>
+<li>SNS投稿（産地のストーリーは発信の素材）。</li>
+</ul>
+<div class="stats"><div class="stat"><b>+20%</b><span>（例）チーズコース注文</span></div><div class="stat"><b>+12%</b><span>（例）ディナーセット注文</span></div><div class="stat"><b>増</b><span>（例）SNS投稿</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>仕入れの深さが、メニューの深さになります。「名前で知っている生産者」——それが、隣のプロパティが真似できない資産です。チーズは、その関係を最も強く見せる一皿です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：チーズの仕入れ先棚卸し（誰から、どこから来ているか）</li>
+<li>2週目：仕入れ訪問（1軒）＋コンテンツ撮影</li>
+<li>3週目：メニューへの「産地カード」導入</li>
+<li>4週目：テイスティング企画＋スタッフスクリプト</li>
+<li>月次：仕入れ先との関係の深まりを記録</li>
+</ul>`,
+  en:`<p>A single plate of cheese can change the impression of a meal. The design for making "where it came from" the subject of the menu — turning sourcing into story.</p>
+<h2>1. Why cheese — the "entry point" of food</h2>
+<p>Cheese is a "condensed" food. Land, milk, craft and time are packed into a single slice. Guests are strongly drawn to "the story behind one slice" — that is the entry point to food differentiation.</p>
+<h2>2. The three-layer structure of a sourcing story</h2>
+<ol>
+<li><strong>Terroir (land)</strong> — the farm and region of origin (landscape, breed, feed).</li>
+<li><strong>Craft</strong> — the cheesemaker's hands, philosophy and ageing.</li>
+<li><strong>Connection</strong> — how it reaches your property (from whom, when, how you buy).</li>
+</ol>
+<p>Only when all three layers are in place does it become "the story of one plate."</p>
+<h2>3. The design for applying it</h2>
+<ul>
+<li><strong>Sourcing visits</strong> — the chef actually goes to the farm; the visit itself is content (photos, video, story).</li>
+<li><strong>"Origin cards" on the menu</strong> — a photo plus one line, served with the cheese.</li>
+<li><strong>Tastings</strong> — once a season; the cheesemaker's words become the experience.</li>
+<li><strong>Staff script</strong> — a 30-second, memorizable one-liner at the table.</li>
+</ul>
+<h2>4. The link to revenue</h2>
+<ul>
+<li>More cheese-course and pairing orders (illustrative: +20%).</li>
+<li>More dinner-set orders (illustrative: +12%).</li>
+<li>More social posts (the origin story is shareable material).</li>
+</ul>
+<div class="stats"><div class="stat"><b>+20%</b><span>(ex.) cheese-course orders</span></div><div class="stat"><b>+12%</b><span>(ex.) dinner-set orders</span></div><div class="stat"><b>more</b><span>(ex.) social posts</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The depth of sourcing becomes the depth of the menu. "A producer you know by name" is an asset the next-door property cannot copy. Cheese is the single plate that shows that relationship most strongly.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — audit cheese suppliers (from whom, where it comes from)</li>
+<li>Week 2 — a sourcing visit (one farm) plus content shooting</li>
+<li>Week 3 — introduce "origin cards" to the menu</li>
+<li>Week 4 — plan tastings plus a staff script</li>
+<li>Monthly — record the deepening of supplier relationships</li>
+</ul>`
+  }
+},
+{
+  slug:'sourcing-sustainability',
+  date:'2025-05-17',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'自然の恵みを守る — 仕入れとサステナビリティを語る',en:'Protecting Nature\'s Gifts — Talking Through Procurement & Sustainability'},
+  excerpt:{ja:'「仕入れ」を起点に、サステナビリティを語る運営アプローチ。',en:'An operations-first approach to the sustainability conversation, starting at procurement.'},
+  body:{
+  ja:`<p>サステナビリティの最も説得力のある表現は、「仕入れ」です。本記事は、「何を買うか」を起点にサステナビリティを語る、運営アプローチを解説します。</p>
+<h2>1. なぜ仕入れが最強の表現か</h2>
+<p>ゲストはスローガンを信じません。「皿の上にあるもの」「部屋にあるもの」を信じます。仕入れは、<strong>毎日行われた選択の証拠</strong>です——それが、サステナビリティを語る最前線です。</p>
+<h2>2. サステナブル仕入れの3軸</h2>
+<ol>
+<li><strong>地域性（短縮された供給網）</strong> — 地域の生産者、季節に沿った仕入れ。</li>
+<li><strong>公平性（フェアな取引）</strong> — 生産者への適正価格、長期的な関係。</li>
+<li><strong>削減（廃棄の低減）</strong> — 食品ロスを減らす仕入れ計画。</li>
+</ol>
+<h2>3. 伝達の設計</h2>
+<ul>
+<li><strong>「仕入れチーム」の紹介</strong> — 食材を選ぶ人たちの顔を伝える。</li>
+<li><strong>メニューの産地マップ</strong> — 食材がどこから来るか、視覚で。</li>
+<li><strong>四半期ごとの「仕入れレポート」</strong> — 何を買ったか、なぜか。</li>
+</ul>
+<p>「選ぶ人」「届く場所」「選ぶ理由」——3つが揃って、仕入れは物語になります。</p>
+<h2>4. 経済性</h2>
+<ul>
+<li>地域仕入れはコストが+5〜10%になりがち（参考値）。</li>
+<li>ただしブランド価値（プレミアム価格・レビュー・リピート）で相殺できる。</li>
+<li>「安くて悪い」仕入れ戦略は、サステナビリティにも品質にも傷をつける。</li>
+</ul>
+<div class="stats"><div class="stat"><b>+5〜10%</b><span>（例）地域仕入れのコスト増</span></div><div class="stat"><b>相殺</b><span>（例）ブランド価値で</span></div><div class="stat"><b>増</b><span>（例）レビューの「食材への配慮」言及</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>サステナビリティは「部門」ではなく、「仕入れで毎日行われる選択」です。ゲストが信じるのはスローガンではなく、皿の上の証拠です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：現在仕入れの棚卸し（どこから、誰から来ているか）</li>
+<li>2週目：3軸（地域性・公平性・削減）での評価</li>
+<li>3週目：メニューへの産地マップ導入</li>
+<li>4週目：四半期仕入れレポートの運用開始</li>
+<li>月次：コスト増とブランド価値の検証</li>
+</ul>`,
+  en:`<p>The most convincing expression of sustainability is "procurement." The operational approach to talking about sustainability starting from "what you buy."</p>
+<h2>1. Why procurement is the strongest expression</h2>
+<p>Guests don't believe slogans. They believe "what is on the plate" and "what is in the room." Procurement is <strong>the evidence of choices made every day</strong> — that is the front line of talking about sustainability.</p>
+<h2>2. The three axes of sustainable procurement</h2>
+<ol>
+<li><strong>Locality (shortened supply chains)</strong> — regional producers, seasonal buying.</li>
+<li><strong>Fairness</strong> — fair prices to producers, long-term relationships.</li>
+<li><strong>Reduction</strong> — procurement planning that cuts food waste.</li>
+</ol>
+<h2>3. The design for communicating it</h2>
+<ul>
+<li><strong>Introduce the "procurement team"</strong> — show the faces of the people who choose the ingredients.</li>
+<li><strong>Origin map on the menu</strong> — where the ingredients come from, visually.</li>
+<li><strong>A quarterly "procurement report"</strong> — what was bought, and why.</li>
+</ul>
+<p>"The people who choose," "where it comes from," "the reason for choosing" — when all three are in place, procurement becomes a story.</p>
+<h2>4. The economics</h2>
+<ul>
+<li>Local procurement tends to raise cost by +5–10% (illustrative).</li>
+<li>But it can be offset by brand value (premium pricing, reviews, repeat).</li>
+<li>A "cheap and bad" procurement strategy hurts both sustainability and quality.</li>
+</ul>
+<div class="stats"><div class="stat"><b>+5–10%</b><span>(ex.) local procurement cost up</span></div><div class="stat"><b>offset</b><span>(ex.) by brand value</span></div><div class="stat"><b>more</b><span>(ex.) "thoughtful sourcing" in reviews</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>Sustainability is not a "department" — it is "the choices made in procurement every day." Guests believe the evidence on the plate, not the slogan.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — audit current procurement (where from, from whom)</li>
+<li>Week 2 — evaluate on the three axes (locality, fairness, reduction)</li>
+<li>Week 3 — introduce the origin map to the menu</li>
+<li>Week 4 — start the quarterly procurement report</li>
+<li>Monthly — validate the cost increase against brand value</li>
+</ul>`
+  }
+},
+{
+  slug:'cleaning-checklist-experience',
+  date:'2025-05-12',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'清掃を「コスト」から「体験」に変えるチェックリスト',en:'Turning Housekeeping From "Cost" Into "Experience": A Checklist'},
+  excerpt:{ja:'32項目のチェックリスト。清掃を「体験の一部」にする設計。',en:'A 32-item checklist that makes cleanliness part of the experience.'},
+  body:{
+  ja:`<p>ゲストは「清掃」は見ません——「清潔さ」を見ます。しかし「清潔さ」はレビューで最も重みを持つ単項目です。本記事は、清掃を「コストセンター」から「体験」に変えるチェックリストの設計を解説します。</p>
+<h2>1. データ：清掃はレビューの最重量項目</h2>
+<p>低評価レビューの言及理由の多くが清掃に関係します（参考値：40%）。「不備がない」ことは評価されませんが、「不備」は重く評価されます。つまり清掃は、<strong>「目立たないときが正解」で「目立ったときが失点」</strong>の項目です。</p>
+<h2>2. チェックリストの3層構造</h2>
+<ol>
+<li><strong>層1：標準（15項目）</strong> — 毎日の基準（寝具・浴室・臭い・埃）。</li>
+<li><strong>層2：体験（7項目）</strong> — ゲストが「感じる」ディテール（香り・照明・温度・最初の5分）。</li>
+<li><strong>層3：シグネチャー（3項目）</strong> — 宿の「ひとこと」（手書きメモ・アメニティの演出など）。</li>
+</ol>
+<p>層1が「清潔さ」を守り、層2・3が「体験」を作ります。</p>
+<h2>3. 運営設計</h2>
+<ul>
+<li><strong>「記憶」に頼らないチェックリスト</strong> — デジタル化・写真記録。</li>
+<li><strong>ダブルチェック</strong> — チェッカー役の導入（層1は必ず2回目）。</li>
+<li><strong>「なぜ」の教育</strong> — 「どうやるか」ではなく「なぜそうするか」を教える。</li>
+</ul>
+<h2>4. 効果</h2>
+<ul>
+<li>清掃関連クレームの減少（例：70%減）。</li>
+<li>予約転換率の上昇（例：+12%）。</li>
+<li>レビューの「部屋がきれいだった」言及増加。</li>
+</ul>
+<div class="stats"><div class="stat"><b>70%減</b><span>（例）清掃関連クレーム</span></div><div class="stat"><b>+12%</b><span>（例）予約転換率</span></div><div class="stat"><b>増</b><span>（例）「部屋がきれい」言及</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>清潔さの基準は「自分が思う清潔」ではなく「ゲストが気づく清潔」です。チェックリストの3層は、その差を埋めるための道具です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：現在チェックリストの棚卸し（3層に整理）</li>
+<li>2週目：層2・3の「体験項目」の設計</li>
+<li>3週目：デジタル化＋ダブルチェックの導入</li>
+<li>4週目：「なぜ」の教育</li>
+<li>月次：レビューの清掃言及の監視</li>
+</ul>`,
+  en:`<p>Guests don't see "cleaning" — they see "cleanliness." But "cleanliness" is the single highest-weighted item in reviews. The checklist design that turns cleaning from a "cost centre" into an "experience."</p>
+<h2>1. The data: cleaning is the heaviest item in reviews</h2>
+<p>Many of the reasons cited in low-rating reviews relate to cleaning (illustrative: 40%). "No defects" goes unpraised, but "defects" are heavily penalised. Cleaning is therefore an item where <strong>"invisible is correct, visible is a loss."</strong></p>
+<h2>2. The three-tier checklist</h2>
+<ol>
+<li><strong>Tier 1 — standard (15 items)</strong> — the daily baseline (bedding, bathroom, odour, dust).</li>
+<li><strong>Tier 2 — experience (7 items)</strong> — the details guests "feel" (scent, lighting, temperature, the first five minutes).</li>
+<li><strong>Tier 3 — signature (3 items)</strong> — the property's "one thing" (a handwritten note, amenity staging, etc.).</li>
+</ol>
+<p>Tier 1 keeps it "clean"; Tiers 2 and 3 make it an "experience."</p>
+<h2>3. The operational design</h2>
+<ul>
+<li><strong>A checklist that doesn't rely on "memory"</strong> — digitised, with photo records.</li>
+<li><strong>Double check</strong> — a checker role (Tier 1 always twice).</li>
+<li><strong>"Why" training</strong> — teach "why we do it," not just "how."</li>
+</ul>
+<h2>4. The effect</h2>
+<ul>
+<li>Fewer cleaning-related complaints (illustrative: 70% fewer).</li>
+<li>Higher booking conversion (illustrative: +12%).</li>
+<li>More "the room was clean" in reviews.</li>
+</ul>
+<div class="stats"><div class="stat"><b>70% fewer</b><span>(ex.) cleaning complaints</span></div><div class="stat"><b>+12%</b><span>(ex.) booking conversion</span></div><div class="stat"><b>more</b><span>(ex.) "the room was clean"</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The standard of cleanliness is not "what we think is clean" but "what the guest notices." The three tiers of the checklist are the tool for closing that gap.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — audit the current checklist (sort into three tiers)</li>
+<li>Week 2 — design the Tier 2 and 3 "experience" items</li>
+<li>Week 3 — digitise plus introduce the double check</li>
+<li>Week 4 — "why" training</li>
+<li>Monthly — watch cleaning mentions in reviews</li>
+</ul>`
+  }
+},
+{
+  slug:'staff-shortage-shifts',
+  date:'2025-04-30',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'人手不足でも回るシフトの作り方',en:'Building Shifts That Run on a Staff-Short Team'},
+  excerpt:{ja:'「人がいるべき仕事」と「人がいなくても回る仕事」の設計。',en:'Designing the work that needs a person — and the work that runs without one.'},
+  body:{
+  ja:`<p>人手不足は、業界全体の構造的な問題です。本記事は、「どの仕事が人に必要で、どの仕事が不要か」——少人数のチームでも回るシフトの設計フレームワークを解説します。</p>
+<h2>1. 診断：「仕事監査」</h2>
+<p>すべての仕事をリストにし、4種類に分類します：</p>
+<ol>
+<li><strong>A：人に必ず必要</strong> — ゲストとのやり取り、判断。</li>
+<li><strong>B：人にできるが標準化可能</strong> — チェックリスト化できる仕事。</li>
+<li><strong>C：自動化できる</strong> — レセプション・チャット・洗濯など。</li>
+<li><strong>D：無くせる</strong> — 不要な仕事。</li>
+</ol>
+<p>この分類が、シフト設計の出発点です。</p>
+<h2>2. 「人時」の原則</h2>
+<ul>
+<li><strong>AとBにだけ「人時」を割り当てる</strong> — 人に価値がある仕事に人を。</li>
+<li><strong>Cは自動化・外注</strong> — AIチャット・セルフチェックイン・外部清掃。</li>
+<li><strong>Dは排除</strong> — 誰の価値にもならない仕事を減らす。</li>
+<li>例：仕事監査で人時を20%削減（参考値）。</li>
+</ul>
+<h2>3. シフト設計</h2>
+<ul>
+<li><strong>ピークへの集中</strong> — 忙しい時間帯に人を積み増す（フロント・レストラン）。</li>
+<li><strong>クロストレーニング（マルチスキリング）</strong> — 1人が複数の業務を担当。</li>
+<li><strong>「最小稼働チーム」計画</strong> — 人手が足りない日の最低限の体制。</li>
+</ul>
+<h2>4. 効果</h2>
+<ul>
+<li>人件費の削減（例：15%減）。</li>
+<li>レビュースコア維持（例：4.5以上）。</li>
+<li>スタッフの離職率低下（「意味のある仕事」に人がいる）。</li>
+</ul>
+<div class="stats"><div class="stat"><b>15%減</b><span>（例）人件費</span></div><div class="stat"><b>4.5+</b><span>（例）レビュー維持</span></div><div class="stat"><b>20%</b><span>（例）人時削減（仕事監査）</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>目標は「人を減らす」ことではなく、「人に必要な仕事に人を当てる」ことです。仕事監査は、その判断の道具です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：すべての仕事のリスト化（4分類）</li>
+<li>2週目：C（自動化）とD（排除）の特定</li>
+<li>3週目：ピーク集中シフトの設計</li>
+<li>4週目：クロストレーニング計画</li>
+<li>5週目：「最小稼働チーム」計画の作成</li>
+</ul>`,
+  en:`<p>Staff shortages are a structural, industry-wide problem. The framework for designing shifts that run on a small team — "which work needs a person, and which doesn't."</p>
+<h2>1. Diagnosis: the "work audit"</h2>
+<p>List every task and sort it into four types:</p>
+<ol>
+<li><strong>A — always needs a person</strong> — guest interaction, judgement.</li>
+<li><strong>B — a person can do it, but it can be standardised</strong> — checklist-able work.</li>
+<li><strong>C — can be automated</strong> — reception, chat, laundry, etc.</li>
+<li><strong>D — can be eliminated</strong> — unnecessary work.</li>
+</ol>
+<p>This sorting is the starting point of shift design.</p>
+<h2>2. The principle of "person-hours"</h2>
+<ul>
+<li><strong>Assign "person-hours" only to A and B</strong> — put people where they add value.</li>
+<li><strong>Automate or outsource C</strong> — AI chat, self check-in, external housekeeping.</li>
+<li><strong>Eliminate D</strong> — cut work that adds value to no one.</li>
+<li>Illustrative: the work audit cuts person-hours by 20%.</li>
+</ul>
+<h2>3. Shift design</h2>
+<ul>
+<li><strong>Concentration on peaks</strong> — add people to the busy hours (front desk, restaurant).</li>
+<li><strong>Cross-training (multi-skilling)</strong> — one person covers several tasks.</li>
+<li><strong>A "minimum viable team" plan</strong> — the minimum setup for short-staffed days.</li>
+</ul>
+<h2>4. The effect</h2>
+<ul>
+<li>Lower labour cost (illustrative: 15% fewer).</li>
+<li>Review score held (illustrative: 4.5+).</li>
+<li>Lower staff turnover (people are on "meaningful work").</li>
+</ul>
+<div class="stats"><div class="stat"><b>15% fewer</b><span>(ex.) labour cost</span></div><div class="stat"><b>4.5+</b><span>(ex.) review held</span></div><div class="stat"><b>20%</b><span>(ex.) person-hours cut (audit)</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The goal is not "fewer people" but "people on the work that needs people." The work audit is the tool for that judgement.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — list every task (the four-way sort)</li>
+<li>Week 2 — identify C (automate) and D (eliminate)</li>
+<li>Week 3 — design the peak-concentration shift</li>
+<li>Week 4 — the cross-training plan</li>
+<li>Week 5 — write the "minimum viable team" plan</li>
+</ul>`
+  }
+},
+{
+  slug:'ai-chat-night-ops',
+  date:'2025-04-18',
+  cat:'ホテル運営', catEn:'Hotel Operations',
+  image:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'AIチャットで深夜対応を自動化',en:'Automating Late-Night Guest Care With AI Chat'},
+  excerpt:{ja:'深夜の問い合わせの大半を、人手なしで捌く運用設計。',en:'An operational design that handles the bulk of overnight queries without a person.'},
+  body:{
+  ja:`<p>フロントが閉まっても、ゲストの体験は止まりません。本記事は、AIチャットで深夜対応を自動化しながら、宿の「温かみ」を保つ運用設計を解説します。</p>
+<h2>1. なぜ深夜対応が重要か</h2>
+<p>深夜は、ゲストが最も安心を必要とする瞬間です（到着・道順・要望）。<strong>1時間以内の返答が、レビューに最も効く</strong>（参考値）。一方、深夜の人手は、スタッフの健康・コストの負担になります。</p>
+<h2>2. AIチャットの3層設計</h2>
+<ol>
+<li><strong>層1：即応（24/365）</strong> — 道順・営業時間・確認など、定型の問い合わせを即座に返す。</li>
+<li><strong>層2：エスカレーション（人間）</strong> — 複雑・感情的な要望は人間に引き継ぐ。</li>
+<li><strong>層3：学習（改善）</strong> — チャットログを分析し、スクリプトを改善する。</li>
+</ol>
+<p>「即応 → 引き継ぎ → 改善」の3層が、運用の骨格です。</p>
+<h2>3. 「温かみ」を保つ設計</h2>
+<ul>
+<li><strong>「会話」のトーン</strong> — 「カスタマーサポート」ではなく「宿からの返事」。</li>
+<li><strong>「人間に繋ぐ」ボタン</strong> — いつでも人間に切り替え可能。</li>
+<li><strong>パーソナライズ</strong> — お名前での挨拶（予約データから）。</li>
+</ul>
+<h2>4. 導入と効果</h2>
+<ul>
+<li>深夜の問い合わせの大半を人手なしで処理（例：78%）。</li>
+<li>平均応答時間の短縮（例：4分）。</li>
+<li>レビューの「応答が速かった」言及増加。</li>
+</ul>
+<div class="stats"><div class="stat"><b>78%</b><span>（例）深夜問い合わせの人手なし処理</span></div><div class="stat"><b>4分</b><span>（例）平均応答時間</span></div><div class="stat"><b>増</b><span>（例）「応答が速かった」言及</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>AIの役割は「人を置き換える」ことではなく、「人が必要な時間に人を当てる」ことです。深夜の定型対応をAIに任せ、人は「温かみ」を届ける時間に回す。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：深夜の問い合わせ棚卸し（何が多いか）</li>
+<li>2週目：AIチャットのツール選定＋スクリプト設計</li>
+<li>3週目：3層（即応・引き継ぎ・学習）の設計</li>
+<li>4週目：テスト運用（一部の問い合わせから）</li>
+<li>5週目〜：本格運用＋月次のログ分析</li>
+</ul>`,
+  en:`<p>Even after the front desk closes, the guest experience doesn't stop. The operational design for automating late-night response with AI chat while keeping the property's "warmth."</p>
+<h2>1. Why late-night response matters</h2>
+<p>Late at night is when guests most need reassurance (arrival, directions, requests). <strong>Replying within the hour is what most affects reviews</strong> (illustrative). Meanwhile, overnight staffing is a burden on staff health and cost.</p>
+<h2>2. The three-layer AI chat design</h2>
+<ol>
+<li><strong>Layer 1 — instant (24/365)</strong> — answer routine queries (directions, hours, confirmations) at once.</li>
+<li><strong>Layer 2 — escalation (human)</strong> — hand complex or emotional requests to a person.</li>
+<li><strong>Layer 3 — learning (improvement)</strong> — analyse chat logs and improve the scripts.</li>
+</ol>
+<p>"Instant, hand off, improve" — the three layers are the skeleton of the operation.</p>
+<h2>3. The design that keeps the "warmth"</h2>
+<ul>
+<li><strong>A "conversation" tone</strong> — "a reply from the property," not "customer support."</li>
+<li><strong>A "talk to a person" button</strong> — switch to a human at any time.</li>
+<li><strong>Personalisation</strong> — greet by name (from the booking data).</li>
+</ul>
+<h2>4. Rollout and effect</h2>
+<ul>
+<li>Most overnight queries handled without a person (illustrative: 78%).</li>
+<li>Shorter average response time (illustrative: 4 minutes).</li>
+<li>More "they replied fast" in reviews.</li>
+</ul>
+<div class="stats"><div class="stat"><b>78%</b><span>(ex.) overnight queries, no person</span></div><div class="stat"><b>4 min</b><span>(ex.) average response</span></div><div class="stat"><b>more</b><span>(ex.) "they replied fast"</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The role of AI is not "to replace people" but "to put people where they are needed." Let AI handle the routine overnight work, and free people for the "warmth" moments.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — audit overnight queries (what's most common)</li>
+<li>Week 2 — choose the AI chat tool; design the scripts</li>
+<li>Week 3 — design the three layers (instant, hand off, learn)</li>
+<li>Week 4 — pilot (some queries first)</li>
+<li>Week 5+ — full rollout plus monthly log analysis</li>
+</ul>`
+  }
+},
+
+/* ------------------- CATEGORY ARCHIVE: ALL ------------------- */
+{
+  slug:'brand-refresh-without-logo',
+  date:'2025-04-10',
+  cat:'ブランディング', catEn:'Branding',
+  image:'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'ロゴを変えずにブランドを刷新する',en:'Refreshing a Brand Without Changing the Logo'},
+  excerpt:{ja:'ロゴを変えずにブランドを「動かす」5つの要素。',en:'Five levers that move a brand without changing the logo.'},
+  body:{
+  ja:`<p>フルのブランド・リデザインは、高コスト・高リスクです。本記事は、ロゴを変えずにブランドを「動かす」5つの要素を解説します。</p>
+<h2>1. なぜ「ロゴを変えずに」か</h2>
+<p>ロゴ変更は、全チャネルへの再コミュニケーションのコストとリスクを伴います。そしてロゴは、ブランドの「氷山の一角」に過ぎません。<strong>ロゴを変えなくても、ブランドは大きく動きます</strong>。</p>
+<h2>2. ブランドを動かす5要素</h2>
+<ol>
+<li><strong>言語（コピー）</strong> — 「about」・キャッチコピーの書き換え。</li>
+<li><strong>ビジュアル・コンテンツ</strong> — 写真のスタイル、カラーパレット（ロゴは不変）。</li>
+<li><strong>体験（タッチポイント）</strong> — 客室内の小さなもの（アメニティ・香り・音楽）。</li>
+<li><strong>ストーリー</strong> — ワンソースストーリーの更新（Who・Why・What is protected・What is offered）。</li>
+<li><strong>チャネル</strong> — 伝える「場所」の比率調整（SNS・OTA・直結）。</li>
+</ol>
+<h2>3. 実施の順番</h2>
+<ul>
+<li><strong>言語 → ビジュアル → 体験 → ストーリー → チャネル</strong> — コスト・リスクの低いものから。</li>
+<li>各要素を「ひと月で1つ」進めると、負担が分散されます。</li>
+</ul>
+<h2>4. 効果</h2>
+<ul>
+<li>ビジュアル刷新後の予約転換率上昇（例：+20%）。</li>
+<li>CTRの上昇（写真スタイルの統一）。</li>
+<li>ブランドの「一貫性」がレビュー・SNSに反映。</li>
+</ul>
+<div class="stats"><div class="stat"><b>+20%</b><span>（例）予約転換率（ビジュアル刷新後）</span></div><div class="stat"><b>増</b><span>（例）CTR（写真統一）</span></div><div class="stat"><b>5</b><span>要素（ロゴ不変）</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>ブランドはロゴではなく、「全ゲストの体験の総和」です。ロゴを変えずに、言語・ビジュアル・体験・ストーリー・チャネルの5つを動かす——それが、最も費用対効果が大きい刷新です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1ヶ月目：言語（about・キャッチコピー）の書き換え</li>
+<li>2ヶ月目：ビジュアル（写真スタイル・カラーパレット）の統一</li>
+<li>3ヶ月目：体験（タッチポイント）の刷新</li>
+<li>4ヶ月目：ストーリーの更新</li>
+<li>5ヶ月目：チャネル比率の調整</li>
+</ul>`,
+  en:`<p>A full brand redesign is high-cost and high-risk. The five elements that "move" a brand without changing the logo.</p>
+<h2>1. Why "without changing the logo"</h2>
+<p>Changing the logo carries the cost and risk of re-communicating to every channel. And the logo is only the "tip of the iceberg" of a brand. <strong>A brand can move a great deal without the logo changing.</strong></p>
+<h2>2. The five elements that move a brand</h2>
+<ol>
+<li><strong>Language (copy)</strong> — rewrite the "about" and the tagline.</li>
+<li><strong>Visual content</strong> — photo style, colour palette (the logo stays).</li>
+<li><strong>Experience (touchpoints)</strong> — the small things in the room (amenities, scent, music).</li>
+<li><strong>Story</strong> — update the single-source story (Who, Why, What is protected, What is offered).</li>
+<li><strong>Channel</strong> — adjust the ratio of "where" you communicate (social, OTA, direct).</li>
+</ol>
+<h2>3. The order of implementation</h2>
+<ul>
+<li><strong>Language, visual, experience, story, channel</strong> — start with the lowest cost and risk.</li>
+<li>Move "one element per month" and the load is spread out.</li>
+</ul>
+<h2>4. The effect</h2>
+<ul>
+<li>Higher booking conversion after a visual refresh (illustrative: +20%).</li>
+<li>Higher CTR (consistent photo style).</li>
+<li>The brand's "consistency" shows up in reviews and social.</li>
+</ul>
+<div class="stats"><div class="stat"><b>+20%</b><span>(ex.) conversion (post-visual refresh)</span></div><div class="stat"><b>more</b><span>(ex.) CTR (consistent photos)</span></div><div class="stat"><b>5</b><span>elements (logo unchanged)</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>A brand is not the logo — it is "the sum of every guest's experience." Move the five elements — language, visual, experience, story and channel — without the logo; that is the highest-ROI refresh.</div>
+<h2>Action list</h2>
+<ul>
+<li>Month 1 — rewrite the language (about, tagline)</li>
+<li>Month 2 — unify the visual (photo style, palette)</li>
+<li>Month 3 — refresh the experience (touchpoints)</li>
+<li>Month 4 — update the story</li>
+<li>Month 5 — adjust the channel ratio</li>
+</ul>`
+  }
+},
+{
+  slug:'sns-want-to-visit',
+  date:'2025-03-30',
+  cat:'SNS運用', catEn:'Social Media',
+  image:'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'SNSで「行ってみたい」を作る',en:'Making People Say "I Want to Go" on Social'},
+  excerpt:{ja:'「認知」ではなく「欲望」を作る、投稿フォーマットと頻度。',en:'Formats and cadence that create desire, not just awareness.'},
+  body:{
+  ja:`<p>SNSの目的は「認知」ではなく「欲望」です。本記事は、「行ってみたい」と思わせる投稿フォーマットとリズム——認知を欲望に変える設計を解説します。</p>
+<h2>1. 「認知」と「欲望」の違い</h2>
+<p>「素敵ですね」（認知）と「行ってみたい」（欲望）——予約を生むのは後者です。欲望の仕組みは2つ：</p>
+<ul>
+<li><strong>「自分の生活を想像できる」</strong> — 観賞ではなく、「自分がそこで過ごす」が想像できること。</li>
+<li><strong>「今行く理由」</strong> — 季節・限定・イベント——今この瞬間の理由。</li>
+</ul>
+<p>この2つが揃った投稿だけが、「行ってみたい」を生みます。</p>
+<h2>2. 欲望を作る4フォーマット</h2>
+<ol>
+<li><strong>「第一印象の瞬間」</strong> — ドアを開けた瞬間、座った瞬間の一場面。</li>
+<li><strong>「裏側」</strong> — スタッフ・プロセス・生産者。見えない手間が人を動かす。</li>
+<li><strong>「季節限定」</strong> — 「今季だけ」——今行く理由。</li>
+<li><strong>「人の反応」</strong> — スタッフの一言、ゲストの顔。温かみは写真に写る。</li>
+</ol>
+<h2>3. 投稿リズム</h2>
+<ul>
+<li><strong>5ピラーの固定比率</strong> — 空間・客室・食事・周辺・人（Instagram設計と連携）。</li>
+<li><strong>毎週のStories</strong> — 裏側。「生きている」感覚を作る。</li>
+<li><strong>月1の「季節キャンペーン」</strong> — 「今予約する理由」を明示（予約リンク付き）。</li>
+</ul>
+<h2>4. KPI</h2>
+<ul>
+<li>フォロワー数ではなく：<strong>保存数・共有数・「行ってみたい」コメント・SNS経由予約率</strong>。</li>
+<li>例：保存数+30%、SNS経由予約15%（参考値）。</li>
+</ul>
+<div class="stats"><div class="stat"><b>+30%</b><span>（例）保存数</span></div><div class="stat"><b>15%</b><span>（例）SNS経由予約率</span></div><div class="stat"><b>月1</b><span>季節キャンペーン</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>「行ってみたい」は、「自分を語る」ことでなく「相手が自分の生活を想像できる」ことで作られます。投稿のたびに「この写真を見て、自分がそこで過ごしている姿」が浮かぶか、を確認してください。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：4フォーマットの棚卸し（今の投稿がどれに当てはまるか）</li>
+<li>2週目：5ピラー比率の確定＋12投稿分のストック</li>
+<li>3週目〜：毎週Stories＋月1季節キャンペーン</li>
+<li>月次：保存・共有・SNS経由予約の3指標を確認</li>
+</ul>`,
+  en:`<p>The purpose of social is not "awareness" but "desire." The post formats and cadence that create "I want to go" — the design for turning awareness into desire.</p>
+<h2>1. The difference between "awareness" and "desire"</h2>
+<p>"How lovely" (awareness) vs "I want to go" (desire) — it is the second that books. The mechanics of desire are two:</p>
+<ul>
+<li><strong>"I can picture my own life in it"</strong> — not to admire, but to imagine yourself staying there.</li>
+<li><strong>"A reason to go now"</strong> — season, limited, event — a reason for this very moment.</li>
+</ul>
+<p>Only a post with both creates "I want to go."</p>
+<h2>2. The four formats that create desire</h2>
+<ol>
+<li><strong>"The first-impression moment"</strong> — one scene: the door opening, the moment you sit down.</li>
+<li><strong>"The behind-the-scenes"</strong> — staff, process, producers; unseen effort moves people.</li>
+<li><strong>"Seasonal limited"</strong> — "only this season" — a reason to go now.</li>
+<li><strong>"A person's reaction"</strong> — a staff one-liner, a guest's face; warmth shows in photos.</li>
+</ol>
+<h2>3. Posting cadence</h2>
+<ul>
+<li><strong>Fixed five-pillar ratio</strong> — space, room, food, neighborhood, people (linked to the Instagram design).</li>
+<li><strong>Weekly Stories</strong> — behind the scenes; the sense of "it's alive."</li>
+<li><strong>Monthly "seasonal campaign"</strong> — state "the reason to book now" (with the booking link).</li>
+</ul>
+<h2>4. The KPIs</h2>
+<ul>
+<li>Not followers: <strong>saves, shares, "I want to go" comments, SNS-sourced bookings.</strong></li>
+<li>Illustrative: saves +30%, 15% of bookings via social.</li>
+</ul>
+<div class="stats"><div class="stat"><b>+30%</b><span>(ex.) saves</span></div><div class="stat"><b>15%</b><span>(ex.) SNS-sourced bookings</span></div><div class="stat"><b>monthly</b><span>seasonal campaign</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>"I want to go" is created not by "talking about yourself" but by "letting the other person picture their own life there." For every post, check: does this photo make me see myself staying there?</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — sort your current posts into the four formats</li>
+<li>Week 2 — set the five-pillar ratio; stock 12 posts</li>
+<li>Week 3+ — weekly Stories plus a monthly seasonal campaign</li>
+<li>Monthly — track saves, shares and SNS-sourced bookings</li>
+</ul>`
+  }
+},
+{
+  slug:'regional-hotel-media',
+  date:'2025-03-18',
+  cat:'PR・メディア', catEn:'PR & Media',
+  image:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'地方ホテルがメディアに取り上げられる術',en:'How Regional Hotels Get Featured in the Media'},
+  excerpt:{ja:'「広告」ではなく「取材」で報じてもらう、プレスキットの作り方。',en:'A press-kit method that earns editorial coverage, not just ad placements.'},
+  body:{
+  ja:`<p>地方ホテルは、メディアに取り上げられる「構造的な優位」を持っています——「地域」という切り口です。本記事は、「広告」ではなく「取材」で報じてもらう、プレスキットの作り方を解説します。</p>
+<h2>1. なぜ地方ホテルは「報じられやすい」のか</h2>
+<p>メディアは「地域の物語」を探しています——固有の地域＋具体的なストーリー。つまり「地方のホテル」は、すでにニュースの切り口を持っているのです。</p>
+<h2>2. 「報じられるストーリー」の構造</h2>
+<ol>
+<li><strong>地域の角度</strong> — この地域にあって、他にはないもの。</li>
+<li><strong>人の要素</strong> — 経営者・スタッフ・生産者。</li>
+<li><strong>社会の共鳴</strong> — 雇用・地域活性化・サステナビリティ——社会課題との接続。</li>
+<li><strong>旬（タイミング）</strong> — 季節・イベント・周年——今報じる理由。</li>
+</ol>
+<p>4つのうち3つが揃うと、「取材の価値」があります。</p>
+<h2>3. プレスキット</h2>
+<ul>
+<li><strong>ストーリーの3版</strong> — 30秒・3分・10分版（ストーリー・ブランディング記事と連携）。</li>
+<li><strong>ファクトボックス</strong> — 数字・実績・引用（参考値でOK——根拠を示す）。</li>
+<li><strong>写真セット</strong> — 高精細5〜10枚＋クレジット。</li>
+<li><strong>連絡先</strong> — 担当者1名＋対応のSLA（何時間以内に返すか）。</li>
+</ul>
+<h2>4. PRの動き</h2>
+<ul>
+<li><strong>まずローカルメディア</strong> — 地域の報道で実績を作る。</li>
+<li><strong>季節・イベントの「フック」</strong> — 旬に合わせてピッチ。</li>
+<li>例：四半期に1回の取材（参考値）。</li>
+</ul>
+<div class="stats"><div class="stat"><b>四半期1</b><span>（例）取材・掲載</span></div><div class="stat"><b>3版</b><span>ストーリー（30秒・3分・10分）</span></div><div class="stat"><b>1名</b><span>PR担当（SLA付き）</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>PRの本質は「ホテルを伝える」ことではなく「ストーリーを準備する」ことです。メディアが報じるのは「ホテル」ではなく「物語」です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：ストーリーの3版（30秒・3分・10分）を準備</li>
+<li>2週目：ファクトボックス＋写真セットの作成</li>
+<li>3週目：PR担当の明確化＋SLA設定</li>
+<li>4週目：ローカルメディアへの初回ピッチ</li>
+<li>四半期：季節・イベントのフックで継続ピッチ</li>
+</ul>`,
+  en:`<p>A regional property holds a "structural advantage" for media coverage — the angle of "the region." The press-kit method for earning editorial coverage, not just ad placements.</p>
+<h2>1. Why regional properties are "easy to cover"</h2>
+<p>Media is always looking for "regional stories" — a distinctive place plus a specific story. In other words, "a regional property" already has a news angle.</p>
+<h2>2. The structure of a "coverable story"</h2>
+<ol>
+<li><strong>The regional angle</strong> — what this place has that others don't.</li>
+<li><strong>The human element</strong> — the owner, the staff, the producers.</li>
+<li><strong>Social resonance</strong> — jobs, local revitalisation, sustainability — a link to a social topic.</li>
+<li><strong>Timeliness</strong> — season, event, anniversary — a reason to cover it now.</li>
+</ol>
+<p>When three of the four are in place, the story has "news value."</p>
+<h2>3. The press kit</h2>
+<ul>
+<li><strong>Three versions of the story</strong> — 30-second, 3-minute, 10-minute (linked to the story-branding article).</li>
+<li><strong>A fact box</strong> — numbers, track record, quotes (illustrative is fine — show the basis).</li>
+<li><strong>A photo set</strong> — 5–10 high-resolution images plus credits.</li>
+<li><strong>A contact</strong> — one person, with a response SLA (how fast they reply).</li>
+</ul>
+<h2>4. The PR motion</h2>
+<ul>
+<li><strong>Start with local media</strong> — build a track record in regional coverage.</li>
+<li><strong>A "hook" tied to season or event</strong> — pitch at the moment of timeliness.</li>
+<li>Illustrative: one interview or feature per quarter.</li>
+</ul>
+<div class="stats"><div class="stat"><b>quarterly</b><span>(ex.) one feature</span></div><div class="stat"><b>3 versions</b><span>story (30s / 3min / 10min)</span></div><div class="stat"><b>1 person</b><span>PR contact (with SLA)</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The essence of PR is not "telling about the hotel" but "preparing the story." Media covers the "story," not the "hotel."</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — prepare the three story versions (30s / 3min / 10min)</li>
+<li>Week 2 — build the fact box and the photo set</li>
+<li>Week 3 — name the PR contact; set the SLA</li>
+<li>Week 4 — the first pitch to local media</li>
+<li>Quarterly — keep pitching on seasonal and event hooks</li>
+</ul>`
+  }
+},
+{
+  slug:'scent-music-five-senses',
+  date:'2025-03-05',
+  cat:'体験設計', catEn:'Experience Design',
+  image:'https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'香りと音楽 — 五感で覚えられる宿',en:'Scent & Sound — A Stay the Five Senses Remember'},
+  excerpt:{ja:'「香り」と「音」、最も忘れられやすい2つの感覚の運営設計。',en:'Operating design for the two senses guests forget — and remember longest.'},
+  body:{
+  ja:`<p>最も忘れられやすく、最も強く記憶に残る感覚は「香り」と「音」です。本記事は、写真では伝えられない2つの感覚——それを運営に組み込む設計を解説します。</p>
+<h2>1. なぜ「香り」と「音」か</h2>
+<p>写真のマーケティング（OTA・SNS）は「視覚」を伝えます。<strong>写真に写らない感覚こそ、差別化</strong>です。香りは記憶に直結し（プロスタ現象）、音は気分・雰囲気に作用します。レビューでは「あの香り」「あの音楽」が強く語られることが、この2つの力を実証しています。</p>
+<h2>2. 香りの設計</h2>
+<ul>
+<li><strong>ブランドに合った「ひとつの香り」</strong> — 固形石鹸の香りではなく、宿そのものの香り。</li>
+<li><strong>集中配置</strong> — ロビー・廊下・客室入口。散らばらせず、記憶に残る場所にする。</li>
+<li><strong>安全・配慮</strong> — 濃度の管理、アレルギーへの代替案。</li>
+</ul>
+<h2>3. 音の設計</h2>
+<ul>
+<li><strong>ブランドに合った「ひとつの音」</strong> — 「BGMを流している」のではなく、宿の「音」。</li>
+<li><strong>ボリュームのゾーン</strong> — 受付＝活気、客室＝静寂、レストラン＝温かさ。</li>
+<li><strong>「到着の音」</strong> — ドアのチャイム、挨拶。最初の5秒の音。</li>
+</ul>
+<h2>4. 伝達</h2>
+<ul>
+<li>客室のカード＋SNSで「香りと音」を伝える——「写真に写らないもの」を言葉で。</li>
+<li>例：レビューの「香り」「音楽」の言及、リピート率の上昇（参考値）。</li>
+</ul>
+<div class="stats"><div class="stat"><b>1つ</b><span>香り（ブランドに合った）</span></div><div class="stat"><b>1つ</b><span>音（ブランドに合った）</span></div><div class="stat"><b>増</b><span>（例）「香り・音楽」言及</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>香りと音は「写真に撮れないブランド」です。しかし、ゲストが「記憶から想起する」のは、まずこの2つです。視覚を写真で伝え、香りと音で「記憶」を作る——それが五感の設計です。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：現在の「香り」「音」の棚卸し（何が流れているか）</li>
+<li>2週目：ブランドに合った「ひとつの香り」の選定</li>
+<li>3週目：「ひとつの音」（プレイリスト）の選定＋ゾーン設計</li>
+<li>4週目：客室カード・SNSへの伝達</li>
+<li>月次：レビューの「香り・音楽」言及の監視</li>
+</ul>`,
+  en:`<p>The senses most easily forgotten — and most strongly remembered — are "scent" and "sound." The operating design for the two senses that cannot be shown in photos.</p>
+<h2>1. Why "scent" and "sound"</h2>
+<p>Photo marketing (OTA, social) carries "sight." <strong>The senses that can't be photographed are the differentiator.</strong> Scent links directly to memory (the Proust effect); sound shapes mood and atmosphere. That reviews so often mention "that scent" and "that music" is proof of the power of these two.</p>
+<h2>2. The scent design</h2>
+<ul>
+<li><strong>One "scent" that fits the brand</strong> — not the smell of a bar of soap, but the smell of the property itself.</li>
+<li><strong>Concentrated placement</strong> — lobby, corridor, room entrances. Don't scatter it; put it where it is remembered.</li>
+<li><strong>Safety and consideration</strong> — manage concentration; offer an alternative for allergies.</li>
+</ul>
+<h2>3. The sound design</h2>
+<ul>
+<li><strong>One "sound" that fits the brand</strong> — not "BGM is playing," but the property's "sound."</li>
+<li><strong>Volume zones</strong> — reception = lively, room = quiet, restaurant = warm.</li>
+<li><strong>"The arrival sound"</strong> — the door chime, the greeting. The sound of the first five seconds.</li>
+</ul>
+<h2>4. The communication</h2>
+<ul>
+<li>Say the "scent and sound" in the in-room card and on social — put the "unphotographable" into words.</li>
+<li>Illustrative: more "scent" and "music" mentions in reviews; higher repeat rate.</li>
+</ul>
+<div class="stats"><div class="stat"><b>1</b><span>scent (brand-fitted)</span></div><div class="stat"><b>1</b><span>sound (brand-fitted)</span></div><div class="stat"><b>more</b><span>(ex.) "scent / music" mentions</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>Scent and sound are "the brand you cannot photograph." Yet the first things guests "recall from memory" are these two. Carry sight in the photos; build the "memory" with scent and sound — that is the five-sense design.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — audit the current "scent" and "sound" (what is playing)</li>
+<li>Week 2 — choose the one brand-fitted scent</li>
+<li>Week 3 — choose the one brand-fitted sound (playlist) plus zones</li>
+<li>Week 4 — communicate in the in-room card and on social</li>
+<li>Monthly — watch "scent / music" mentions in reviews</li>
+</ul>`
+  }
+},
+{
+  slug:'ota-commission-visibility',
+  date:'2025-02-20',
+  cat:'収益改善', catEn:'Revenue Growth',
+  image:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'OTA手数料を可視化する',en:'Making OTA Commissions Visible'},
+  excerpt:{ja:'1泊ごとに見え方が変わる、手数料の計算表。',en:'The worksheet that changes how you see every single booking.'},
+  body:{
+  ja:`<p>OTA手数料は「感覚で分からない」数字です——しかし一度可視化すると、1泊ごとの見え方が変わります。本記事は、手数料の「計算表」の作り方と、それが変える3つの意思決定を解説します。</p>
+<h2>1. なぜ「可視化」が必要か</h2>
+<p>「手数料15〜25%」は比率であり、金額ではありません。人間の脳は比率を感覚できません。「1泊で¥X失っている」に変換して初めて、具体的な損失が見えます。</p>
+<h2>2. 計算表の3つの数字</h2>
+<ol>
+<li><strong>1泊あたりの手数料</strong> — ADR × 手数料率。1泊ごとの「失っている金額」。</li>
+<li><strong>売上に対する手数料の比率</strong> — 売上の何%が手数料か。</li>
+<li><strong>直結なら浮く金額</strong> — 直結の機会費用（直結に回せばいくら浮くか）。</li>
+</ol>
+<p>この3つが揃って、手数料は「比率」から「金額」になります。</p>
+<h2>3. 可視化が変える3つの意思決定</h2>
+<ul>
+<li><strong>価格設計</strong> — OTA価格は本当に最適か（手数料込みの利益で見直す）。</li>
+<li><strong>直結戦略</strong> — 特典にいくら投資できるか（手数料の機会費用）。</li>
+<li><strong>チャネルミックス</strong> — 理想の比率（OTA：直結）はどこか。</li>
+</ul>
+<h2>4. 運用例</h2>
+<ul>
+<li>週次の「手数料レポート」（3つの数字）。</li>
+<li>例：「売上の40%がOTA手数料だった」という気づき、直結比率の10ポイント改善（参考値）。</li>
+</ul>
+<div class="stats"><div class="stat"><b>3</b><span>数字（1泊・比率・機会費用）</span></div><div class="stat"><b>週次</b><span>手数料レポート</span></div><div class="stat"><b>+10pt</b><span>（例）直結比率の改善</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>手数料は「需要を獲得するためのコスト」です。目標は「ゼロにする」ことではなく、「いくら払っているかを知ること」です。可視化されたコストは、管理できるコストです。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：ADR×手数料率の「1泊あたり手数料」を計算</li>
+<li>2週目：売上に対する比率の算出</li>
+<li>3週目：直結の機会費用の算出</li>
+<li>4週目：週次レポートの運用開始</li>
+<li>月次：3つの意思決定（価格・直結・チャネル）の見直し</li>
+</ul>`,
+  en:`<p>The OTA commission is a number you "can't feel" — but once you make it visible, your view of every booking changes. The "calculation sheet" for commissions, and the three decisions it changes.</p>
+<h2>1. Why "visibility" is needed</h2>
+<p>"15–25% commission" is a ratio, not an amount. The human brain can't feel ratios. Convert it to "you lose ¥X per night" and, for the first time, a concrete loss becomes visible.</p>
+<h2>2. The three numbers on the sheet</h2>
+<ol>
+<li><strong>Commission per booking</strong> — ADR × commission rate. The "amount you lose per night."</li>
+<li><strong>Commission as a share of revenue</strong> — what % of revenue is commission.</li>
+<li><strong>The amount you'd save if direct</strong> — the opportunity cost of direct (how much you'd save by routing to direct).</li>
+</ol>
+<p>When all three are in place, the commission becomes an "amount" instead of a "ratio."</p>
+<h2>3. The three decisions visibility changes</h2>
+<ul>
+<li><strong>Price design</strong> — is the OTA rate truly optimal (revisit the margin net of commission).</li>
+<li><strong>Direct strategy</strong> — how much can be invested in benefits (the opportunity cost of commission).</li>
+<li><strong>Channel mix</strong> — where is the ideal ratio (OTA : direct)?</li>
+</ul>
+<h2>4. An operating example</h2>
+<ul>
+<li>A weekly "commission report" (the three numbers).</li>
+<li>Illustrative: the realisation that "40% of revenue is OTA commission"; a 10-point improvement in direct share.</li>
+</ul>
+<div class="stats"><div class="stat"><b>3</b><span>numbers (per-night / share / opportunity)</span></div><div class="stat"><b>weekly</b><span>commission report</span></div><div class="stat"><b>+10pt</b><span>(ex.) direct-share improvement</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>The commission is "the cost of acquiring demand." The goal is not "to make it zero" but "to know how much you're paying." A cost that is visible is a cost that can be managed.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — compute the "commission per night" (ADR × rate)</li>
+<li>Week 2 — compute the share of revenue</li>
+<li>Week 3 — compute the opportunity cost of direct</li>
+<li>Week 4 — start the weekly report</li>
+<li>Monthly — revisit the three decisions (price, direct, channel)</li>
+</ul>`
+  }
+},
+{
+  slug:'foreign-staff-retention-teaching',
+  date:'2025-02-08',
+  cat:'人材・採用', catEn:'Talent & Hiring',
+  image:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'外国人スタッフが定着する宿の「教え方」',en:'The "Teaching Method" Behind Foreign Staff Who Stay'},
+  excerpt:{ja:'オンボーディングと「聞ける仕組み」で、立ち上がり期間を短縮する設計。',en:'Onboarding design and a "way to ask" that shorten ramp-up for international teams.'},
+  body:{
+  ja:`<p>外国人スタッフが去るのは、「仕事の量」ではなく「言語と文化の壁」です。本記事は、立ち上がり期間を短縮するオンボーディング設計と、「聞ける仕組み」の設計を解説します。</p>
+<h2>1. 去る本当の理由</h2>
+<p>「3ヶ月の壁」——日常業務の難しさが表面に現れる地点です。原因は3つ：</p>
+<ul>
+<li><strong>「聞けない」</strong> — 分からないまま進め、ミスが積み重なる。</li>
+<li><strong>「文脈が分からない」</strong> — なぜそうするのか、背景が見えない。</li>
+<li><strong>「孤立」</strong> — 誰に相談していいか分からない。</li>
+</ul>
+<p>去りのは「能力」ではなく、この3つの「仕組みの欠如」です。</p>
+<h2>2. オンボーディング設計</h2>
+<ul>
+<li><strong>バディ制</strong> — その人の言語で聞ける1名を置く。</li>
+<li><strong>「最初の30日」計画</strong> — 明示した目標＋定期的なチェックイン。</li>
+<li><strong>「視覚SOP」</strong> — 言語が限られても分かるマニュアル（写真・アイコン）。</li>
+</ul>
+<h2>3. 「聞ける仕組み」</h2>
+<ul>
+<li><strong>「質問は負担ではない」文化</strong> — 安全に聞ける環境。</li>
+<li><strong>「質問コーナー」</strong> — 聞ける場所・時間を設ける。</li>
+<li><strong>「質問→回答→SOP更新」のループ</strong> — 質問を資産に変える。</li>
+</ul>
+<p>「聞ける」環境があるときだけ、新人は「質問」で学び、「孤立」から抜け出せます。</p>
+<h2>4. 効果</h2>
+<ul>
+<li>立ち上がり期間の短縮（例：40%減）。</li>
+<li>6ヶ月定着率の上昇（例：85%）。</li>
+<li>多様なチーム → 多言語サービスというゲスト体験の向上。</li>
+</ul>
+<div class="stats"><div class="stat"><b>40%減</b><span>（例）立ち上がり期間</span></div><div class="stat"><b>85%</b><span>（例）6ヶ月定着率</span></div><div class="stat"><b>1名</b><span>バディ（その人の言語で）</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>「教え方」は「知識を伝える」ことではなく、「聞ける環境を作る」ことです。聞ける仕組みがあるとき、新人は「能力」でなく「仕組み」で育ちます。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：現在のオンボーディングの棚卸し（何が欠けているか）</li>
+<li>2週目：バディ制の設計（1名を置く）</li>
+<li>3週目：「最初の30日」計画の作成</li>
+<li>4週目：視覚SOP（写真・アイコン）の作成</li>
+<li>5週目：「質問コーナー」＋ループの運用開始</li>
+</ul>`,
+  en:`<p>Foreign staff leave not because of "workload" but because of "the wall of language and culture." The onboarding design and the "way to ask" that shorten the ramp-up period.</p>
+<h2>1. The real reason for leaving</h2>
+<p>The "three-month wall" — the point where the difficulty of daily work surfaces. Three causes:</p>
+<ul>
+<li><strong>"Can't ask"</strong> — plods on not understanding; mistakes pile up.</li>
+<li><strong>"Can't see the context"</strong> — why we do it this way; the background is invisible.</li>
+<li><strong>"Isolation"</strong> — doesn't know who to ask.</li>
+</ul>
+<p>The cause of leaving is not "ability" but this "absence of systems."</p>
+<h2>2. The onboarding design</h2>
+<ul>
+<li><strong>A buddy system</strong> — place one person they can ask, in their own language.</li>
+<li><strong>A "first 30 days" plan</strong> — explicit goals plus regular check-ins.</li>
+<li><strong>A "visual SOP"</strong> — a manual that works even with limited language (photos, icons).</li>
+</ul>
+<h2>3. The "way to ask"</h2>
+<ul>
+<li><strong>A "questions are not a burden" culture</strong> — a safe environment to ask.</li>
+<li><strong>A "question corner"</strong> — a set place and time to ask.</li>
+<li><strong>The "question, answer, SOP update" loop</strong> — turn questions into assets.</li>
+</ul>
+<p>Only when a "way to ask" exists does a newcomer learn through "asking" and escape "isolation."</p>
+<h2>4. The effect</h2>
+<ul>
+<li>A shorter ramp-up (illustrative: 40% fewer).</li>
+<li>A higher 6-month retention (illustrative: 85%).</li>
+<li>A diverse team, a multilingual guest experience.</li>
+</ul>
+<div class="stats"><div class="stat"><b>40% fewer</b><span>(ex.) ramp-up time</span></div><div class="stat"><b>85%</b><span>(ex.) 6-month retention</span></div><div class="stat"><b>1</b><span>buddy (in their language)</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>"Teaching" is not "conveying knowledge" but "creating an environment where you can ask." When the "way to ask" exists, newcomers grow through the "system," not through "ability" alone.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — audit the current onboarding (what is missing)</li>
+<li>Week 2 — design the buddy system (place one person)</li>
+<li>Week 3 — write the "first 30 days" plan</li>
+<li>Week 4 — build the visual SOP (photos, icons)</li>
+<li>Week 5 — start the "question corner" plus the loop</li>
+</ul>`
+  }
+},
+{
+  slug:'breakfast-buffet-media',
+  date:'2025-01-29',
+  cat:'フード＆ベバレッジ', catEn:'Food & Beverage',
+  image:'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1600&q=85&fm=jpg&fit=crop',
+  imageThumb:'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&q=80&fm=jpg&fit=crop',
+  title:{ja:'朝食をメディア化するビュッフェ設計',en:'Turning Breakfast Into Media: Buffet Design'},
+  excerpt:{ja:'「朝食だけのために泊まる」を作る、設計の7要素。',en:'Seven design moves that make breakfast worth booking for.'},
+  body:{
+  ja:`<p>「朝食だけのために泊まる」——本記事は、朝食を「メディア」（撮って・投稿されるコンテンツ）に変える、ビュッフェ設計の7要素を解説します。</p>
+<h2>1. なぜ「朝食をメディア化」するか</h2>
+<p>朝食は、滞在の中で「最も撮られる時間」です。そして「朝食」は、SNS・OTAで単独のコンテンツになります——「朝食のために来た」と言わせることが、メディア化のゴールです。</p>
+<h2>2. ビュッフェ設計の7要素</h2>
+<ol>
+<li><strong>「ひとつのスター」</strong> — 朝食の象徴になる一皿（地域の一品）。</li>
+<li><strong>「盛り付けの演出」</strong> — 視覚の対比、テーブルセッティング。</li>
+<li><strong>「音」</strong> — キッチンの音（オープンキッチン）。"生きている"感覚。</li>
+<li><strong>「人」</strong> — スタッフの挨拶、生産者のストーリー。</li>
+<li><strong>「光」</strong> — 朝光、窓辺の席。</li>
+<li><strong>「限定」</strong> — 季節・曜日限定の一皿。</li>
+<li><strong>「持ち帰り」</strong> — 小さなギフト、レシピカード。</li>
+</ol>
+<h2>3. 運営設計</h2>
+<ul>
+<li><strong>「スター」を予告</strong> — SNSで先に伝える（期待の作成）。</li>
+<li><strong>撮影スポット</strong> — 「一番撮れる席」を作る。</li>
+<li>例：SNS投稿3倍、朝食セット注文+25%（参考値）。</li>
+</ul>
+<h2>4. 収益への結びつき</h2>
+<ul>
+<li>朝食セットの注文増（例：+25%）。</li>
+<li>「朝食のために泊まった」——宿泊の理由が「食事」になる。</li>
+<li>SNS投稿（例：3倍）——朝食が宿のPRになる。</li>
+</ul>
+<div class="stats"><div class="stat"><b>+25%</b><span>（例）朝食セット注文</span></div><div class="stat"><b>3倍</b><span>（例）SNS投稿</span></div><div class="stat"><b>7</b><span>要素（ビュッフェ設計）</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>朝食の「メディア化」は、7要素すべてを揃えることではなく、「撮られる一瞬」——「ひとつのスター」を作ることに尽きます。一皿の演出が、宿全体のPRになる。</div>
+<h2>行動リスト</h2>
+<ul>
+<li>1週目：「ひとつのスター」（地域の一品）の選定</li>
+<li>2週目：盛り付け・テーブルセッティングの演出</li>
+<li>3週目：光・音・人の配置</li>
+<li>4週目：限定の一皿＋持ち帰りのギフト</li>
+<li>5週目：SNS予告＋撮影スポットの案内</li>
+</ul>`,
+  en:`<p>"Worth staying for the breakfast alone" — the seven design elements that turn breakfast into "media" (content worth photographing and posting).</p>
+<h2>1. Why "turn breakfast into media"</h2>
+<p>Breakfast is the "most photographed time" of the stay. And "the breakfast" becomes a piece of content in its own right on social and OTA — the goal is to make guests say "we came for the breakfast."</p>
+<h2>2. The seven buffet-design elements</h2>
+<ol>
+<li><strong>"One star"</strong> — the single dish that becomes the symbol of the breakfast (a regional item).</li>
+<li><strong>"The staging of the plating"</strong> — visual contrast, table setting.</li>
+<li><strong>"The sound"</strong> — the sound of the kitchen (an open kitchen); the sense of "it's alive."</li>
+<li><strong>"The person"</strong> — the staff greeting, the producer's story.</li>
+<li><strong>"The light"</strong> — morning light, the window seat.</li>
+<li><strong>"The limited"</strong> — a seasonal or day-specific dish.</li>
+<li><strong>"The takeaway"</strong> — a small gift, a recipe card.</li>
+</ol>
+<h2>3. The operational design</h2>
+<ul>
+<li><strong>Tease the "star"</strong> — say it on social first (build anticipation).</li>
+<li><strong>The photo spot</strong> — create "the best seat to shoot from."</li>
+<li>Illustrative: social posts 3×, breakfast-set orders +25%.</li>
+</ul>
+<h2>4. The link to revenue</h2>
+<ul>
+<li>More breakfast-set orders (illustrative: +25%).</li>
+<li>"We stayed for the breakfast" — food becomes the reason to stay.</li>
+<li>More social posts (illustrative: 3×) — the breakfast becomes the property's PR.</li>
+</ul>
+<div class="stats"><div class="stat"><b>+25%</b><span>(ex.) breakfast-set orders</span></div><div class="stat"><b>3×</b><span>(ex.) social posts</span></div><div class="stat"><b>7</b><span>elements (buffet design)</span></div></div>
+<div class="note"><span class="tag">InnBuddy Note</span>"Turning breakfast into media" is not about having all seven elements — it is about creating "the one instant worth photographing" — "one star." The presentation of one dish becomes the PR for the whole property.</div>
+<h2>Action list</h2>
+<ul>
+<li>Week 1 — choose the "one star" (a regional item)</li>
+<li>Week 2 — the plating and table-setting staging</li>
+<li>Week 3 — place the light, the sound and the people</li>
+<li>Week 4 — the limited dish plus the takeaway gift</li>
+<li>Week 5 — the social tease plus the photo-spot sign</li>
+</ul>`
+  }
+}
+];
+
+</script>
+<script>
+
+var UI = {
+  ja: {
+    back: '← JOURNAL',
+    read: '分で読めます',
+    related: 'RELATED — 同じテーマの記事',
+    prep_t: 'この記事は準備中です',
+    prep_b: '執筆・掲載の準備を進めています。お待たせします。',
+    prep_go: '他の記事を読む',
+    notfound: '記事が見つかりません。',
+    notfound_go: 'ジャーナルに戻る',
+    disc: '* 記事内の数値は、業界一般の傾向に基づく参考値・一例であり、当社の実績を示すものではありません。',
+    lp_title: 'InnBuddy — OTA × OPERATION × BRANDING'
+  },
+  en: {
+    back: '← JOURNAL',
+    read: 'min read',
+    related: 'RELATED — MORE ON THIS THEME',
+    prep_t: 'This article is in preparation',
+    prep_b: 'We are working on writing this one. Please check back soon.',
+    prep_go: 'Browse other articles',
+    notfound: 'Article not found.',
+    notfound_go: 'Back to journal',
+    disc: '* Figures in articles are illustrative values based on general industry patterns; they do not represent company performance.',
+    lp_title: 'InnBuddy — OTA × OPERATION × BRANDING'
+  }
+};
+var lang = localStorage.getItem('innbuddy-lang') || 'ja';
+
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function t(o){return o ? (o[lang] || o.ja || o.en || '') : ''}
+function fmtDate(d){
+  if(!d) return '';
+  var p = d.split('-');
+  return lang === 'ja' ? p[0]+'.'+p[1]+'.'+p[2] : p[1]+'/'+p[2]+'/'+p[0];
+}
+function readTime(html){
+  var len = (html||'').replace(/<[^>]*>/g,'').length;
+  var per = lang === 'ja' ? 350 : 1800;
+  return Math.max(2, Math.ceil(len/per));
+}
+function currentSlug(){ return (location.hash||'').replace('#',''); }
+function currentArticle(){
+  var slug = currentSlug();
+  if(!slug) return null;
+  return (window.ARTICLES||[]).find(function(a){return a.slug===slug});
+}
+
+function render(){
+  document.documentElement.lang = lang==='ja' ? 'ja' : 'en';
+  document.getElementById('langJa').classList.toggle('on', lang==='ja');
+  document.getElementById('langEn').classList.toggle('on', lang==='en');
+  document.getElementById('backBtn').textContent = UI[lang].back;
+  document.getElementById('disclaimer').textContent = UI[lang].disc;
+  var a = currentArticle();
+  var el = document.getElementById('article');
+  if(!a){ el.innerHTML=''; return; }
+  var cat = lang==='ja' ? a.cat : a.catEn;
+  var head =
+    '<div class="kicker"><span class="chip">'+esc(cat)+'</span><span>'+esc(fmtDate(a.date))+'</span></div>' +
+    '<h1 class="'+(lang==='en'?'en':'')+'">'+esc(t(a.title))+'</h1>' +
+    '<div class="excerpt">'+esc(t(a.excerpt))+'</div>' +
+    '<div class="hero-img"><img src="'+a.image+'" alt="" loading="lazy"></div>' +
+    '<div class="meta-row"><span>'+esc(cat)+'</span><span>'+readTime(a.body ? t(a.body) : '')+' '+UI[lang].read+'</span></div>';
+  var main;
+  if(a.body && t(a.body)){
+    main = '<div class="body'+(lang==='en'?' en':'')+'">'+t(a.body)+'</div>';
+  } else {
+    main = '<div class="prep"><div class="big">'+UI[lang].prep_t+'</div><p>'+UI[lang].prep_b+'</p>' +
+      '<p style="margin-top:18px"><a class="back" href="#" style="display:inline-block">'+UI[lang].prep_go+'</a></p></div>';
+  }
+  var rel = (window.ARTICLES||[]).filter(function(b){
+    return b.slug!==a.slug && b.cat===a.cat && b.body && (b.body.ja||b.body.en);
+  }).slice(0,3);
+  var relHtml = '';
+  if(rel.length){
+    relHtml = '<div class="rel"><div class="rel-label">'+UI[lang].related+'</div><div class="rel-grid">' +
+      rel.map(function(b){
+        return '<a href="#'+b.slug+'"><img src="'+b.imageThumb+'" alt="" loading="lazy"><div class="rel-t"><div class="rel-d">'+esc(fmtDate(b.date))+'</div><h4>'+esc(t(b.title))+'</h4></div></a>';
+      }).join('') + '</div></div>';
+  }
+  el.innerHTML = head + main + relHtml;
+}
+
+function route(){
+  var a = currentArticle();
+  if(a){
+    document.body.classList.add('in-article');
+    document.title = t(a.title) + ' — InnBuddy JOURNAL';
+    render();
+    window.scrollTo(0,0);
+  } else {
+    document.body.classList.remove('in-article');
+    document.title = UI[lang].lp_title;
+    var bar = document.getElementById('progress');
+    if(bar) bar.style.width = '0';
+  }
+}
+
+function setLang(l){ lang = l; localStorage.setItem('innbuddy-lang', l); render(); }
+
+window.addEventListener('hashchange', route);
+window.addEventListener('scroll', function(){
+  if(!document.body.classList.contains('in-article')) return;
+  var h = document.documentElement;
+  var max = h.scrollHeight - h.clientHeight;
+  var p = max > 0 ? (h.scrollTop/max*100) : 0;
+  var bar = document.getElementById('progress');
+  if(bar) bar.style.width = p + '%';
+});
+window.addEventListener('DOMContentLoaded', function(){ setTimeout(route, 50); });
+
+</script>
+
+<script>
+function equalizeHero(){
+  const leftWides = document.querySelectorAll('.left-3 .wide');
+  const rightCells = document.querySelectorAll('.left-9 .cell');
+  if(!leftWides.length || !rightCells.length) return;
+  // Reset to auto to measure correctly
+  leftWides.forEach(el=>el.style.height='');
+  document.querySelector('.left-3').style.height='';
+  document.querySelector('.left-9').style.height='';
+  // Force layout
+  const squareH = Math.round(rightCells[0].getBoundingClientRect().height);
+  if(squareH < 10) return;
+  // Apply 10-15% correction: right is smaller, so left should be exactly squareH (not taller)
+  leftWides.forEach(el=>{ el.style.height = squareH + 'px'; el.style.minHeight = squareH + 'px'; el.style.maxHeight = squareH + 'px'; });
+  const totalH = squareH * 3 + 20;
+  document.querySelector('.left-3').style.height = totalH + 'px';
+  document.querySelector('.left-9').style.height = totalH + 'px';
+  // Double check after
+  // console.log('equalized', squareH, totalH);
+}
+window.addEventListener('load', ()=>{ setTimeout(equalizeHero, 100); setTimeout(equalizeHero, 500); });
+window.addEventListener('resize', equalizeHero);
+document.addEventListener('DOMContentLoaded', ()=>{ setTimeout(equalizeHero, 300); });
+// Also observe images
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.left-9 .cell img').forEach(img=>{
+    img.addEventListener('load', equalizeHero);
+  });
+});
+</script>
+
+</body>
+</html>
